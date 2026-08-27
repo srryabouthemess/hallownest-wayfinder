@@ -1,0 +1,12 @@
+bin/
+obj/
+HollowKnightManaged/
+.vs/
+.idea/
+*.user
+*.suo
+*.pdb
+*.dll
+*.zip
+Thumbs.db
+.DS_Store
