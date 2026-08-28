@@ -19,10 +19,13 @@ namespace HallownestWayfinder
         public RoutePlan CurrentRoute => RouteCatalog.Routes[GlobalSettings.ActiveRoute];
         public int CurrentStepIndex
         {
-            get => CurrentRoute.Id == "speedrun_5h" ? Progress.SpeedrunCurrentStep : Progress.CurrentStep;
+            get => CurrentRoute.Id == "speedrun_5h"
+                ? Progress.SpeedrunCurrentStep
+                : CurrentRoute.Id == "grubs_46" ? Progress.GrubCurrentStep : Progress.CurrentStep;
             private set
             {
                 if (CurrentRoute.Id == "speedrun_5h") Progress.SpeedrunCurrentStep = value;
+                else if (CurrentRoute.Id == "grubs_46") Progress.GrubCurrentStep = value;
                 else Progress.CurrentStep = value;
             }
         }
@@ -87,7 +90,7 @@ namespace HallownestWayfinder
                 {
                     Name = "Rota ativa",
                     Description = "Escolha a rota exibida pelo Hallownest Wayfinder.",
-                    Values = new[] { "112%", "Speedrun 5h" },
+                    Values = new[] { "112%", "Speedrun 5h", "Larvas 46/46" },
                     Saver = value =>
                     {
                         GlobalSettings.ActiveRoute = value;
@@ -150,6 +153,8 @@ namespace HallownestWayfinder
             Progress.CurrentStep = Math.Max(0, Math.Min(Progress.CurrentStep, RouteDefinition.Steps.Count));
             Progress.SpeedrunCurrentStep = Math.Max(0,
                 Math.Min(Progress.SpeedrunCurrentStep, SpeedrunRouteDefinition.Steps.Count));
+            Progress.GrubCurrentStep = Math.Max(0,
+                Math.Min(Progress.GrubCurrentStep, GrubRouteDefinition.Steps.Count));
         }
     }
 }

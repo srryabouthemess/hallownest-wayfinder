@@ -67,7 +67,7 @@ namespace HallownestWayfinder
                 };
             }
 
-            string destinationScene = string.IsNullOrEmpty(step.TargetScene) ? step.RequiredScene : step.TargetScene;
+            string destinationScene = step.GetTargetScene();
             if (!string.IsNullOrEmpty(destinationScene))
             {
                 if (scene == destinationScene)

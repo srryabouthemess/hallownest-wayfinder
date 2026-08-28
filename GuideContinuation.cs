@@ -13,34 +13,34 @@ namespace HallownestWayfinder
             // Capítulo 3 — Ermos Fúngicos
             S("c03_dirtmouth", "Cap. 03 • Voltar a Dirtmouth", "Retorne à Estação do Caminho Verde usando o dash e viaje de Último Besouro até Dirtmouth.", "LastStag.png", optional: true, scene: "Town", targetScene: "Fungus1_16_alt", transport: "Use o Último Besouro para viajar até Dirtmouth", arrow: 90f),
             S("c03_compass", "Cap. 03 • Comprar pena e bússola", "Na loja de Iselda, compre a Pena e o amuleto Bússola Caprichosa. Se estiver sem mapas, priorize o Enxame de Colecionadores em Sly.", "Cornifer.png", optional: true, pb: "gotCharm_2", targetScene: "Room_mapper", arrow: 90f),
-            S("c03_grub6", "Cap. 03 • Salvar a próxima larva", "Ao descer pelo poço, siga pela esquerda até chegar à sala vertical e entre na sala abaixo à direita. Use o dash para alcançar a larva.", "grub.png", pi: "grubsCollected", min: 8, targetScene: "Crossroads_05", arrow: 90f),
+            S("c03_grub6", "Cap. 03 • Salvar a próxima larva", "Ao descer pelo poço, siga pela esquerda até chegar à sala vertical e entre na sala abaixo à direita. Use o dash para alcançar a larva.", "grub.png", grubScene: "Crossroads_05", arrow: 90f),
             S("c03_wastes", "Cap. 03 • Ir para os Ermos Fúngicos", "Na parte inferior da Encruzilhada, atravesse o vão com dash e desça pelos corredores de cogumelos.", "crawlid.png", pb: "visitedFungus", targetScene: "Fungus2_06", arrow: 180f),
             S("c03_ogres", "Cap. 03 • Derrotar os Cogumelos", "Desça até o fundo do primeiro poço e siga à esquerda. Derrote os dois cogumelos guerreiros para receber um encaixe de amuleto.", "Shrumal_Warrior.png", targetScene: "Fungus2_05", arrow: 270f),
             S("c03_map", "Cap. 03 • Comprar o mapa dos Ermos", "Passe pela Estação da Rainha e encontre Cornifer na passagem abaixo das piscinas de ácido.", "Cornifer.png", optional: true, pb: "mapFungalWastes", arrow: 225f),
             S("c03_claw", "Cap. 03 • Obter a Garra de Louva-a-Deus", "Atravesse os cogumelos elásticos até a Vila dos Louva-a-Deus, acione a alavanca inferior e pegue a Garra na área superior.", "Mantis_Claw.png", pb: "hasWalljump", arrow: 270f),
 
             // Capítulo 4 — Cidade das Lágrimas
-            S("c04_grub7", "Cap. 04 • Salvar uma larva nos Ermos", "Use a Garra para subir pelos túneis com cogumelos elásticos a caminho da Estação da Rainha.", "grub.png", pi: "grubsCollected", min: 9, arrow: 0f),
+            S("c04_grub7", "Cap. 04 • Salvar uma larva nos Ermos", "Use a Garra para subir pelos túneis com cogumelos elásticos a caminho da Estação da Rainha.", "grub.png", grubScene: "Fungus2_18", arrow: 0f),
             S("c04_queen_station", "Cap. 04 • Liberar a Estação da Rainha", "Entre na plataforma inferior esquerda da Estação da Rainha, pague a passagem e chame o Último Besouro.", "LastStag.png", pb: "openedFungalWastes", arrow: 270f),
             S("c04_lantern", "Cap. 04 • Comprar a Lanterna", "Viaje a Dirtmouth e compre de Sly a Lanterna de Lumélula por 1800 Geo; depois retorne à Estação da Rainha.", "Lumafly_Lantern.png", pb: "hasLantern", arrow: 90f),
-            S("c04_grub8", "Cap. 04 • Salvar larva sobre o ácido", "Perto do atalho para a Vila dos Louva-a-Deus, atravesse o salão de ácido e cogumelos elásticos até a larva.", "grub.png", pi: "grubsCollected", min: 10, arrow: 270f),
+            S("c04_grub8", "Cap. 04 • Salvar larva sobre o ácido", "Perto do atalho para a Vila dos Louva-a-Deus, atravesse o salão de ácido e cogumelos elásticos até a larva.", "grub.png", grubScene: "Fungus2_20", arrow: 270f),
             S("c04_spore", "Cap. 04 • Pegar Cogumelo com Esporos", "Abaixo da larva, cruze as piscinas de ácido e pegue o amuleto; abra a parede à esquerda para sair.", "Spore_Shroom.png", pb: "gotCharm_17", arrow: 180f),
-            S("c04_deepnest_grub", "Cap. 04 • Fazer uma visita curta ao Ninho Profundo", "Caia pelo piso frágil, abrace a parede direita e liberte a larva verdadeira na sala dos imitadores.", "grub.png", pi: "grubsCollected", min: 11, arrow: 180f),
+            S("c04_deepnest_grub", "Cap. 04 • Fazer uma visita curta ao Ninho Profundo", "Caia pelo piso frágil, abrace a parede direita e liberte a larva verdadeira na sala dos imitadores.", "grub.png", grubScene: "Deepnest_03", arrow: 180f),
             S("c04_deepnest_map", "Cap. 04 • Comprar o mapa do Ninho Profundo", "Desça e siga à esquerda até ouvir Cornifer. Não se afaste da rota nesta visita inicial.", "Cornifer.png", optional: true, pb: "mapDeepnest", arrow: 225f),
             S("c04_city", "Cap. 04 • Entrar na Cidade das Lágrimas", "Retorne aos Ermos, siga o caminho de Hornet, atravesse os espinhos e use o Brasão da Cidade na grande estátua.", "crawlid.png", pb: "visitedRuins", arrow: 90f),
             S("c04_nail1", "Cap. 04 • Afiar o ferrão", "Na parte baixa da cidade, encontre o Ferreiro à esquerda e compre a primeira melhoria por 250 Geo.", "Nailsmith.png", optional: true, pi: "nailSmithUpgrades", min: 1, arrow: 270f),
             S("c04_lemm", "Cap. 04 • Conhecer Lemm", "Suba pelas plataformas centrais, abra o edifício à direita e venda os seus primeiros artefatos para Lemm.", "Wanderers_Journal.png", arrow: 90f),
-            S("c04_grub10", "Cap. 04 • Salvar a larva da cidade", "Suba pelos elevadores acima de Lemm e procure a sala lateral à direita.", "grub.png", pi: "grubsCollected", min: 12, arrow: 45f),
+            S("c04_grub10", "Cap. 04 • Salvar a larva da cidade", "Suba pelos elevadores acima de Lemm e procure a sala lateral à direita.", "grub.png", grubScene: "Ruins1_05", arrow: 45f),
             S("c04_city_map", "Cap. 04 • Comprar o mapa da Cidade", "Abra o atalho até o banco da passarela elevada e compre o mapa com Cornifer.", "Cornifer.png", optional: true, pb: "mapCity", arrow: 270f),
             S("c04_spell_twister", "Cap. 04 • Pegar Distorcedor de Magias", "No Santuário das Almas, procure a abertura escura no teto antes da arena principal.", "Spell_Twister.png", pb: "gotCharm_33", arrow: 45f),
             S("c04_soul_master", "Cap. 04 • Derrotar Mestre das Almas", "Abra os atalhos do Santuário e avance pela porta esquerda do salão superior. Vencendo, receba Mergulho Desolador.", "Soul_Master.png", pi: "quakeLevel", min: 1, arrow: 270f),
-            S("c04_grub11", "Cap. 04 • Salvar larva no Santuário", "Ao quebrar os pisos após o Mestre das Almas, pare na borda e procure a larva antes de cair ao fundo.", "grub.png", pi: "grubsCollected", min: 13, arrow: 180f),
+            S("c04_grub11", "Cap. 04 • Salvar larva no Santuário", "Ao quebrar os pisos após o Mestre das Almas, pare na borda e procure a larva antes de cair ao fundo.", "grub.png", grubScene: "Ruins1_32", arrow: 180f),
             S("c04_storerooms", "Cap. 04 • Liberar Armazéns da Cidade", "Atravesse a passarela, pegue a Chave Simples e derrube o grande bloco para abrir a estação.", "LastStag.png", pb: "openedRuins1", arrow: 90f),
 
             // Capítulos 5–7 — Pico de Cristal, sonhos e Alma Sombria
             S("c05_salubra", "Cap. 05 • Comprar encaixe com Salubra", "Viaje à Encruzilhada, siga além da antiga arena da Mãe Mosca e compre o primeiro encaixe disponível.", "Salubra.png", arrow: 90f),
             S("c05_peak", "Cap. 05 • Entrar no Pico de Cristal", "Pegue o elevador acima de Myla e use Mergulho Desolador no chão instável para entrar nas minas.", "Elder_Baldur.png", pb: "visitedMines", arrow: 0f),
-            S("c05_grub12", "Cap. 05 • Salvar larva entre esteiras", "Suba pelas esteiras verticais, atravesse os espinhos com dash e acione a alavanca após a larva.", "grub.png", pi: "grubsCollected", min: 14, arrow: 0f),
+            S("c05_grub12", "Cap. 05 • Salvar larva entre esteiras", "Suba pelas esteiras verticais, atravesse os espinhos com dash e acione a alavanca após a larva.", "grub.png", grubScene: "Mines_03", arrow: 0f),
             S("c05_peak_map", "Cap. 05 • Comprar o mapa do Pico", "Suba pelos corredores de lasers até encontrar Cornifer.", "Cornifer.png", optional: true, pb: "mapMines", arrow: 0f),
             S("c05_shop_key", "Cap. 05 • Pegar a Chave do Lojista", "Continue subindo pelo lado direito das minas e pegue a chave no topo do poço.", "Shopkeepers_Key.png", pb: "hasSlykey", arrow: 45f),
             S("c05_heart", "Cap. 05 • Obter Coração de Cristal", "Atravesse o grande desafio de lasers no lado direito do Pico e examine o autômato quebrado.", "Crystal_Heart.png", pb: "hasSuperDash", arrow: 90f),
@@ -54,13 +54,13 @@ namespace HallownestWayfinder
             S("c07_waterways", "Cap. 07 • Abrir os Esgotos Reais", "Desça à avenida inferior da cidade e use uma Chave Simples na tampa próxima ao elevador.", "crawlid.png", pb: "openedWaterwaysManhole", arrow: 180f),
 
             // Capítulos 8–9 — Esgotos e Bacia Antiga
-            S("c08_grub17", "Cap. 08 • Salvar larva nos Esgotos", "A partir do banco inferior, suba e atravesse a parede quebrável à esquerda.", "grub.png", pi: "grubsCollected", min: 19, arrow: 270f),
+            S("c08_grub17", "Cap. 08 • Salvar larva nos Esgotos", "A partir do banco inferior, suba e atravesse a parede quebrável à esquerda.", "grub.png", grubScene: "Waterways_04", arrow: 270f),
             S("c08_map", "Cap. 08 • Comprar o mapa dos Esgotos", "Vença a sala de Hwurmps e encontre Cornifer no canto superior esquerdo.", "Cornifer.png", optional: true, pb: "mapWaterways", arrow: 315f),
             S("c08_dung", "Cap. 08 • Derrotar Defensor do Esterco", "Siga os túneis marrons após o banco e derrote Ogrim para receber o Brasão do Defensor.", "Dung_Defender.png", pb: "killedDungDefender", arrow: 90f),
             S("c08_isma", "Cap. 08 • Obter Lágrima de Isma", "Use o Coração de Cristal pelo túnel de espinhos, vença a emboscada de guardas e alcance o bosque de Isma.", "Ismas_Tear.png", pb: "hasAcidArmour", arrow: 90f),
-            S("c09_grub18", "Cap. 09 • Salvar larva após Isma", "Nade pelo ácido à direita e suba pela parede até a larva.", "grub.png", pi: "grubsCollected", min: 20, arrow: 0f),
+            S("c09_grub18", "Cap. 09 • Salvar larva após Isma", "Nade pelo ácido à direita e suba pela parede até a larva.", "grub.png", grubScene: "Waterways_13", arrow: 0f),
             S("c09_ore1", "Cap. 09 • Pegar Minério Pálido da Bacia", "Desça à Bacia Antiga e explore a área dos Mawleks no canto inferior esquerdo.", "Pale_Ore.png", pi: "ore", min: 1, arrow: 225f),
-            S("c09_grub19", "Cap. 09 • Salvar larva na Bacia", "Use Escuridão Descente no piso solto próximo aos Mawleks menores.", "grub.png", pi: "grubsCollected", min: 21, arrow: 180f),
+            S("c09_grub19", "Cap. 09 • Salvar larva na Bacia", "Use Escuridão Descente no piso solto próximo aos Mawleks menores.", "grub.png", grubScene: "Abyss_17", arrow: 180f),
             S("c09_map", "Cap. 09 • Comprar o mapa da Bacia", "Desça pelas alcovas à direita da fonte e encontre Cornifer.", "Cornifer.png", optional: true, pb: "mapAbyss", arrow: 180f),
             S("c09_broken", "Cap. 09 • Derrotar Receptáculo Quebrado", "Atravesse o abismo de espinhos no lado esquerdo e siga até a arena.", "Broken_Vessel.png", pb: "killedInfectedKnight", arrow: 270f),
             S("c09_wings", "Cap. 09 • Obter Asas do Monarca", "Após a luta, siga à esquerda e para baixo até a antiga carcaça para receber o pulo duplo.", "Monarch_Wings.png", pb: "hasDoubleJump", arrow: 225f),
@@ -133,7 +133,7 @@ namespace HallownestWayfinder
             S("c22_quickslash", "Cap. 22 • Pegar Corte Rápido", "Passe os Grandes Saltadores, suba na estrutura da parede direita e pegue o amuleto.", null, pb: "gotCharm_32", arrow: 270f),
             S("c23_collector", "Cap. 23 • Derrotar o Colecionador", "Entre na Torre do Amor com a chave e suba até a arena.", null, pb: "collectorDefeated", arrow: 0f),
             S("c23_grubs", "Cap. 23 • Libertar as larvas da torre", "Após o Colecionador, explore o salão superior, pegue o mapa e liberte as três larvas.", "grub.png", pi: "grubsCollected", min: 44, arrow: 0f),
-            S("c23_final_grub", "Cap. 23 • Salvar a última larva", "Na Torre do Vigia, abra as alavancas e procure a sala acima da saída direita.", "grub.png", pi: "grubsCollected", min: 46, arrow: 0f),
+            S("c23_final_grub", "Cap. 23 • Salvar a última larva", "Na Torre do Vigia, abra as alavancas e procure a sala acima da saída direita.", "grub.png", grubScene: "Ruins2_03", arrow: 0f),
             S("c23_watchers", "Cap. 23 • Derrotar Cavaleiros Sentinelas", "Quebre a corrente no teto para reduzir a luta e entre na arena superior da torre.", null, pb: "killedBlackKnight", arrow: 90f),
             S("c23_lurien", "Cap. 23 • Libertar Lurien", "Suba ao topo da torre após os Cavaleiros e encerre o sonho do Vigia.", null, pb: "lurienDefeated", arrow: 0f),
 
@@ -158,7 +158,8 @@ namespace HallownestWayfinder
 
         private static RouteStep S(string id, string title, string hint, string icon = null,
             bool optional = false, string pb = null, string pi = null, int min = 0,
-            float arrow = 90f, string scene = null, string targetScene = null, string transport = null)
+            float arrow = 90f, string scene = null, string targetScene = null,
+            string transport = null, string grubScene = null)
         {
             return new RouteStep
             {
@@ -174,6 +175,7 @@ namespace HallownestWayfinder
                 ArrowDegrees = arrow,
                 TargetScene = targetScene,
                 TransportInstruction = transport
+                ,RequiredGrubScene = grubScene
             };
         }
     }

@@ -5,6 +5,7 @@ namespace HallownestWayfinder
         public int DataVersion { get; set; } = 3;
         public int CurrentStep { get; set; }
         public int SpeedrunCurrentStep { get; set; }
+        public int GrubCurrentStep { get; set; }
         public bool Visible { get; set; } = true;
     }
 }
