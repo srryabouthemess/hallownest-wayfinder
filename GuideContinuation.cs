@@ -15,7 +15,7 @@ namespace HallownestWayfinder
             S("c03_compass", "Cap. 03 • Comprar pena e bússola", "Na loja de Iselda, compre a Pena e o amuleto Bússola Caprichosa. Se estiver sem mapas, priorize o Enxame de Colecionadores em Sly.", "Cornifer.png", optional: true, pb: "gotCharm_2", targetScene: "Room_mapper", arrow: 90f),
             S("c03_grub6", "Cap. 03 • Salvar a próxima larva", "Ao descer pelo poço, siga pela esquerda até chegar à sala vertical e entre na sala abaixo à direita. Use o dash para alcançar a larva.", "grub.png", grubScene: "Crossroads_05", arrow: 90f),
             S("c03_wastes", "Cap. 03 • Ir para os Ermos Fúngicos", "Na parte inferior da Encruzilhada, atravesse o vão com dash e desça pelos corredores de cogumelos.", "crawlid.png", pb: "visitedFungus", targetScene: "Fungus2_06", arrow: 180f),
-            S("c03_ogres", "Cap. 03 • Derrotar os Cogumelos", "Desça até o fundo do primeiro poço e siga à esquerda. Derrote os dois cogumelos guerreiros para receber um encaixe de amuleto.", "Shrumal_Warrior.png", targetScene: "Fungus2_05", arrow: 270f),
+            S("c03_ogres", "Cap. 03 • Derrotar os Cogumelos", "Desça até o fundo do primeiro poço e siga à esquerda. Derrote os dois cogumelos guerreiros para receber um encaixe de amuleto.", "Shrumal_Warrior.png", pb: "notchShroomOgres", targetScene: "Fungus2_05", arrow: 270f),
             S("c03_map", "Cap. 03 • Comprar o mapa dos Ermos", "Passe pela Estação da Rainha e encontre Cornifer na passagem abaixo das piscinas de ácido.", "Cornifer.png", optional: true, pb: "mapFungalWastes", arrow: 225f),
             S("c03_claw", "Cap. 03 • Obter a Garra de Louva-a-Deus", "Atravesse os cogumelos elásticos até a Vila dos Louva-a-Deus, acione a alavanca inferior e pegue a Garra na área superior.", "Mantis_Claw.png", pb: "hasWalljump", arrow: 270f),
 
@@ -29,7 +29,7 @@ namespace HallownestWayfinder
             S("c04_deepnest_map", "Cap. 04 • Comprar o mapa do Ninho Profundo", "Desça e siga à esquerda até ouvir Cornifer. Não se afaste da rota nesta visita inicial.", "Cornifer.png", optional: true, pb: "mapDeepnest", arrow: 225f),
             S("c04_city", "Cap. 04 • Entrar na Cidade das Lágrimas", "Retorne aos Ermos, siga o caminho de Hornet, atravesse os espinhos e use o Brasão da Cidade na grande estátua.", "crawlid.png", pb: "visitedRuins", arrow: 90f),
             S("c04_nail1", "Cap. 04 • Afiar o ferrão", "Na parte baixa da cidade, encontre o Ferreiro à esquerda e compre a primeira melhoria por 250 Geo.", "Nailsmith.png", optional: true, pi: "nailSmithUpgrades", min: 1, arrow: 270f),
-            S("c04_lemm", "Cap. 04 • Conhecer Lemm", "Suba pelas plataformas centrais, abra o edifício à direita e venda os seus primeiros artefatos para Lemm.", "Wanderers_Journal.png", arrow: 90f),
+            S("c04_lemm", "Cap. 04 • Conhecer Lemm", "Suba pelas plataformas centrais, abra o edifício à direita e venda os seus primeiros artefatos para Lemm.", "Wanderers_Journal.png", pb: "metRelicDealer", arrow: 90f),
             S("c04_grub10", "Cap. 04 • Salvar a larva da cidade", "Suba pelos elevadores acima de Lemm e procure a sala lateral à direita.", "grub.png", grubScene: "Ruins1_05", arrow: 45f),
             S("c04_city_map", "Cap. 04 • Comprar o mapa da Cidade", "Abra o atalho até o banco da passarela elevada e compre o mapa com Cornifer.", "Cornifer.png", optional: true, pb: "mapCity", arrow: 270f),
             S("c04_spell_twister", "Cap. 04 • Pegar Distorcedor de Magias", "No Santuário das Almas, procure a abertura escura no teto antes da arena principal.", "Spell_Twister.png", pb: "gotCharm_33", arrow: 45f),
@@ -38,7 +38,7 @@ namespace HallownestWayfinder
             S("c04_storerooms", "Cap. 04 • Liberar Armazéns da Cidade", "Atravesse a passarela, pegue a Chave Simples e derrube o grande bloco para abrir a estação.", "LastStag.png", pb: "openedRuins1", arrow: 90f),
 
             // Capítulos 5–7 — Pico de Cristal, sonhos e Alma Sombria
-            S("c05_salubra", "Cap. 05 • Comprar encaixe com Salubra", "Viaje à Encruzilhada, siga além da antiga arena da Mãe Mosca e compre o primeiro encaixe disponível.", "Salubra.png", arrow: 90f),
+            S("c05_salubra", "Cap. 05 • Comprar encaixe com Salubra", "Viaje à Encruzilhada, siga além da antiga arena da Mãe Mosca e compre o primeiro encaixe disponível.", "Salubra.png", pb: "salubraNotch1", arrow: 90f),
             S("c05_peak", "Cap. 05 • Entrar no Pico de Cristal", "Pegue o elevador acima de Myla e use Mergulho Desolador no chão instável para entrar nas minas.", "Elder_Baldur.png", pb: "visitedMines", arrow: 0f),
             S("c05_grub12", "Cap. 05 • Salvar larva entre esteiras", "Suba pelas esteiras verticais, atravesse os espinhos com dash e acione a alavanca após a larva.", "grub.png", grubScene: "Mines_03", arrow: 0f),
             S("c05_peak_map", "Cap. 05 • Comprar o mapa do Pico", "Suba pelos corredores de lasers até encontrar Cornifer.", "Cornifer.png", optional: true, pb: "mapMines", arrow: 0f),
@@ -49,7 +49,7 @@ namespace HallownestWayfinder
             S("c06_dream_nail", "Cap. 06 • Obter o Ferrão dos Sonhos", "Caia do Monte Cristalizado aos Campos de Descanso e complete a sequência do memorial.", "Dream_Nail.png", pb: "hasDreamNail", arrow: 180f),
             S("c06_dreamshield", "Cap. 06 • Pegar Escudo dos Sonhos", "Explore a passagem abaixo da casa da Vidente antes de liberar a estação.", "Dreamshield.png", pb: "gotCharm_38", arrow: 180f),
             S("c06_station", "Cap. 06 • Liberar Campos de Descanso", "Atravesse o poço principal e acione a alavanca da estação.", "LastStag.png", pb: "openedRestingGrounds", arrow: 90f),
-            S("c07_elegant", "Cap. 07 • Comprar a Chave Elegante", "Entregue a Chave do Lojista a Sly, compre a Chave Elegante e adquira o mapa dos Campos com Iselda.", "Elegant_Key.png", arrow: 90f),
+            S("c07_elegant", "Cap. 07 • Comprar a Chave Elegante", "Entregue a Chave do Lojista a Sly, compre a Chave Elegante e adquira o mapa dos Campos com Iselda.", "Elegant_Key.png", anyBools: new[] { "hasWhiteKey", "usedWhiteKey" }, arrow: 90f),
             S("c07_shade_soul", "Cap. 07 • Obter Alma Sombria", "Retorne ao Santuário das Almas, abra a porta elegante, derrote o Guerreiro das Almas e liberte o Xamã.", "Vengeful_Spirit_Icon.png", pi: "fireballLevel", min: 2, arrow: 0f),
             S("c07_waterways", "Cap. 07 • Abrir os Esgotos Reais", "Desça à avenida inferior da cidade e use uma Chave Simples na tampa próxima ao elevador.", "crawlid.png", pb: "openedWaterwaysManhole", arrow: 180f),
 
@@ -104,7 +104,7 @@ namespace HallownestWayfinder
             S("c17_lords", "Cap. 17 • Derrotar Lordes Louva-a-Deus", "Abra as alavancas da arena sob a Vila e desafie os três Lordes.", null, pb: "defeatedMantisLords", arrow: 180f),
             S("c17_pride", "Cap. 17 • Pegar Marca de Orgulho", "Após a vitória, entre na sala de tesouros recém-aberta à direita.", null, pb: "gotCharm_13", arrow: 90f),
             S("c18_mawlek", "Cap. 18 • Derrotar Mawlek Incubador", "Na Encruzilhada Infectada, quebre a porta sob a saída do Caminho Verde e atravesse os espinhos.", null, pb: "killedMawlek", arrow: 270f),
-            S("c18_notch", "Cap. 18 • Pegar encaixe no Cânion", "Desça ao Cânion da Névoa e atravesse a sala de bolhas explosivas.", null, arrow: 270f),
+            S("c18_notch", "Cap. 18 • Pegar encaixe no Cânion", "Desça ao Cânion da Névoa e atravesse a sala de bolhas explosivas.", null, pb: "notchFogCanyon", arrow: 270f),
             S("c18_fragile", "Cap. 18 • Comprar amuletos frágeis", "Equipe Brasão do Defensor para desconto e compre Coração, Ganância e Força com Come-Pernas.", null, pb: "gotCharm_25", arrow: 90f),
             S("c18_hu", "Cap. 18 • Derrotar Ancião Hu", "Siga ao leste dos Ermos Fúngicos e desafie o espírito no memorial.", null, pb: "elderHuDefeated", arrow: 90f),
             S("c18_fog_map", "Cap. 18 • Comprar mapa do Cânion", "Passe acima do portão sombrio no corredor oeste para alcançar Cornifer.", "Cornifer.png", optional: true, pb: "mapFogCanyon", arrow: 270f),
@@ -150,16 +150,17 @@ namespace HallownestWayfinder
             S("c28_lifeblood", "Cap. 28 • Pegar Núcleo de Sangue Vital", "Equipe vida azul e Alma do Rei, abra a porta selada no Abismo e pegue o amuleto antes de sair.", null, pb: "gotCharm_9", arrow: 180f),
             S("c28_void", "Cap. 28 • Transformar Alma do Rei em Coração Vazio", "No fundo do Abismo, quebre o piso, encontre o ovo negro e use o Ferrão dos Sonhos; depois suba pelo nascimento.", null, pb: "gotShadeCharm", arrow: 180f),
             S("c29_pure_nail", "Cap. 29 • Forjar Ferrão Puro", "Venda as últimas relíquias e entregue 4000 Geo e três Minérios Pálidos ao Ferreiro.", null, pi: "nailSmithUpgrades", min: 4, arrow: 270f),
-            S("c29_unbreakable", "Cap. 29 • Melhorar amuletos frágeis", "Antes do fim da Trupe, entregue os amuletos a Divine e pague pelas versões inquebráveis.", null, optional: true, arrow: 270f),
-            S("c29_grimm_end", "Cap. 29 • Encerrar a Trupe Grimm", "Escolha entre completar o Ritual contra Rei do Pesadelo Grimm ou destruir a lanterna com Brumm.", null, arrow: 90f),
+            S("c29_unbreakable", "Cap. 29 • Melhorar amuletos frágeis", "Antes do fim da Trupe, entregue os amuletos a Divine e pague pelas versões inquebráveis.", null, optional: true, allBools: new[] { "unbreakableHeart", "unbreakableGreed", "unbreakableStrength" }, arrow: 270f),
+            S("c29_grimm_end", "Cap. 29 • Encerrar a Trupe Grimm", "Escolha entre completar o Ritual contra Rei do Pesadelo Grimm ou destruir a lanterna com Brumm.", null, anyBools: new[] { "defeatedNightmareGrimm", "destroyedNightmareLantern" }, arrow: 90f),
             S("c30_godhome", "Cap. 30 • Abrir Lar dos Deuses", "Nos Esgotos, atravesse o caminho acima de Flukemarm até o Depósito de Lixo e abra o sarcófago com Chave Simples.", null, pb: "hasGodfinder", arrow: 270f),
-            S("c30_pantheons", "Cap. 30 • Completar os Panteões", "No Lar dos Deuses, conclua os quatro primeiros Panteões para 112%. O Panteão de Hallownest permanece como desafio final opcional.", null, arrow: 90f)
+            S("c30_pantheons", "Cap. 30 • Completar os Panteões", "No Lar dos Deuses, conclua os quatro primeiros Panteões para 112%. O Panteão de Hallownest permanece como desafio final opcional.", null, pantheons: 4, arrow: 90f)
         };
 
         private static RouteStep S(string id, string title, string hint, string icon = null,
             bool optional = false, string pb = null, string pi = null, int min = 0,
             float arrow = 90f, string scene = null, string targetScene = null,
-            string transport = null, string grubScene = null)
+            string transport = null, string grubScene = null,
+            string[] allBools = null, string[] anyBools = null, int pantheons = 0)
         {
             return new RouteStep
             {
@@ -176,6 +177,9 @@ namespace HallownestWayfinder
                 TargetScene = targetScene,
                 TransportInstruction = transport
                 ,RequiredGrubScene = grubScene
+                ,RequiredAllPlayerBools = allBools
+                ,RequiredAnyPlayerBools = anyBools
+                ,RequiredPantheonCount = pantheons
             };
         }
     }

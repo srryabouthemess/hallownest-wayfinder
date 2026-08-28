@@ -4,6 +4,10 @@ All notable changes to Hallownest Wayfinder will be documented here.
 
 ## Unreleased
 
+- Added combined completion rules supporting all/any conditions, visited scenes,
+  specific benches, cumulative item totals and Pantheon completion.
+- Automated all 19 route steps that previously required manual advancement,
+  while preserving F8 as a fallback.
 - Track individual grubs by their rescued scene instead of relying only on the total count.
 - Correctly handle grubs collected out of the suggested route order.
 - Added a complete 46-grub diagnostic route for existing save files.
