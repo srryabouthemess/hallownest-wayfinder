@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "v*"
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj
+
+      - name: Build mod
+        run: dotnet build HallownestWayfinder.csproj -c Release --no-restore
+
+      - name: Run tests
+        run: dotnet test tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj -c Release --no-restore

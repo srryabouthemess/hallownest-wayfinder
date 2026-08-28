@@ -23,38 +23,39 @@ namespace HallownestWayfinder
 
         private static bool ShouldInclude(RouteStep step)
         {
-            if (step == null || step.Optional) return false;
+            if (step == null || step.NotRequiredFor112) return false;
 
             // These values can become false again after using an item and are
             // therefore not reliable evidence when inspecting an existing save.
-            if (step.RequiredPlayerBool == "atBench" ||
-                step.RequiredPlayerInt == "trinket1" ||
-                step.RequiredPlayerInt == "ore" ||
-                step.RequiredPlayerInt == "grubsCollected")
+            RouteCompletion completion = step.Completion;
+            if (completion.PlayerBool == "atBench" ||
+                completion.PlayerInt == "trinket1" ||
+                completion.PlayerInt == "ore" ||
+                completion.PlayerInt == "grubsCollected")
             {
                 return false;
             }
 
             // Individual grub records provide a precise answer and replace the
             // aggregate grub milestones from the original walkthrough.
-            if (!string.IsNullOrEmpty(step.RequiredGrubScene)) return false;
+            if (!string.IsNullOrEmpty(completion.GrubScene)) return false;
 
             // Entering a room is useful during a guided run but is not permanent
             // save progress. Visited-scene checks remain eligible.
             bool hasPersistentCondition =
-                !string.IsNullOrEmpty(step.RequiredPlayerBool) ||
-                HasValues(step.RequiredAllPlayerBools) ||
-                HasValues(step.RequiredAnyPlayerBools) ||
-                !string.IsNullOrEmpty(step.RequiredPlayerInt) ||
-                HasValues(step.RequiredPlayerIntSum) ||
-                !string.IsNullOrEmpty(step.RequiredVisitedScene) ||
-                !string.IsNullOrEmpty(step.RequiredBenchScene) ||
-                step.RequireNoRelics ||
-                step.RequiredPantheonCount > 0;
+                !string.IsNullOrEmpty(completion.PlayerBool) ||
+                HasValues(completion.AllPlayerBools) ||
+                HasValues(completion.AnyPlayerBools) ||
+                !string.IsNullOrEmpty(completion.PlayerInt) ||
+                HasValues(completion.PlayerIntSum) ||
+                !string.IsNullOrEmpty(completion.VisitedScene) ||
+                !string.IsNullOrEmpty(completion.BenchScene) ||
+                completion.NoRelics ||
+                completion.PantheonCount > 0;
 
             return hasPersistentCondition;
         }
 
-        private static bool HasValues(string[] values) => values != null && values.Length > 0;
+        private static bool HasValues(string[]? values) => values != null && values.Length > 0;
     }
 }

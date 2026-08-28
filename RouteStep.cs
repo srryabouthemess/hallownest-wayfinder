@@ -2,158 +2,59 @@ namespace HallownestWayfinder
 {
     public sealed class RouteStep
     {
-        public string Id { get; set; }
-        public string Title { get; set; }
-        public string Hint { get; set; }
-        public string Icon { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string? Icon { get; set; }
         public float ArrowDegrees { get; set; }
-        public bool Optional { get; set; }
-        public string RequiredPlayerBool { get; set; }
-        public string[] RequiredAllPlayerBools { get; set; }
-        public string[] RequiredAnyPlayerBools { get; set; }
-        public string RequiredPlayerInt { get; set; }
-        public int RequiredMinimum { get; set; }
-        public string[] RequiredPlayerIntSum { get; set; }
-        public int RequiredPlayerIntSumMinimum { get; set; }
-        public string RequiredScene { get; set; }
-        public string RequiredVisitedScene { get; set; }
-        public string RequiredBenchScene { get; set; }
-        public bool RequireNoRelics { get; set; }
-        public int RequiredPantheonCount { get; set; }
-        public string RequiredGrubScene { get; set; }
-        public int RequiredGrubCountInScene { get; set; } = 1;
-        public NavigationWaypoint[] Navigation { get; set; }
-        public string TransportInstruction { get; set; }
-        public string TargetScene { get; set; }
+        public bool SkippableInRoute { get; set; }
+        public bool NotRequiredFor112 { get; set; }
+        public RouteCompletion Completion { get; set; } = new RouteCompletion();
+        // Any complete alternative unlocks the step; every condition inside
+        // an alternative must be satisfied.
+        public PlayerDataPrerequisite[][]? Prerequisites { get; set; }
+        public NavigationWaypoint[]? Navigation { get; set; }
+        public string? TransportScene { get; set; }
+        public string? TransportInstruction { get; set; }
+        public string? TargetScene { get; set; }
 
-        public bool IsAutomaticallyTracked =>
-            !string.IsNullOrEmpty(RequiredPlayerBool) ||
-            HasValues(RequiredAllPlayerBools) ||
-            HasValues(RequiredAnyPlayerBools) ||
-            !string.IsNullOrEmpty(RequiredPlayerInt) ||
-            HasValues(RequiredPlayerIntSum) ||
-            !string.IsNullOrEmpty(RequiredScene) ||
-            !string.IsNullOrEmpty(RequiredVisitedScene) ||
-            !string.IsNullOrEmpty(RequiredBenchScene) ||
-            RequireNoRelics ||
-            RequiredPantheonCount > 0 ||
-            !string.IsNullOrEmpty(RequiredGrubScene);
+        public bool IsAutomaticallyTracked => Completion.IsTracked;
 
-        public string GetTargetScene()
+        public string? GetTargetScene()
         {
-            if (!string.IsNullOrEmpty(RequiredGrubScene) && !IsGrubRescued())
-                return RequiredGrubScene;
+            if (!string.IsNullOrEmpty(Completion.GrubScene) && !Completion.IsGrubRescued())
+                return Completion.GrubScene;
 
+            if (!string.IsNullOrEmpty(TransportScene)) return TransportScene;
             if (!string.IsNullOrEmpty(TargetScene)) return TargetScene;
-            if (!string.IsNullOrEmpty(RequiredScene)) return RequiredScene;
-            if (!string.IsNullOrEmpty(RequiredBenchScene)) return RequiredBenchScene;
-            return RequiredVisitedScene;
+            if (!string.IsNullOrEmpty(Completion.Scene)) return Completion.Scene;
+            if (!string.IsNullOrEmpty(Completion.BenchScene)) return Completion.BenchScene;
+            return Completion.VisitedScene;
         }
 
-        public bool IsComplete()
+        public bool IsComplete() => Completion.IsComplete();
+
+        public bool ArePrerequisitesSatisfied()
         {
-            if (!string.IsNullOrEmpty(RequiredPlayerBool) &&
-                !PlayerData.instance.GetBool(RequiredPlayerBool))
+            PlayerDataPrerequisite[][]? prerequisites = Prerequisites;
+            if (prerequisites == null || prerequisites.Length == 0) return true;
+
+            foreach (PlayerDataPrerequisite[] alternative in prerequisites)
             {
-                return false;
+                if (!HasValues(alternative)) continue;
+                bool satisfied = true;
+                foreach (PlayerDataPrerequisite condition in alternative)
+                {
+                    if (condition == null || !condition.IsSatisfied())
+                    {
+                        satisfied = false;
+                        break;
+                    }
+                }
+                if (satisfied) return true;
             }
-
-            if (HasValues(RequiredAllPlayerBools))
-            {
-                foreach (string field in RequiredAllPlayerBools)
-                    if (!PlayerData.instance.GetBool(field)) return false;
-            }
-
-            if (HasValues(RequiredAnyPlayerBools))
-            {
-                bool any = false;
-                foreach (string field in RequiredAnyPlayerBools)
-                    if (PlayerData.instance.GetBool(field)) any = true;
-                if (!any) return false;
-            }
-
-            if (!string.IsNullOrEmpty(RequiredScene) &&
-                GameManager.instance.sceneName != RequiredScene)
-            {
-                return false;
-            }
-
-            if (HasValues(RequiredPlayerIntSum))
-            {
-                int sum = 0;
-                foreach (string field in RequiredPlayerIntSum)
-                    sum += PlayerData.instance.GetInt(field);
-                if (sum < RequiredPlayerIntSumMinimum) return false;
-            }
-
-            if (!string.IsNullOrEmpty(RequiredVisitedScene) &&
-                GameManager.instance.sceneName != RequiredVisitedScene &&
-                (PlayerData.instance.scenesVisited == null ||
-                 !PlayerData.instance.scenesVisited.Contains(RequiredVisitedScene)))
-            {
-                return false;
-            }
-
-            if (!string.IsNullOrEmpty(RequiredBenchScene))
-            {
-                bool recorded = PlayerData.instance.scenesEncounteredBench != null &&
-                    PlayerData.instance.scenesEncounteredBench.Contains(RequiredBenchScene);
-                bool sittingThere = GameManager.instance.sceneName == RequiredBenchScene &&
-                    PlayerData.instance.atBench;
-                if (!recorded && !sittingThere) return false;
-            }
-
-            if (RequireNoRelics &&
-                PlayerData.instance.trinket1 + PlayerData.instance.trinket2 +
-                PlayerData.instance.trinket3 + PlayerData.instance.trinket4 > 0)
-            {
-                return false;
-            }
-
-            if (RequiredPantheonCount > 0 && CompletedPantheons() < RequiredPantheonCount)
-                return false;
-
-            if (!string.IsNullOrEmpty(RequiredPlayerInt) &&
-                PlayerData.instance.GetInt(RequiredPlayerInt) < RequiredMinimum)
-            {
-                return false;
-            }
-
-            if (!string.IsNullOrEmpty(RequiredGrubScene) && !IsGrubRescued())
-                return false;
-
-            return IsAutomaticallyTracked;
+            return false;
         }
 
-        private static bool HasValues(string[] values) => values != null && values.Length > 0;
-
-        private static int CompletedPantheons()
-        {
-            int completed = 0;
-            if (PlayerData.instance.bossDoorStateTier1.completed) completed++;
-            if (PlayerData.instance.bossDoorStateTier2.completed) completed++;
-            if (PlayerData.instance.bossDoorStateTier3.completed) completed++;
-            if (PlayerData.instance.bossDoorStateTier4.completed) completed++;
-            return completed;
-        }
-
-        private bool IsGrubRescued()
-        {
-            if (PlayerData.instance == null || PlayerData.instance.scenesGrubRescued == null ||
-                !PlayerData.instance.scenesGrubRescued.Contains(RequiredGrubScene))
-            {
-                return false;
-            }
-
-            if (RequiredGrubCountInScene <= 1) return true;
-
-            // The three Collector grubs share one scene entry. The difference
-            // between the total and the unique rescued-scene count reveals how
-            // many additional grubs were rescued in that same room.
-            int rescuedInSharedScenes = PlayerData.instance.grubsCollected -
-                PlayerData.instance.scenesGrubRescued.Count + 1;
-            return rescuedInSharedScenes >= RequiredGrubCountInScene;
-        }
+        private static bool HasValues<T>(T[]? values) => values != null && values.Length > 0;
     }
 }
 

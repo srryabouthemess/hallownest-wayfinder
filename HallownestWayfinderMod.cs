@@ -10,8 +10,26 @@ namespace HallownestWayfinder
     public sealed class HallownestWayfinderMod : Mod, ITogglableMod, IMenuMod,
         IGlobalSettings<RouteGlobalSettings>, ILocalSettings<RouteProgress>
     {
-        private static HallownestWayfinderMod _instance;
-        private GameObject _hudObject;
+        private enum KeyBindingAction
+        {
+            ToggleHud,
+            PreviousStep,
+            NextStep
+        }
+
+        private static readonly KeyCode[] SupportedKeys =
+        {
+            KeyCode.F1, KeyCode.F2, KeyCode.F3, KeyCode.F4,
+            KeyCode.F5, KeyCode.F6, KeyCode.F7, KeyCode.F8,
+            KeyCode.F9, KeyCode.F10, KeyCode.F11, KeyCode.F12,
+            KeyCode.Home, KeyCode.End, KeyCode.Insert, KeyCode.Delete,
+            KeyCode.PageUp, KeyCode.PageDown
+        };
+
+        private static HallownestWayfinderMod? _instance;
+        private GameObject? _hudObject;
+        private readonly HashSet<string> _automaticAdvanceErrors =
+            new HashSet<string>(StringComparer.Ordinal);
 
         public RouteProgress Progress { get; private set; } = new RouteProgress();
         public RouteGlobalSettings GlobalSettings { get; private set; } = new RouteGlobalSettings();
@@ -35,25 +53,42 @@ namespace HallownestWayfinder
             }
         }
         public bool HasActiveStep => CurrentStepIndex >= 0 && CurrentStepIndex < CurrentRoute.Steps.Count;
-        public RouteStep CurrentStep => HasActiveStep ? CurrentRoute.Steps[CurrentStepIndex] : null;
+        public bool IsRouteComplete => CompletedStepCount >= CurrentRoute.Steps.Count;
+        public RouteStep? CurrentStep => HasActiveStep ? CurrentRoute.Steps[CurrentStepIndex] : null;
         public int CompletedStepCount => IsSaveCompletion
             ? SaveCompletionAnalyzer.CountCompleted(CurrentRoute.Steps)
             : CurrentStepIndex;
         public bool CurrentStepIsAvailable => !IsSaveCompletion ||
             (CurrentStep != null && SaveCompletionAnalyzer.IsAvailable(CurrentStep));
 
-        public override string GetVersion() => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        public override string GetVersion()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string? informationalVersion = assembly
+                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
+                .InformationalVersion;
+            if (informationalVersion != null && informationalVersion.Length > 0)
+                return informationalVersion.Split('+')[0];
+
+            return assembly.GetName().Version?.ToString() ?? "0.0.0";
+        }
 
         public override void Initialize()
         {
             if (_instance != null) return;
             _instance = this;
+            _automaticAdvanceErrors.Clear();
+
+            foreach (string error in RouteDataValidator.Validate(RouteCatalog.Routes))
+                LogError("Dados de rota inválidos: " + error);
+            foreach (string error in VanillaRouteGraph.ValidateRequirements())
+                LogError("Grafo de navegação inválido: " + error);
 
             _hudObject = new GameObject("HallownestWayfinder HUD");
             UObject.DontDestroyOnLoad(_hudObject);
             RouteHud hud = _hudObject.AddComponent<RouteHud>();
             hud.Mod = this;
-            Log("HallownestWayfinder carregado. F6: mostrar/ocultar, F7: voltar, F8: avançar.");
+            Log("HallownestWayfinder carregado. Controles configuráveis disponíveis no menu do mod.");
         }
 
         public void Unload()
@@ -63,7 +98,7 @@ namespace HallownestWayfinder
             _instance = null;
         }
 
-        public void OnLoadLocal(RouteProgress settings)
+        public void OnLoadLocal(RouteProgress? settings)
         {
             Progress = settings ?? new RouteProgress();
 
@@ -84,13 +119,16 @@ namespace HallownestWayfinder
 
         public RouteProgress OnSaveLocal() => Progress;
 
-        public void OnLoadGlobal(RouteGlobalSettings settings)
+        public void OnLoadGlobal(RouteGlobalSettings? settings)
         {
             GlobalSettings = settings ?? new RouteGlobalSettings();
             GlobalSettings.UiSize = Math.Max(0, Math.Min(GlobalSettings.UiSize, 2));
             GlobalSettings.NavigationMode = Math.Max(0, Math.Min(GlobalSettings.NavigationMode, 2));
             GlobalSettings.ActiveRoute = Math.Max(0, Math.Min(GlobalSettings.ActiveRoute, RouteCatalog.Routes.Count - 1));
             GlobalSettings.Language = Math.Max(0, Math.Min(GlobalSettings.Language, 2));
+            GlobalSettings.ToggleHudKey = NormalizeKey(GlobalSettings.ToggleHudKey, KeyCode.F6);
+            GlobalSettings.PreviousStepKey = NormalizeKey(GlobalSettings.PreviousStepKey, KeyCode.F7);
+            GlobalSettings.NextStepKey = NormalizeKey(GlobalSettings.NextStepKey, KeyCode.F8);
             LocalizationService.SetLanguage(GlobalSettings.Language);
         }
 
@@ -163,17 +201,54 @@ namespace HallownestWayfinder
                 }
             };
 
+            entries.Add(CreateKeyEntry(
+                LocalizationService.Text("toggle_key", "Tecla: mostrar/ocultar"),
+                LocalizationService.Text("toggle_key_description", "Escolha a tecla que mostra ou oculta o HUD."),
+                KeyBindingAction.ToggleHud));
+            entries.Add(CreateKeyEntry(
+                LocalizationService.Text("previous_key", "Tecla: voltar etapa"),
+                LocalizationService.Text("previous_key_description", "Escolha a tecla que retorna à etapa anterior."),
+                KeyBindingAction.PreviousStep));
+            entries.Add(CreateKeyEntry(
+                LocalizationService.Text("next_key", "Tecla: avançar etapa"),
+                LocalizationService.Text("next_key_description", "Escolha a tecla que avança ou adia a etapa."),
+                KeyBindingAction.NextStep));
+            entries.Add(new IMenuMod.MenuEntry
+            {
+                Name = LocalizationService.Text("reset_route", "Resetar progresso da rota"),
+                Description = LocalizationService.Text("reset_route_description", "Reinicia somente o progresso manual da rota atualmente selecionada."),
+                Values = new[]
+                {
+                    LocalizationService.Text("keep_progress", "Manter"),
+                    LocalizationService.Text("reset_now", "Resetar agora")
+                },
+                Saver = value =>
+                {
+                    if (value == 1) ResetCurrentRoute();
+                },
+                Loader = () => 0
+            });
+
             if (toggleButtonEntry.HasValue) entries.Insert(0, toggleButtonEntry.Value);
             return entries;
         }
 
         public void ToggleVisibility() => Progress.Visible = !Progress.Visible;
 
+        public void ResetCurrentRoute()
+        {
+            if (CurrentRoute.Id == "speedrun_5h") Progress.SpeedrunCurrentStep = 0;
+            else if (CurrentRoute.Id == "grubs_46") Progress.GrubCurrentStep = 0;
+            else if (IsSaveCompletion) Progress.SaveCompletionDismissedStepIds.Clear();
+            else Progress.CurrentStep = 0;
+            _automaticAdvanceErrors.Clear();
+        }
+
         public void NextStep()
         {
             if (IsSaveCompletion)
             {
-                RouteStep step = CurrentStep;
+                RouteStep? step = CurrentStep;
                 if (step != null && !Progress.SaveCompletionDismissedStepIds.Contains(step.Id))
                     Progress.SaveCompletionDismissedStepIds.Add(step.Id);
                 return;
@@ -200,13 +275,21 @@ namespace HallownestWayfinder
         {
             if (!HasActiveStep || GameManager.instance == null || PlayerData.instance == null) return;
 
+            RoutePlan route = CurrentRoute;
+            RouteStep? step = CurrentStep;
+            if (step == null) return;
             try
             {
-                if (CurrentStep.IsComplete() && !IsSaveCompletion) NextStep();
+                if (step.IsComplete() && !IsSaveCompletion) NextStep();
             }
             catch (Exception exception)
             {
-                LogError("Falha ao avaliar a etapa atual: " + exception);
+                string errorKey = route.Id + "\n" + step.Id;
+                if (_automaticAdvanceErrors.Add(errorKey))
+                {
+                    LogError("Falha ao avaliar a etapa '" + step.Id +
+                        "' da rota '" + route.Id + "': " + exception);
+                }
             }
         }
 
@@ -217,6 +300,61 @@ namespace HallownestWayfinder
                 Math.Min(Progress.SpeedrunCurrentStep, SpeedrunRouteDefinition.Steps.Count));
             Progress.GrubCurrentStep = Math.Max(0,
                 Math.Min(Progress.GrubCurrentStep, GrubRouteDefinition.Steps.Count));
+        }
+
+        public static string KeyName(KeyCode key) => key.ToString();
+
+        private IMenuMod.MenuEntry CreateKeyEntry(string name, string description,
+            KeyBindingAction action)
+        {
+            string[] values = new string[SupportedKeys.Length];
+            for (int index = 0; index < SupportedKeys.Length; index++)
+                values[index] = KeyName(SupportedKeys[index]);
+
+            return new IMenuMod.MenuEntry
+            {
+                Name = name,
+                Description = description,
+                Values = values,
+                Saver = value => SetKeyBinding(action,
+                    SupportedKeys[Math.Max(0, Math.Min(value, SupportedKeys.Length - 1))]),
+                Loader = () => KeyIndex(GetKeyBinding(action))
+            };
+        }
+
+        private void SetKeyBinding(KeyBindingAction action, KeyCode key)
+        {
+            KeyCode previous = GetKeyBinding(action);
+            foreach (KeyBindingAction other in Enum.GetValues(typeof(KeyBindingAction)))
+            {
+                if (other != action && GetKeyBinding(other) == key)
+                    AssignKeyBinding(other, previous);
+            }
+            AssignKeyBinding(action, key);
+        }
+
+        private KeyCode GetKeyBinding(KeyBindingAction action) =>
+            action == KeyBindingAction.ToggleHud
+                ? GlobalSettings.ToggleHudKey
+                : action == KeyBindingAction.PreviousStep
+                    ? GlobalSettings.PreviousStepKey
+                    : GlobalSettings.NextStepKey;
+
+        private void AssignKeyBinding(KeyBindingAction action, KeyCode key)
+        {
+            if (action == KeyBindingAction.ToggleHud) GlobalSettings.ToggleHudKey = key;
+            else if (action == KeyBindingAction.PreviousStep) GlobalSettings.PreviousStepKey = key;
+            else GlobalSettings.NextStepKey = key;
+        }
+
+        private static KeyCode NormalizeKey(KeyCode key, KeyCode fallback) =>
+            KeyIndex(key) >= 0 ? key : fallback;
+
+        private static int KeyIndex(KeyCode key)
+        {
+            for (int index = 0; index < SupportedKeys.Length; index++)
+                if (SupportedKeys[index] == key) return index;
+            return -1;
         }
     }
 }

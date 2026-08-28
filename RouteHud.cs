@@ -5,41 +5,59 @@ namespace HallownestWayfinder
 {
     public sealed class RouteHud : MonoBehaviour
     {
-        private GUIStyle _titleStyle;
-        private GUIStyle _bodyStyle;
-        private GUIStyle _footerStyle;
-        private Texture2D _background;
-        private Texture2D _medallion;
-        private Texture2D _arrow;
+        private GUIStyle _titleStyle = null!;
+        private GUIStyle _bodyStyle = null!;
+        private GUIStyle _footerStyle = null!;
+        private Texture2D _background = null!;
+        private Texture2D _medallion = null!;
+        private Texture2D _arrow = null!;
         private int _lastStep = -1;
-        private string _lastRouteId;
+        private string? _lastRouteId;
         private float _transitionStarted;
+        private NavigationResult? _navigation;
 
-        public HallownestWayfinderMod Mod { get; set; }
+        public HallownestWayfinderMod? Mod { get; set; }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F6)) Mod.ToggleVisibility();
-            if (Input.GetKeyDown(KeyCode.F7)) Mod.PreviousStep();
-            if (Input.GetKeyDown(KeyCode.F8)) Mod.NextStep();
+            HallownestWayfinderMod? mod = Mod;
+            if (mod == null) return;
 
-            if (IsInsideSave()) Mod.TryAdvanceAutomatically();
+            if (Input.GetKeyDown(mod.GlobalSettings.ToggleHudKey)) mod.ToggleVisibility();
+            if (Input.GetKeyDown(mod.GlobalSettings.PreviousStepKey)) mod.PreviousStep();
+            if (Input.GetKeyDown(mod.GlobalSettings.NextStepKey)) mod.NextStep();
 
-            if (Mod != null &&
-                (Mod.CurrentStepIndex != _lastStep || Mod.CurrentRoute.Id != _lastRouteId))
+            if (IsInsideSave()) mod.TryAdvanceAutomatically();
+
+            if (mod.CurrentStepIndex != _lastStep || mod.CurrentRoute.Id != _lastRouteId)
             {
                 if (_lastStep >= 0) _transitionStarted = Time.unscaledTime;
-                _lastStep = Mod.CurrentStepIndex;
-                _lastRouteId = Mod.CurrentRoute.Id;
+                _lastStep = mod.CurrentStepIndex;
+                _lastRouteId = mod.CurrentRoute.Id;
             }
+
+            bool canResolveNavigation = mod.Progress.Visible && mod.HasActiveStep &&
+                IsInsideSave() && mod.GlobalSettings.NavigationMode != 2;
+            _navigation = canResolveNavigation
+                ? RouteNavigation.Resolve(mod.CurrentStep,
+                    mod.GlobalSettings.NavigationMode == 0)
+                : null;
         }
 
         private void OnGUI()
         {
-            if (Mod == null || !Mod.Progress.Visible || !Mod.HasActiveStep || !IsInsideSave()) return;
+            HallownestWayfinderMod? mod = Mod;
+            if (mod == null || !mod.Progress.Visible || !IsInsideSave()) return;
             EnsureStyles();
+            if (!mod.HasActiveStep)
+            {
+                if (mod.IsRouteComplete) DrawCompleted(mod);
+                return;
+            }
+            RouteStep? step = mod.CurrentStep;
+            if (step == null) return;
 
-            float scale = Mod.GlobalSettings.UiSize == 0 ? 0.78f : Mod.GlobalSettings.UiSize == 2 ? 1.22f : 1f;
+            float scale = mod.GlobalSettings.UiSize == 0 ? 0.78f : mod.GlobalSettings.UiSize == 2 ? 1.22f : 1f;
             _titleStyle.fontSize = Mathf.RoundToInt(14f * scale);
             _bodyStyle.fontSize = Mathf.RoundToInt(16f * scale);
             _footerStyle.fontSize = Mathf.RoundToInt(12f * scale);
@@ -48,28 +66,33 @@ namespace HallownestWayfinder
             width = Mathf.Min(width, Screen.width - 32f);
             float padding = 34f * scale;
             float contentWidth = width - padding * 2f;
-            RouteStep step = Mod.CurrentStep;
-            bool navigationVisible = Mod.GlobalSettings.NavigationMode != 2;
-            NavigationResult navigation = RouteNavigation.Resolve(step, Mod.GlobalSettings.NavigationMode == 0);
-            string heading = Mod.IsSaveCompletion
-                ? $"{LocalizationService.RouteName(Mod.CurrentRoute).ToUpperInvariant()}  •  {Mod.CompletedStepCount}/{Mod.CurrentRoute.Steps.Count}"
-                : $"{LocalizationService.RouteName(Mod.CurrentRoute).ToUpperInvariant()}  •  {Mod.CurrentStepIndex + 1}/{Mod.CurrentRoute.Steps.Count}";
-            string objective = (step.Optional ? LocalizationService.Text("optional", "[OPCIONAL] ") : "") + LocalizationService.StepTitle(step);
+            NavigationResult? navigation = _navigation;
+            bool navigationVisible = mod.GlobalSettings.NavigationMode != 2 && navigation != null;
+            string heading = mod.IsSaveCompletion
+                ? $"{LocalizationService.RouteName(mod.CurrentRoute).ToUpperInvariant()}  •  {mod.CompletedStepCount}/{mod.CurrentRoute.Steps.Count}"
+                : $"{LocalizationService.RouteName(mod.CurrentRoute).ToUpperInvariant()}  •  {mod.CurrentStepIndex + 1}/{mod.CurrentRoute.Steps.Count}";
+            string objective = (step.SkippableInRoute ? LocalizationService.Text("optional", "[OPCIONAL] ") : "") + LocalizationService.StepTitle(step);
             string hint = "→ " + LocalizationService.StepHint(step);
-            string footer = Mod.IsSaveCompletion
-                ? (Mod.CurrentStepIsAvailable
+            string nextAction = Action("complete", "{0} concluir", mod.GlobalSettings.NextStepKey);
+            string skipAction = Action("skip", "{0} pular", mod.GlobalSettings.NextStepKey);
+            string laterAction = Action("later", "{0} ver depois", mod.GlobalSettings.NextStepKey);
+            string backAction = Action("back", "{0} voltar", mod.GlobalSettings.PreviousStepKey);
+            string hideAction = Action("hide", "{0} ocultar", mod.GlobalSettings.ToggleHudKey);
+            string footer = mod.IsSaveCompletion
+                ? (mod.CurrentStepIsAvailable
                     ? LocalizationService.Text("save_analyzed", "Save analisado")
                     : LocalizationService.Text("prerequisites_missing", "Pré-requisitos não detectados"))
-                    + "  •  " + LocalizationService.Text("later", "F8 ver depois")
-                    + "  •  " + LocalizationService.Text("back", "F7 voltar")
-                    + "  •  " + LocalizationService.Text("hide", "F6 ocultar")
+                    + "  •  " + laterAction
+                    + "  •  " + backAction
+                    + "  •  " + hideAction
                 : step.IsAutomaticallyTracked
-                ? step.Optional
-                    ? LocalizationService.Text("automatic_progress", "Avanço automático") + "  •  " + LocalizationService.Text("skip", "F8 pular") + "  •  " + LocalizationService.Text("back", "F7 voltar") + "  •  " + LocalizationService.Text("hide", "F6 ocultar")
-                    : LocalizationService.Text("automatic_progress", "Avanço automático") + "  •  " + LocalizationService.Text("back", "F7 voltar") + "  •  " + LocalizationService.Text("hide", "F6 ocultar")
-                : LocalizationService.Text("complete", "F8 concluir") + "  •  " + LocalizationService.Text("back", "F7 voltar") + "  •  " + LocalizationService.Text("hide", "F6 ocultar");
+                ? step.SkippableInRoute
+                    ? LocalizationService.Text("automatic_progress", "Avanço automático") + "  •  " + skipAction + "  •  " + backAction + "  •  " + hideAction
+                    : LocalizationService.Text("automatic_progress", "Avanço automático") + "  •  " + backAction + "  •  " + hideAction
+                : nextAction + "  •  " + backAction + "  •  " + hideAction;
+            string? checklist = ShouldShowChecklist(mod) ? CompletionChecklist.Format() : null;
 
-            Texture2D icon = IconLoader.Get(step.Icon);
+            Texture2D? icon = IconLoader.Get(step.Icon);
             float iconSize = icon == null ? 0f : 78f * scale;
             float iconGap = icon == null ? 0f : 12f * scale;
             float bodyWidth = contentWidth - iconSize - iconGap;
@@ -78,11 +101,15 @@ namespace HallownestWayfinder
             float hintHeight = _bodyStyle.CalcHeight(new GUIContent(hint), bodyWidth);
             float footerHeight = _footerStyle.CalcHeight(new GUIContent(footer), contentWidth);
             float bodyHeight = Mathf.Max(iconSize, objectiveHeight + 8f * scale + hintHeight);
-            float navigationHeight = navigationVisible
+            float navigationHeight = navigation != null && navigationVisible
                 ? _footerStyle.CalcHeight(new GUIContent(navigation.Label), contentWidth)
                 : 0f;
+            float checklistHeight = checklist == null
+                ? 0f
+                : _footerStyle.CalcHeight(new GUIContent(checklist), contentWidth);
             float panelHeight = 25f * scale + headingHeight + 9f * scale + bodyHeight + 13f * scale +
-                navigationHeight + (navigationHeight > 0f ? 5f * scale : 0f) + footerHeight + 25f * scale;
+                navigationHeight + (navigationHeight > 0f ? 5f * scale : 0f) +
+                checklistHeight + (checklistHeight > 0f ? 7f * scale : 0f) + footerHeight + 25f * scale;
 
             float elapsed = Time.unscaledTime - _transitionStarted;
             float reveal = _transitionStarted <= 0f ? 1f : Mathf.Clamp01(elapsed / 0.28f);
@@ -94,7 +121,7 @@ namespace HallownestWayfinder
             GUI.color = new Color(1f, 1f, 1f, reveal);
             GUI.DrawTexture(panel, _background);
 
-            if (navigationVisible && navigation.ShowArrow)
+            if (navigation != null && navigationVisible && navigation.ShowArrow)
             {
                 float arrowSize = 48f * scale;
                 Rect arrowRect = new Rect(panel.x - arrowSize - 12f * scale,
@@ -115,7 +142,7 @@ namespace HallownestWayfinder
             GUI.Label(new Rect(textX, y, bodyWidth, objectiveHeight), objective, _bodyStyle);
             GUI.Label(new Rect(textX, y + objectiveHeight + 8f * scale, bodyWidth, hintHeight), hint, _bodyStyle);
             y += bodyHeight + 11f * scale;
-            if (navigationVisible)
+            if (navigation != null && navigationVisible)
             {
                 string navigationText = navigation.Kind == NavigationKind.Precise
                     ? "◇ " + LocalizationService.Text("navigation", "Navegação: ") + navigation.Label
@@ -129,6 +156,11 @@ namespace HallownestWayfinder
                 GUI.Label(new Rect(panel.x + padding, y, contentWidth, navigationHeight), navigationText, _footerStyle);
                 y += navigationHeight + 5f * scale;
             }
+            if (checklist != null)
+            {
+                GUI.Label(new Rect(panel.x + padding, y, contentWidth, checklistHeight), checklist, _footerStyle);
+                y += checklistHeight + 7f * scale;
+            }
             GUI.Label(new Rect(panel.x + padding, y, contentWidth, footerHeight), footer, _footerStyle);
 
             if (_transitionStarted > 0f && elapsed < 0.65f)
@@ -139,6 +171,52 @@ namespace HallownestWayfinder
             }
             GUI.color = previousColor;
         }
+
+        private void DrawCompleted(HallownestWayfinderMod mod)
+        {
+            float scale = mod.GlobalSettings.UiSize == 0 ? 0.78f : mod.GlobalSettings.UiSize == 2 ? 1.22f : 1f;
+            _titleStyle.fontSize = Mathf.RoundToInt(14f * scale);
+            _bodyStyle.fontSize = Mathf.RoundToInt(18f * scale);
+            _footerStyle.fontSize = Mathf.RoundToInt(12f * scale);
+
+            float width = Mathf.Clamp(Screen.width * 0.30f * scale, 300f, 680f);
+            width = Mathf.Min(width, Screen.width - 32f);
+            float padding = 34f * scale;
+            float contentWidth = width - padding * 2f;
+            string heading = LocalizationService.RouteName(mod.CurrentRoute).ToUpperInvariant() +
+                "  •  " + mod.CurrentRoute.Steps.Count + "/" + mod.CurrentRoute.Steps.Count;
+            string completed = LocalizationService.Text("route_completed", "ROTA CONCLUÍDA");
+            string? checklist = ShouldShowChecklist(mod) ? CompletionChecklist.Format() : null;
+            string footer = Action("hide", "{0} ocultar", mod.GlobalSettings.ToggleHudKey);
+
+            float headingHeight = _titleStyle.CalcHeight(new GUIContent(heading), contentWidth);
+            float completedHeight = _bodyStyle.CalcHeight(new GUIContent(completed), contentWidth);
+            float checklistHeight = checklist == null ? 0f : _footerStyle.CalcHeight(new GUIContent(checklist), contentWidth);
+            float footerHeight = _footerStyle.CalcHeight(new GUIContent(footer), contentWidth);
+            float panelHeight = 25f * scale + headingHeight + 14f * scale + completedHeight + 12f * scale +
+                (checklistHeight > 0f ? checklistHeight + 12f * scale : 0f) + footerHeight + 25f * scale;
+            Rect panel = new Rect(Screen.width - width - 16f, 18f, width, panelHeight);
+
+            GUI.DrawTexture(panel, _background);
+            float y = panel.y + 25f * scale;
+            GUI.Label(new Rect(panel.x + padding, y, contentWidth, headingHeight), heading, _titleStyle);
+            y += headingHeight + 14f * scale;
+            GUI.Label(new Rect(panel.x + padding, y, contentWidth, completedHeight), completed, _bodyStyle);
+            y += completedHeight + 12f * scale;
+            if (checklist != null)
+            {
+                GUI.Label(new Rect(panel.x + padding, y, contentWidth, checklistHeight), checklist, _footerStyle);
+                y += checklistHeight + 12f * scale;
+            }
+            GUI.Label(new Rect(panel.x + padding, y, contentWidth, footerHeight), footer, _footerStyle);
+        }
+
+        private static bool ShouldShowChecklist(HallownestWayfinderMod mod) =>
+            mod.CurrentRoute.Id == "completion_112" || mod.IsSaveCompletion;
+
+        private static string Action(string key, string portuguese, KeyCode binding) =>
+            string.Format(LocalizationService.Text(key, portuguese),
+                HallownestWayfinderMod.KeyName(binding));
 
         private static void DrawRotatedTexture(Rect destination, Texture2D texture, float degrees)
         {
@@ -170,7 +248,7 @@ namespace HallownestWayfinder
             _medallion = CreateMedallion(96);
             _arrow = CreateArrow(96);
 
-            Font gameFont = FindGameFont();
+            Font? gameFont = FindGameFont();
 
             _titleStyle = new GUIStyle(GUI.skin.label)
             {
@@ -199,9 +277,9 @@ namespace HallownestWayfinder
             }
         }
 
-        private static Font FindGameFont()
+        private static Font? FindGameFont()
         {
-            Font fallback = null;
+            Font? fallback = null;
             foreach (Font font in Resources.FindObjectsOfTypeAll<Font>())
             {
                 if (font == null) continue;

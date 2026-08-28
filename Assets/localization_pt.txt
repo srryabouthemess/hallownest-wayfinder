@@ -1,0 +1,248 @@
+# id|title|hint
+fury|Pegar o amuleto Fúria dos Caídos|Na Passagem do Rei, antes de entrar em Dirtmouth, desça pela abertura com espinhos. Atravesse usando ataques para baixo nos espinhos e alcance o baú à direita.
+dirtmouth|Ir para Dirtmouth|Volte ao caminho principal da Passagem do Rei, siga sempre à direita e atravesse o grande portão para chegar a Dirtmouth.
+crossroads|Descer para a Encruzilhada Esquecida|Em Dirtmouth, caminhe à direita do banco e pule no poço aberto.
+crossroads_map|Comprar o mapa com Cornifer|Do fundo do poço, desça e siga para a esquerda. Procure os papéis no chão e acompanhe o som de Cornifer.
+grub_1|Salvar a primeira larva|Da sala de Cornifer, saia pela esquerda. Continue para a esquerda e procure a jarra de vidro da larva; quebre-a com o ferrão.
+crossroads_station|Desbloquear a primeira estação|Volte para a sala central alta da Encruzilhada. Desça até a parte inferior e siga pela saída da esquerda até a Estação da Encruzilhada Esquecida; pague 50 Geo e toque o sino.
+grub_2|Salvar a segunda larva|Saia da estação pela direita. Na sala seguinte, suba e ataque a parede falsa do lado esquerdo para alcançar a larva.
+grub_3|Salvar a terceira larva|Saia da entrada do Pico de Cristal pela esquerda. Suba pela sala vertical e pegue a saída da direita; siga até encontrar a larva.
+grub_4|Salvar a quarta larva|Retorne à sala ao lado da parede falsa da segunda larva. Entre pela passagem oposta, avance para a direita e depois desça até a larva.
+gruz_mother|Derrotar a Mãe Mosca|Saia da sala da quarta larva e continue descendo. Entre na arena grande e derrote a Mãe Mosca.
+sly|Salvar Sly|Após a Mãe Mosca, siga pela saída à direita e entre na pequena casa da vila abandonada. Fale com Sly até ele despertar.
+false_knight|Derrotar o Falso Cavaleiro|Volte à Estação da Encruzilhada Esquecida. Na sala vertical à direita da estação, suba e siga à esquerda até a arena do Falso Cavaleiro.
+vengeful_spirit|Pegar o Espírito Vingativo|Depois da luta, saia pela esquerda e siga o Xamã dos Caracóis até o Monte Ancestral. Complete o desafio e receba o feitiço.
+soul_catcher|Pegar o Apanhador de Almas|No Monte Ancestral, derrote o Baldur Ancião usando o Espírito Vingativo. O amuleto está logo depois dele.
+greenpath|Ir para o Caminho Verde|Use o Espírito Vingativo para abrir o caminho.
+grub_5|Salvar a quinta larva|Continue pelo Caminho Verde até ver Hornet pela primeira vez. Na área seguinte, procure uma passagem secreta e quebre o cipó que bloqueia o caminho; depois desça e siga pela direita até a larva.
+greenpath_map|Comprar o mapa do Caminho Verde|Volte ao caminho principal, procure os papéis espalhados pelo chão e siga o canto de Cornifer até o nicho onde ele vende o mapa.
+hunters_journal|Pegar o Diário do Caçador|Da região da quinta larva, desça e siga para a direita até a cabana do Caçador. Entre e aceite o Diário do Caçador.
+grub_6|Salvar a sexta larva|Saia da cabana do Caçador, volte para a esquerda e desça. Explore a parte inferior até alcançar a jarra da larva.
+greenpath_bench|Sentar no banco (50 Geo)|Retorne ao caminho de Hornet e siga para oeste, subindo pelas plataformas. Pague 50 Geo para liberar o banco e sente-se.
+zote|Salvar Zote|Continue subindo a oeste. Depois do Cavaleiro do Musgo, siga até ouvir Zote e derrote o Rei Vingança; em seguida, fale com Zote.
+grub_7|Salvar a sétima larva|Continue pela parte superior do Caminho Verde. Derrote o Cavaleiro do Musgo que guarda a jarra e quebre-a para libertar a larva.
+greenpath_station|Liberar a estação do Caminho Verde|Desça seguindo as placas com o símbolo do Último Besouro. Entre na estação, pague 140 Geo e toque o sino.
+wanderers_journal|Pegar o Diário do Viajante|Saia da estação e retome o caminho para oeste em direção ao Lago de Unn. Vasculhe a passagem antes da arena de Hornet para encontrar o diário.
+hornet|Derrotar Hornet e obter o dash|Derrote Hornet e colete o Manto de Asa de Mariposa.
+c03_dirtmouth|Cap. 03 • Voltar a Dirtmouth|Retorne à Estação do Caminho Verde usando o dash e viaje de Último Besouro até Dirtmouth.
+c03_compass|Cap. 03 • Comprar pena e bússola|Na loja de Iselda, compre a Pena e o amuleto Bússola Caprichosa. Se estiver sem mapas, priorize o Enxame de Colecionadores em Sly.
+c03_grub6|Cap. 03 • Salvar a próxima larva|Ao descer pelo poço, siga pela esquerda até chegar à sala vertical e entre na sala abaixo à direita. Use o dash para alcançar a larva.
+c03_wastes|Cap. 03 • Ir para os Ermos Fúngicos|Na parte inferior da Encruzilhada, atravesse o vão com dash e desça pelos corredores de cogumelos.
+c03_ogres|Cap. 03 • Derrotar os Cogumelos|Desça até o fundo do primeiro poço e siga à esquerda. Derrote os dois cogumelos guerreiros para receber um encaixe de amuleto.
+c03_map|Cap. 03 • Comprar o mapa dos Ermos|Passe pela Estação da Rainha e encontre Cornifer na passagem abaixo das piscinas de ácido.
+c03_claw|Cap. 03 • Obter a Garra de Louva-a-Deus|Atravesse os cogumelos elásticos até a Vila dos Louva-a-Deus, acione a alavanca inferior e pegue a Garra na área superior.
+c04_grub7|Cap. 04 • Salvar uma larva nos Ermos|Use a Garra para subir pelos túneis com cogumelos elásticos a caminho da Estação da Rainha.
+c04_queen_station|Cap. 04 • Liberar a Estação da Rainha|Entre na plataforma inferior esquerda da Estação da Rainha, pague a passagem e chame o Último Besouro.
+c04_lantern|Cap. 04 • Comprar a Lanterna|Viaje a Dirtmouth e compre de Sly a Lanterna de Lumélula por 1800 Geo; depois retorne à Estação da Rainha.
+c04_grub8|Cap. 04 • Salvar larva sobre o ácido|Perto do atalho para a Vila dos Louva-a-Deus, atravesse o salão de ácido e cogumelos elásticos até a larva.
+c04_spore|Cap. 04 • Pegar Cogumelo com Esporos|Abaixo da larva, cruze as piscinas de ácido e pegue o amuleto; abra a parede à esquerda para sair.
+c04_deepnest_grub|Cap. 04 • Fazer uma visita curta ao Ninho Profundo|Caia pelo piso frágil, abrace a parede direita e liberte a larva verdadeira na sala dos imitadores.
+c04_deepnest_map|Cap. 04 • Comprar o mapa do Ninho Profundo|Desça e siga à esquerda até ouvir Cornifer. Não se afaste da rota nesta visita inicial.
+c04_city|Cap. 04 • Entrar na Cidade das Lágrimas|Retorne aos Ermos, siga o caminho de Hornet, atravesse os espinhos e use o Brasão da Cidade na grande estátua.
+c04_nail1|Cap. 04 • Afiar o ferrão|Na parte baixa da cidade, encontre o Ferreiro à esquerda e compre a primeira melhoria por 250 Geo.
+c04_lemm|Cap. 04 • Conhecer Lemm|Suba pelas plataformas centrais, abra o edifício à direita e venda os seus primeiros artefatos para Lemm.
+c04_grub10|Cap. 04 • Salvar a larva da cidade|Suba pelos elevadores acima de Lemm e procure a sala lateral à direita.
+c04_city_map|Cap. 04 • Comprar o mapa da Cidade|Abra o atalho até o banco da passarela elevada e compre o mapa com Cornifer.
+c04_spell_twister|Cap. 04 • Pegar Distorcedor de Magias|No Santuário das Almas, procure a abertura escura no teto antes da arena principal.
+c04_soul_master|Cap. 04 • Derrotar Mestre das Almas|Abra os atalhos do Santuário e avance pela porta esquerda do salão superior. Vencendo, receba Mergulho Desolador.
+c04_grub11|Cap. 04 • Salvar larva no Santuário|Ao quebrar os pisos após o Mestre das Almas, pare na borda e procure a larva antes de cair ao fundo.
+c04_storerooms|Cap. 04 • Liberar Armazéns da Cidade|Atravesse a passarela, pegue a Chave Simples e derrube o grande bloco para abrir a estação.
+c05_salubra|Cap. 05 • Comprar encaixe com Salubra|Viaje à Encruzilhada, siga além da antiga arena da Mãe Mosca e compre o primeiro encaixe disponível.
+c05_peak|Cap. 05 • Entrar no Pico de Cristal|Pegue o elevador acima de Myla e use Mergulho Desolador no chão instável para entrar nas minas.
+c05_grub12|Cap. 05 • Salvar larva entre esteiras|Suba pelas esteiras verticais, atravesse os espinhos com dash e acione a alavanca após a larva.
+c05_peak_map|Cap. 05 • Comprar o mapa do Pico|Suba pelos corredores de lasers até encontrar Cornifer.
+c05_shop_key|Cap. 05 • Pegar a Chave do Lojista|Continue subindo pelo lado direito das minas e pegue a chave no topo do poço.
+c05_heart|Cap. 05 • Obter Coração de Cristal|Atravesse o grande desafio de lasers no lado direito do Pico e examine o autômato quebrado.
+c05_grubs|Cap. 05 • Salvar as larvas do Pico|Use o super dash para alcançar as larvas atrás do abismo, dos pistões e nas salas inferiores.
+c05_dark|Cap. 05 • Obter Escuridão Descente|Atravesse a sala escura até o Monte Cristalizado, liberte o Xamã preso e melhore o mergulho.
+c06_dream_nail|Cap. 06 • Obter o Ferrão dos Sonhos|Caia do Monte Cristalizado aos Campos de Descanso e complete a sequência do memorial.
+c06_dreamshield|Cap. 06 • Pegar Escudo dos Sonhos|Explore a passagem abaixo da casa da Vidente antes de liberar a estação.
+c06_station|Cap. 06 • Liberar Campos de Descanso|Atravesse o poço principal e acione a alavanca da estação.
+c07_elegant|Cap. 07 • Comprar a Chave Elegante|Entregue a Chave do Lojista a Sly, compre a Chave Elegante e adquira o mapa dos Campos com Iselda.
+c07_shade_soul|Cap. 07 • Obter Alma Sombria|Retorne ao Santuário das Almas, abra a porta elegante, derrote o Guerreiro das Almas e liberte o Xamã.
+c07_waterways|Cap. 07 • Abrir os Esgotos Reais|Desça à avenida inferior da cidade e use uma Chave Simples na tampa próxima ao elevador.
+c08_grub17|Cap. 08 • Salvar larva nos Esgotos|A partir do banco inferior, suba e atravesse a parede quebrável à esquerda.
+c08_map|Cap. 08 • Comprar o mapa dos Esgotos|Vença a sala de Hwurmps e encontre Cornifer no canto superior esquerdo.
+c08_dung|Cap. 08 • Derrotar Defensor do Esterco|Siga os túneis marrons após o banco e derrote Ogrim para receber o Brasão do Defensor.
+c08_isma|Cap. 08 • Obter Lágrima de Isma|Use o Coração de Cristal pelo túnel de espinhos, vença a emboscada de guardas e alcance o bosque de Isma.
+c09_grub18|Cap. 09 • Salvar larva após Isma|Nade pelo ácido à direita e suba pela parede até a larva.
+c09_ore1|Cap. 09 • Pegar Minério Pálido da Bacia|Desça à Bacia Antiga e explore a área dos Mawleks no canto inferior esquerdo.
+c09_grub19|Cap. 09 • Salvar larva na Bacia|Use Escuridão Descente no piso solto próximo aos Mawleks menores.
+c09_map|Cap. 09 • Comprar o mapa da Bacia|Desça pelas alcovas à direita da fonte e encontre Cornifer.
+c09_broken|Cap. 09 • Derrotar Receptáculo Quebrado|Atravesse o abismo de espinhos no lado esquerdo e siga até a arena.
+c09_wings|Cap. 09 • Obter Asas do Monarca|Após a luta, siga à esquerda e para baixo até a antiga carcaça para receber o pulo duplo.
+c09_lost_kin|Cap. 09 • Derrotar Parente Perdido|Use o Ferrão dos Sonhos no corpo do Receptáculo Quebrado e vença sua versão onírica.
+c09_hidden_station|Cap. 09 • Liberar Estação Oculta|Use o pulo duplo no corredor sob o bonde, quebre a parede ao extremo direito e pague a estação.
+c10_ritual|Cap. 10 • Acender a Chama do Pesadelo|Do Caminho Verde, suba aos Penhascos Uivantes, encontre o grande cadáver oculto, use o Ferrão dos Sonhos e acenda a tocha.
+c10_cliffs_map|Cap. 10 • Comprar mapa dos Penhascos|Retorne à face do penhasco e siga o canto de Cornifer.
+c10_joni|Cap. 10 • Pegar Bênção de Joni|Atravesse a sala escura seguindo as flores azuis até o repouso de Joni.
+c10_cyclone|Cap. 10 • Aprender Corte Ciclone|Suba ao topo dos penhascos e encontre a cabana de Mato na fenda sob a borda.
+c10_gorb|Cap. 10 • Derrotar Gorb|Continue ao topo esquerdo e desafie o espírito no monumento.
+c10_stag_nest|Cap. 10 • Visitar o Ninho dos Besouros|Use um Vengemosca para alcançar a borda à esquerda de Gorb e pegue o fragmento de receptáculo dentro do ninho.
+c11_grimmchild|Cap. 11 • Receber Grimmchild|Volte a Dirtmouth, entre na tenda principal e fale com Mestre da Trupe Grimm.
+c11_failed|Cap. 11 • Derrotar Campeão Fracassado|Na Encruzilhada Infectada, quebre a parede acima da antiga arena do Falso Cavaleiro e entre no sonho do corpo.
+c11_xero|Cap. 11 • Derrotar Xero|Nos Campos de Descanso, desafie o espírito vermelho sobre a plataforma onde você caiu inicialmente.
+c11_dreamgate|Cap. 11 • Desbloquear Portal dos Sonhos|Entregue essência à Vidente até receber Minério Pálido, Amuleto do Portador e Portal dos Sonhos.
+c12_deep_focus|Cap. 12 • Pegar Foco Profundo|Retorne ao Pico por Dirtmouth e use o Coração de Cristal através dos lasers até a geoda escondida.
+c12_guardians|Cap. 12 • Derrotar Guardiões de Cristal|Vença o Guardião no banco e depois suba pela parede direita para enfrentar sua versão enfurecida.
+c12_ore|Cap. 12 • Pegar Minério Pálido da Coroa|Suba até a Coroa de Hallownest e pegue o minério aos pés da estátua.
+c13_sheo|Cap. 13 • Aprender Grande Corte|Na parte baixa do Caminho Verde, atravesse Durandas e espinhos até a casa de Sheo.
+c13_thorns|Cap. 13 • Pegar Espinhos da Agonia|Atravesse as Lumélulas e os espinhos no corredor à direita da estação.
+c13_grubs|Cap. 13 • Vasculhar o Caminho Verde|Libere as duas larvas dos corredores inferiores e recolha o fragmento de receptáculo escondido.
+c13_wraiths|Cap. 13 • Obter Espectros Uivantes|Desça ao Cânion da Névoa, entre no Monte Verdejante e alcance o Xamã morto após a emboscada.
+c13_noeyes|Cap. 13 • Derrotar Sem Olhos|Entre no Santuário de Pedra, atravesse a escuridão e desafie o espírito.
+c14_souleater|Cap. 14 • Pegar Devorador de Almas|Nos túneis sob os Campos de Descanso, quebre as paredes e o teto ocultos próximos ao sarcófago.
+c15_kings_station|Cap. 15 • Liberar Estação do Rei|Desça pelos elevadores orientais da cidade e pague a estação inferior.
+c15_edge_map|Cap. 15 • Comprar mapa da Borda do Reino|Saia pela estação quebrada, entre na Borda e desça ao tubo onde Cornifer canta.
+c15_hornet2|Cap. 15 • Derrotar Hornet Sentinela|Atravesse a Borda pelo caminho superior e siga Hornet até a arena.
+c15_brand|Cap. 15 • Obter Marca do Rei|Após Hornet, atravesse a Carcaça Abandonada e examine o símbolo no extremo esquerdo.
+c16_abyss|Cap. 16 • Entrar no Abismo|Viaje à Estação Oculta, desça pela Bacia e abra o portão com a Marca do Rei.
+c16_shriek|Cap. 16 • Obter Grito do Abismo|No fundo esquerdo do Abismo, use Espectros Uivantes no centro da sala de rostos.
+c16_cloak|Cap. 16 • Obter Manto Sombrio|Acenda o farol no lado direito, atravesse o mar de Vazio e banhe-se na fonte escura.
+c17_grimm|Cap. 17 • Derrotar Mestre Grimm|Retorne à tenda em Dirtmouth com Grimmchild equipado e vença Mestre da Trupe Grimm.
+c17_nail|Cap. 17 • Melhorar o ferrão para Espiralado|Venda relíquias a Lemm e leve os minérios ao Ferreiro na parte baixa da cidade.
+c17_fluke|Cap. 17 • Derrotar Flukemarm|Nos Esgotos, mergulhe pelo piso abaixo do banco e encontre o caminho oculto à esquerda.
+c17_dashmaster|Cap. 17 • Pegar Mestre da Esquiva|Entre nos Ermos pela passagem dos Esgotos e pegue o amuleto aos pés da estátua.
+c17_bretta|Cap. 17 • Salvar Bretta|Atravesse os corredores estreitos de espinhos à esquerda da estátua.
+c17_lords|Cap. 17 • Derrotar Lordes Louva-a-Deus|Abra as alavancas da arena sob a Vila e desafie os três Lordes.
+c17_pride|Cap. 17 • Pegar Marca de Orgulho|Após a vitória, entre na sala de tesouros recém-aberta à direita.
+c18_mawlek|Cap. 18 • Derrotar Mawlek Incubador|Na Encruzilhada Infectada, quebre a porta sob a saída do Caminho Verde e atravesse os espinhos.
+c18_notch|Cap. 18 • Pegar encaixe no Cânion|Desça ao Cânion da Névoa e atravesse a sala de bolhas explosivas.
+c18_fragile|Cap. 18 • Comprar amuletos frágeis|Equipe Brasão do Defensor para desconto e compre Coração, Ganância e Força com Come-Pernas.
+c18_hu|Cap. 18 • Derrotar Ancião Hu|Siga ao leste dos Ermos Fúngicos e desafie o espírito no memorial.
+c18_fog_map|Cap. 18 • Comprar mapa do Cânion|Passe acima do portão sombrio no corredor oeste para alcançar Cornifer.
+c18_uumuu|Cap. 18 • Derrotar Uumuu|Entre nos Arquivos da Professora e desça até a arena; aguarde Quirrel abrir a defesa do chefe.
+c18_monomon|Cap. 18 • Libertar Monomon|Depois de Uumuu, encontre Quirrel junto ao tanque e use o Ferrão dos Sonhos em Monomon.
+c19_gardens_map|Cap. 19 • Comprar mapa dos Jardins|Passe da Estação da Rainha aos Jardins, vença a emboscada de mantis e siga as placas até Cornifer.
+c19_love_key|Cap. 19 • Pegar Chave do Amor|Nos Jardins, desça ao salão do grande cadáver e derrote os Mantis Traidores.
+c19_marmu|Cap. 19 • Derrotar Marmu|Siga pelo lado direito dos Jardins até o túmulo do guerreiro.
+c19_station|Cap. 19 • Liberar Estação dos Jardins|Continue à direita após Marmu, pague a estação e abra o atalho.
+c19_traitor|Cap. 19 • Derrotar Lorde Traidor|Atravesse as plataformas de espinhos acima da estação e use o Manto Sombrio na arena.
+c19_queen|Cap. 19 • Receber metade da Alma do Rei|Após o Lorde Traidor, entre no santuário da Dama Branca e fale com ela.
+c20_herrah|Cap. 20 • Libertar Herrah|Entre na Toca da Besta na Vila Distante, escape da armadilha, suba ao topo e encerre o sonho de Herrah.
+c20_weaver|Cap. 20 • Pegar Canção das Tecelãs|No Ninho Profundo, rompa a parede atrás do Devoto Espreitador e atravesse o piso de espinhos.
+c20_galien|Cap. 20 • Derrotar Galien|Encontre o guerreiro caído próximo aos cogumelos brancos e desafie o seu espírito.
+c20_pass|Cap. 20 • Pegar Passe do Bonde|Suba ao Bonde Fracassado e explore o vagão destruído no extremo esquerdo.
+c20_zote|Cap. 20 • Salvar Zote no Ninho|Após o Bonde Fracassado, desça pela saída esquerda e liberte Zote das teias.
+c20_nosk|Cap. 20 • Derrotar Nosk|A partir das Termas do Ninho, atravesse a parede rachada e siga a figura familiar até a arena.
+c20_sharp|Cap. 20 • Pegar Sombra Afiada|Atravesse o portão sombrio na sala dos Garpedes e alcance o amuleto.
+c21_hive|Cap. 21 • Entrar na Colmeia|Use o Passe do Bonde, viaje duas vezes à direita e quebre a parede acima dos insetos no túnel.
+c21_knight|Cap. 21 • Derrotar Cavaleiro da Colmeia|Atravesse as grandes câmaras até o extremo direito e rompa as barreiras antes da arena.
+c21_hiveblood|Cap. 21 • Pegar Sangue da Colmeia|Após o chefe, passe sob a arena e alcance a câmara da rainha.
+c22_markoth|Cap. 22 • Derrotar Markoth|Retorne à Borda do Reino, atravesse o portão sombrio inferior e desafie o guerreiro caído.
+c22_dashslash|Cap. 22 • Aprender Corte Veloz|Siga à direita pelos Grandes Saltadores e compre a técnica com Oro por 800 Geo.
+c22_quickslash|Cap. 22 • Pegar Corte Rápido|Passe os Grandes Saltadores, suba na estrutura da parede direita e pegue o amuleto.
+c23_collector|Cap. 23 • Derrotar o Colecionador|Entre na Torre do Amor com a chave e suba até a arena.
+c23_grubs|Cap. 23 • Libertar as larvas da torre|Após o Colecionador, explore o salão superior, pegue o mapa e liberte as três larvas.
+c23_final_grub|Cap. 23 • Salvar a última larva|Na Torre do Vigia, abra as alavancas e procure a sala acima da saída direita.
+c23_watchers|Cap. 23 • Derrotar Cavaleiros Sentinelas|Quebre a corrente no teto para reduzir a luta e entre na arena superior da torre.
+c23_lurien|Cap. 23 • Libertar Lurien|Suba ao topo da torre após os Cavaleiros e encerre o sonho do Vigia.
+c24_white_defender|Cap. 24 • Derrotar Defensor Branco|Nos Esgotos, entre no sonho de Ogrim na câmara abaixo do elevador quebrado.
+c24_colosseum|Cap. 24 • Completar o Coliseu|Suba à Arena dos Tolos, conclua as três provas e derrote o Domador de Deuses.
+c25_zote|Cap. 25 • Derrotar Príncipe Cinzento Zote|Em Dirtmouth, entre no porão da casa de Bretta e use o Ferrão dos Sonhos na estátua.
+c25_grubfather|Cap. 25 • Receber recompensas das larvas|Visite o Lar das Larvas na Encruzilhada e recolha todas as recompensas do Pai das Larvas.
+c25_sly|Cap. 25 • Receber Glória do Mestre|Com as três artes aprendidas, visite o porão de Sly e depois compre os fragmentos e amuletos restantes.
+c25_awoken|Cap. 25 • Despertar o Ferrão dos Sonhos|Reúna 2400 de essência e entregue-a à Vidente até ela desaparecer.
+c26_flower|Cap. 26 • Entregar a Flor Delicada|Aceite a flor com a Mourner Cinzenta e atravesse Campos, Encruzilhada, Cânion e Jardins sem sofrer dano até o túmulo.
+c27_palace|Cap. 27 • Entrar no Palácio Branco|Na Bacia Antiga, use o Ferrão Desperto no molde real morto e atravesse o sonho até o portão.
+c27_kingsoul|Cap. 27 • Completar Alma do Rei|Supere as três alas do Palácio Branco, alcance o trono e golpeie o corpo do Rei Pálido.
+c28_lifeblood|Cap. 28 • Pegar Núcleo de Sangue Vital|Equipe vida azul e Alma do Rei, abra a porta selada no Abismo e pegue o amuleto antes de sair.
+c28_void|Cap. 28 • Transformar Alma do Rei em Coração Vazio|No fundo do Abismo, quebre o piso, encontre o ovo negro e use o Ferrão dos Sonhos; depois suba pelo nascimento.
+c29_pure_nail|Cap. 29 • Forjar Ferrão Puro|Venda as últimas relíquias e entregue 4000 Geo e três Minérios Pálidos ao Ferreiro.
+c29_unbreakable|Cap. 29 • Melhorar amuletos frágeis|Antes do fim da Trupe, entregue os amuletos a Divine e pague pelas versões inquebráveis.
+c29_grimm_end|Cap. 29 • Encerrar a Trupe Grimm|Escolha entre completar o Ritual contra Rei do Pesadelo Grimm ou destruir a lanterna com Brumm.
+c30_godhome|Cap. 30 • Abrir Lar dos Deuses|Nos Esgotos, atravesse o caminho acima de Flukemarm até o Depósito de Lixo e abra o sarcófago com Chave Simples.
+c30_pantheons|Cap. 30 • Completar os Panteões|No Lar dos Deuses, conclua os quatro primeiros Panteões para 112%. O Panteão de Hallownest permanece como desafio final opcional.
+sr01_fury|Seg. 01 • Pegar Fúria dos Caídos|Antes de Dirtmouth, atravesse os espinhos da Passagem do Rei com ataques para baixo.
+sr01_geo|Seg. 01 • Juntar 50 Geo|Quebre os depósitos de Geo no caminho até a estação da Encruzilhada. Evite parar para farmar inimigos comuns.
+sr01_stag|Seg. 01 • Abrir a estação da Encruzilhada|Pague 50 Geo, toque o sino e use o banco apenas se precisar recuperar vida.
+sr01_false_knight|Seg. 01 • Derrotar o Falso Cavaleiro|Derrote o chefe, pegue o Brasão da Cidade e abra o baú de Geo.
+sr01_spell|Seg. 01 • Obter Espírito Vingativo|Siga o Xamã, conclua o Monte Ancestral e receba seu primeiro feitiço.
+sr01_soul_catcher|Seg. 01 • Pegar e equipar Apanhador de Almas|Pegue o amuleto após o Baldur Ancião e equipe-o no banco antes de seguir ao Caminho Verde.
+sr02_vengefly|Seg. 02 • Derrotar Rei Vengemosca|No caminho pela parte alta do Caminho Verde, derrote o Rei Vengemosca para obter Geo rápido.
+sr02_journal|Seg. 02 • Pegar o Diário do Viajante|Quebre a parede antes da arena de Hornet e recolha o diário para vender mais tarde.
+sr02_bench|Seg. 02 • Usar o banco do Caminho Verde|Sente no banco da estação, mas não gaste Geo liberando o Último Besouro.
+sr02_hornet|Seg. 02 • Derrotar Hornet e obter o dash|Derrote Hornet, pegue o Manto de Asa de Mariposa e faça save & quit assim que a coleta terminar.
+sr03_queen_bench|Seg. 03 • Usar o banco da Estação da Rainha|Atravesse o Cânion da Névoa e sente no banco da estação antes de entrar nos Ermos Fúngicos.
+sr03_seal|Seg. 03 • Pegar o Selo de Hallownest|Recolha o selo indicado pela rota; ele ajudará a pagar as compras na Cidade das Lágrimas.
+sr03_claw|Seg. 03 • Obter Garra de Louva-a-Deus|Atravesse os cogumelos elásticos, acione a alavanca da vila e pegue a habilidade de escalar paredes.
+sr03_city|Seg. 03 • Entrar na Cidade das Lágrimas|Siga pelo portão oriental dos Ermos, pegando o diário e os depósitos de Geo no caminho.
+sr04_nail|Seg. 04 • Comprar a primeira melhoria do ferrão|Use o banco inferior, pague 250 Geo ao Ferreiro e faça save & quit para voltar rapidamente.
+sr04_seal|Seg. 04 • Pegar o selo a caminho do Santuário|Suba pela cidade e recolha o Selo de Hallownest indicado antes de entrar no Santuário das Almas.
+sr04_bench|Seg. 04 • Comprar o banco do Santuário|Se faltar Geo, venda uma relíquia a Lemm. Pague o banco e sente antes de enfrentar o Santuário.
+sr04_twister|Seg. 04 • Pegar Distorcedor de Magias|Procure a abertura no teto antes da arena principal e recolha o amuleto.
+sr04_master|Seg. 04 • Derrotar Mestre das Almas|Derrote o chefe, obtenha Mergulho Desolador e recolha o baú e o selo na saída.
+sr04_sell|Seg. 04 • Vender todas as relíquias a Lemm|Volte ao banco, equipe Distorcedor de Magias, venda as relíquias e faça save & quit. Proteja esse Geo.
+sr04_key|Seg. 04 • Pegar uma Chave Simples|Recolha a Chave Simples da Cidade; ela será usada para abrir os Esgotos Reais.
+sr04_stag|Seg. 04 • Liberar Armazéns da Cidade|Abra a estação, toque o sino e viaje de Último Besouro para a Encruzilhada.
+sr05_gruz|Seg. 05 • Derrotar Mãe Mosca|A partir do banco da Encruzilhada, derrote a Mãe Mosca e abra o caminho até Sly e Salubra.
+sr05_sly|Seg. 05 • Resgatar Sly|Entre na casa da vila abandonada e fale com Sly até ele voltar para Dirtmouth.
+sr05_steady|Seg. 05 • Comprar Corpo Firme|Compre Corpo Firme de Salubra.
+sr05_shaman|Seg. 05 • Comprar Pedra do Xamã|Compre Pedra do Xamã e priorize-a junto de Distorcedor de Magias.
+sr05_notch|Seg. 05 • Comprar um encaixe de amuleto|Com os cinco amuletos exigidos, compre o primeiro encaixe de Salubra e faça save & quit.
+sr05_lantern|Seg. 05 • Comprar Lanterna de Lumélula|Equipe Pedra do Xamã e Distorcedor de Magias, vá a Dirtmouth e compre a lanterna de Sly por 1800 Geo.
+sr05_peak|Seg. 05 • Entrar no Pico de Cristal|Faça save & quit, volte à Encruzilhada e use Mergulho Desolador na entrada das minas.
+sr06_heart|Seg. 06 • Obter Coração de Cristal|Atravesse o lado direito do Pico. O banco de segurança próximo é opcional.
+sr06_dark|Seg. 06 • Obter Escuridão Descente|Siga ao Monte Cristalizado e melhore o mergulho. Abuse da invencibilidade desse feitiço nos chefes.
+sr06_dream|Seg. 06 • Obter o Ferrão dos Sonhos|Caia nos Campos de Descanso e conclua a sequência do memorial.
+sr06_stag|Seg. 06 • Liberar a estação dos Campos|Abra a estação dos Campos de Descanso e viaje para Armazéns da Cidade.
+sr07_waterways|Seg. 07 • Abrir os Esgotos Reais|Use a Chave Simples na tampa da avenida inferior e sente no banco dos Esgotos.
+sr07_dung|Seg. 07 • Derrotar Defensor do Esterco|Entre com vida e alma cheias. Use Escuridão Descente quando ele estiver sob o chão.
+sr07_isma|Seg. 07 • Obter Lágrima de Isma|Acione a alavanca, atravesse o túnel de espinhos com Coração de Cristal e alcance o bosque de Isma.
+sr07_skip|Seg. 07 • Fazer o pogo dos Sentinelas|Tente o pogo no objeto de fundo sob a Torre do Vigia. Se preferir segurança, pegue Asas do Monarca e retorne.
+sr07_watchers|Seg. 07 • Derrotar Cavaleiros Sentinelas|Use o banco da torre, derrube o lustre pelo teto secreto e abuse de Escuridão Descente durante a luta.
+sr07_lurien|Seg. 07 • Libertar Lurien|Suba ao topo da torre, encerre o sonho do Vigia e pegue o baú de Geo durante a descida.
+sr07_kings|Seg. 07 • Liberar Estação do Rei|Abra a estação inferior da cidade e viaje de Último Besouro até Dirtmouth.
+sr08_archives|Seg. 08 • Chegar aos Arquivos da Professora|Atravesse o Caminho Verde e o Cânion da Névoa. Use o banco de segurança no topo dos Arquivos.
+sr08_uumuu|Seg. 08 • Derrotar Uumuu|Jogue com calma, atraia Uumuu para perto da plataforma central e use o mergulho quando Quirrel abrir sua defesa.
+sr08_monomon|Seg. 08 • Libertar Monomon|Encontre Quirrel junto ao tanque e use o Ferrão dos Sonhos na Professora.
+sr08_gardens|Seg. 08 • Seguir para os Jardins da Rainha|Use novamente o banco dos Arquivos e siga à esquerda, atravessando o ácido até os Jardins.
+sr09_bench|Seg. 09 • Comprar o banco antes do Ninho|Atravesse os Jardins pela entrada de ácido, pague o banco antes do Ninho Profundo e sente.
+sr09_herrah|Seg. 09 • Libertar Herrah|Entre na Toca da Besta pela Vila Distante, atravesse a armadilha e encerre o sonho de Herrah.
+sr09_stag|Seg. 09 • Liberar a estação da Vila Distante|Pague a estação e viaje diretamente para Dirtmouth.
+sr10_egg|Seg. 10 • Entrar no Templo do Ovo Negro|Com os três Sonhadores derrotados, atravesse a Encruzilhada e entre no templo. Use o banco somente se precisar curar.
+sr10_hollow_knight|Seg. 10 • Derrotar o Hollow Knight|Administre a alma, cure durante os golpes autoinfligidos e use Escuridão Descente como principal fonte de dano.
+grub_crossroads_acid|Encruzilhada • Passagem com ácido|A partir de Cornifer, siga pela passagem oeste até a jarra acima do ácido.
+grub_crossroads_center|Encruzilhada • Sala central|Use o dash para alcançar a larva na sala central da Encruzilhada.
+grub_crossroads_stag|Encruzilhada • Próxima à estação|Saia da estação pela direita, suba e atravesse a parede quebrável à esquerda.
+grub_crossroads_spike|Encruzilhada • Corredor de espinhos|Procure a larva no corredor de espinhos da parte sudeste da região.
+grub_crossroads_guarded|Encruzilhada • Larva protegida|Suba pela área oriental e derrote o inimigo que guarda a jarra.
+grub_greenpath_cornifer|Caminho Verde • Próxima a Cornifer|Depois de ver Hornet, corte o cipó da passagem secreta e siga até a larva.
+grub_greenpath_journal|Caminho Verde • Próxima ao Caçador|Desça a partir da cabana do Caçador e explore a parte inferior.
+grub_greenpath_mmc|Caminho Verde • Caminho de Sheo|Explore os corredores inferiores no caminho para a casa de Sheo.
+grub_greenpath_stag|Caminho Verde • Cavaleiro do Musgo|Derrote o Cavaleiro do Musgo que protege a jarra na parte superior.
+grub_cliffs|Penhascos Uivantes|Vasculhe a passagem escondida dos Penhascos Uivantes.
+grub_fungal_bouncy|Ermos Fúngicos • Cogumelos elásticos|Use a Garra e os cogumelos elásticos nos túneis próximos à Estação da Rainha.
+grub_fungal_spore|Ermos Fúngicos • Cogumelo com Esporos|Atravesse o salão de ácido próximo ao amuleto Cogumelo com Esporos.
+grub_deepnest_spike|Ninho Profundo • Piso frágil|Caia pelo piso frágil dos Ermos e encontre a larva verdadeira entre os imitadores.
+grub_city_left|Cidade das Lágrimas • Torre oeste|Suba pelos elevadores acima de Lemm e entre na sala lateral.
+grub_soul_sanctum|Cidade das Lágrimas • Santuário das Almas|Após o Mestre das Almas, procure a jarra antes de quebrar o último piso.
+grub_city_guarded|Cidade das Lágrimas • Larva protegida|Explore o edifício isolado da cidade e derrote os guardas.
+grub_peak_spike|Pico de Cristal • Esteiras e espinhos|Suba pelas esteiras verticais, atravesse os espinhos e use a alavanca.
+grub_peak_chest|Pico de Cristal • Abaixo do baú|Procure a passagem inferior escondida sob a área do baú.
+grub_peak_mimic|Pico de Cristal • Mimic|Quebre as paredes falsas e confirme a larva verdadeira entre os imitadores.
+grub_peak_crushers|Pico de Cristal • Trituradores|Atravesse o desafio dos pistões e trituradores móveis.
+grub_peak_crown|Pico de Cristal • Coroa de Hallownest|Suba em direção ao topo do Pico e explore o caminho da Coroa.
+grub_peak_heart|Pico de Cristal • Coração de Cristal|Use o super dash para atravessar o abismo próximo à habilidade.
+grub_mound|Pico de Cristal • Monte Cristalizado|Explore o Monte Cristalizado próximo ao Xamã e à Escuridão Descente.
+grub_resting|Campos de Descanso|Quebre o sarcófago e atravesse os túneis ocultos abaixo dos Campos.
+grub_waterways_main|Esgotos Reais • Corredor principal|A partir do banco inferior, suba e atravesse a parede quebrável.
+grub_isma|Esgotos Reais • Bosque de Isma|Após obter a Lágrima de Isma, nade pelo ácido e suba pela parede.
+grub_waterways_tram|Esgotos Reais • Próxima ao bonde|Use o acesso do bonde para alcançar a área isolada dos Esgotos.
+grub_basin_dive|Bacia Antiga • Mergulho Desolador|Use o mergulho no piso solto próximo aos Mawleks menores.
+grub_basin_wings|Bacia Antiga • Asas do Monarca|Use o pulo duplo para alcançar a jarra na parte oeste da Bacia.
+grub_dark_deepnest|Ninho Profundo • Sala escura|Leve a Lanterna e vasculhe os corredores escuros do Ninho.
+grub_deepnest_mimic|Ninho Profundo • Larvas imitadoras|Encontre a larva verdadeira entre as criaturas imitadoras.
+grub_deepnest_nosk|Ninho Profundo • Caminho de Nosk|Explore as passagens quebráveis próximas às Termas e ao caminho de Nosk.
+grub_beasts_den|Ninho Profundo • Toca da Besta|Explore a Toca da Besta antes de libertar Herrah.
+grub_kingdom_camp|Borda do Reino • Acampamento|Explore a região próxima ao acampamento e às grandes carcaças.
+grub_kingdom_oro|Borda do Reino • Próxima a Oro|Atravesse os corredores de Grandes Saltadores próximos à casa de Oro.
+grub_kings_station|Cidade das Lágrimas • Estação do Rei|Procure a sala escondida nos corredores próximos à Estação do Rei.
+grub_gardens_stag|Jardins da Rainha • Estação|Explore os corredores próximos à estação dos Jardins.
+grub_gardens_top|Jardins da Rainha • Parte superior|Use as habilidades de movimento para atravessar os espinhos superiores.
+grub_gardens_marmu|Jardins da Rainha • Próxima a Marmu|Procure a jarra nos corredores ao redor do túmulo de Marmu.
+grub_fog|Cânion da Névoa|Atravesse as bolhas explosivas e procure a passagem isolada do Cânion.
+grub_hive_external|Colmeia • Entrada|Quebre a parede do túnel do bonde e explore a parte externa da Colmeia.
+grub_hive_internal|Colmeia • Interior|Atravesse as grandes câmaras internas usando os insetos como plataformas.
+grub_collector|Torre do Amor • Três larvas|Derrote o Colecionador e quebre as três jarras no salão superior.
+grub_watcher|Torre do Vigia|Abra as alavancas e procure a sala acima da saída direita da torre.

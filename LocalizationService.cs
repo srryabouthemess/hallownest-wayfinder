@@ -10,9 +10,12 @@ namespace HallownestWayfinder
     {
         private sealed class StepTranslation
         {
-            public string Title { get; set; }
-            public string Hint { get; set; }
+            public string Title { get; set; } = string.Empty;
+            public string Hint { get; set; } = string.Empty;
         }
+
+        private static readonly Dictionary<string, StepTranslation> PortugueseSteps =
+            new Dictionary<string, StepTranslation>();
 
         private static readonly Dictionary<string, StepTranslation> EnglishSteps =
             new Dictionary<string, StepTranslation>();
@@ -41,10 +44,10 @@ namespace HallownestWayfinder
                 ["off"] = "Off",
                 ["optional"] = "[OPTIONAL] ",
                 ["automatic_progress"] = "Automatic progress",
-                ["complete"] = "F8 complete",
-                ["skip"] = "F8 skip",
-                ["back"] = "F7 back",
-                ["hide"] = "F6 hide",
+                ["complete"] = "{0} complete",
+                ["skip"] = "{0} skip",
+                ["back"] = "{0} back",
+                ["hide"] = "{0} hide",
                 ["navigation"] = "Navigation: ",
                 ["smart_unmapped"] = "Smart navigation: section not mapped yet",
                 ["arrow_approximate"] = "Arrow: general direction (approximate)",
@@ -57,7 +60,19 @@ namespace HallownestWayfinder
                 ["last_stag_to_dirtmouth"] = "Use the Last Stag to travel to Dirtmouth",
                 ["save_analyzed"] = "Save analyzed",
                 ["prerequisites_missing"] = "Prerequisites not detected",
-                ["later"] = "F8 later"
+                ["later"] = "{0} later",
+                ["toggle_key"] = "Key: show/hide",
+                ["toggle_key_description"] = "Choose the key that shows or hides the HUD.",
+                ["previous_key"] = "Key: previous step",
+                ["previous_key_description"] = "Choose the key that returns to the previous step.",
+                ["next_key"] = "Key: next step",
+                ["next_key_description"] = "Choose the key that advances or postpones the step.",
+                ["reset_route"] = "Reset route progress",
+                ["reset_route_description"] = "Reset only the manual progress of the currently selected route.",
+                ["keep_progress"] = "Keep",
+                ["reset_now"] = "Reset now",
+                ["route_completed"] = "ROUTE COMPLETE",
+                ["completion_checklist"] = "Charms {0}/40  •  Masks {1}/9  •  Vessels {2}/3  •  Nail {3}/4  •  Essence {4}/2400"
             };
 
         private static int _language;
@@ -78,9 +93,7 @@ namespace HallownestWayfinder
 
                 try
                 {
-                    string gameLanguage = GameManager.instance?.gameSettings?.gameLanguage.ToString();
-                    if (!string.IsNullOrEmpty(gameLanguage))
-                        return gameLanguage.IndexOf("Portugu", StringComparison.OrdinalIgnoreCase) < 0;
+                    return Language.Language.CurrentLanguage() != Language.LanguageCode.PT;
                 }
                 catch
                 {
@@ -103,25 +116,32 @@ namespace HallownestWayfinder
         public static string StepTitle(RouteStep step)
         {
             EnsureLoaded();
-            return IsEnglish && EnglishSteps.TryGetValue(step.Id, out StepTranslation value)
-                ? value.Title
-                : step.Title;
+            Dictionary<string, StepTranslation> preferred =
+                IsEnglish ? EnglishSteps : PortugueseSteps;
+            Dictionary<string, StepTranslation> fallback =
+                IsEnglish ? PortugueseSteps : EnglishSteps;
+            if (preferred.TryGetValue(step.Id, out StepTranslation value)) return value.Title;
+            return fallback.TryGetValue(step.Id, out value) ? value.Title : step.Id;
         }
 
         public static string StepHint(RouteStep step)
         {
             EnsureLoaded();
-            return IsEnglish && EnglishSteps.TryGetValue(step.Id, out StepTranslation value)
-                ? value.Hint
-                : step.Hint;
+            Dictionary<string, StepTranslation> preferred =
+                IsEnglish ? EnglishSteps : PortugueseSteps;
+            Dictionary<string, StepTranslation> fallback =
+                IsEnglish ? PortugueseSteps : EnglishSteps;
+            if (preferred.TryGetValue(step.Id, out StepTranslation value)) return value.Hint;
+            return fallback.TryGetValue(step.Id, out value) ? value.Hint : step.Id;
         }
 
-        public static string StepTransport(RouteStep step)
+        public static string? StepTransport(RouteStep step)
         {
-            if (step == null || string.IsNullOrEmpty(step.TransportInstruction)) return null;
+            string? instruction = step.TransportInstruction;
+            if (instruction == null || instruction.Length == 0) return null;
             return step.Id == "c03_dirtmouth"
-                ? Text("last_stag_to_dirtmouth", step.TransportInstruction)
-                : step.TransportInstruction;
+                ? Text("last_stag_to_dirtmouth", instruction)
+                : instruction;
         }
 
         private static void EnsureLoaded()
@@ -129,9 +149,15 @@ namespace HallownestWayfinder
             if (_loaded) return;
             _loaded = true;
 
+            LoadSteps("HallownestWayfinder.Assets.localization_pt.txt", PortugueseSteps);
+            LoadSteps("HallownestWayfinder.Assets.localization_en.txt", EnglishSteps);
+        }
+
+        private static void LoadSteps(string resourceName,
+            Dictionary<string, StepTranslation> destination)
+        {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            using (Stream stream = assembly.GetManifestResourceStream(
-                "HallownestWayfinder.Assets.localization_en.txt"))
+            using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
             {
                 if (stream == null) return;
                 using (StreamReader reader = new StreamReader(stream))
@@ -142,7 +168,7 @@ namespace HallownestWayfinder
                         if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#")) continue;
                         string[] columns = line.Split(new[] { '|' }, 3);
                         if (columns.Length != 3) continue;
-                        EnglishSteps[columns[0]] = new StepTranslation
+                        destination[columns[0]] = new StepTranslation
                         {
                             Title = columns[1],
                             Hint = columns[2]

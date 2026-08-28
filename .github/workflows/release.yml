@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj
+
+      - name: Run tests
+        run: dotnet test tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj -c Release --no-restore
+
+      - name: Build release artifacts
+        run: dotnet build HallownestWayfinder.csproj -c Release --no-restore
+
+      - name: Verify tag and prepare artifacts
+        shell: pwsh
+        run: |
+          [xml]$props = Get-Content Directory.Build.props
+          $version = $props.Project.PropertyGroup.VersionPrefix
+          if ($env:GITHUB_REF_NAME -ne "v$version") {
+            throw "Tag $env:GITHUB_REF_NAME does not match VersionPrefix $version."
+          }
+          Copy-Item bin/Publish/Publish.zip bin/Publish/HallownestWayfinder.zip
+
+      - name: Create GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create $env:GITHUB_REF_NAME `
+            bin/Publish/HallownestWayfinder.dll `
+            bin/Publish/HallownestWayfinder.zip `
+            --generate-notes `
+            --title "Hallownest Wayfinder $env:GITHUB_REF_NAME"

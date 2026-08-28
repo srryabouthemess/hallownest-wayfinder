@@ -9,18 +9,22 @@ namespace HallownestWayfinder
     {
         private static readonly Dictionary<string, Texture2D> Cache = new Dictionary<string, Texture2D>();
 
-        public static Texture2D Get(string fileName)
+        public static Texture2D? Get(string? fileName)
         {
-            if (string.IsNullOrEmpty(fileName)) return null;
+            if (fileName == null || fileName.Length == 0) return null;
             if (Cache.TryGetValue(fileName, out Texture2D cached)) return cached;
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             string resourceName = $"HallownestWayfinder.Assets.{fileName}";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (Stream? stream = assembly.GetManifestResourceStream(resourceName))
             {
                 if (stream == null) return null;
-                byte[] data = new byte[stream.Length];
-                stream.Read(data, 0, data.Length);
+                byte[] data;
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    stream.CopyTo(memory);
+                    data = memory.ToArray();
+                }
 
                 Texture2D texture = new Texture2D(2, 2);
                 texture.name = "HallownestWayfinder " + fileName;
