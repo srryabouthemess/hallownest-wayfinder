@@ -26,6 +26,14 @@ namespace HallownestWayfinder
                 Name = GrubRouteDefinition.Name,
                 EnglishName = "Grubs 46/46",
                 Steps = GrubRouteDefinition.Steps
+            },
+            new RoutePlan
+            {
+                Id = "save_completion",
+                Name = SaveCompletionDefinition.Name,
+                EnglishName = "Save Completion",
+                Steps = SaveCompletionDefinition.Steps,
+                IsSaveCompletion = true
             }
         };
     }

@@ -8,5 +8,6 @@ namespace HallownestWayfinder
         public string Name { get; set; }
         public string EnglishName { get; set; }
         public IReadOnlyList<RouteStep> Steps { get; set; }
+        public bool IsSaveCompletion { get; set; }
     }
 }

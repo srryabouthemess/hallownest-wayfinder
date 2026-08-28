@@ -17,13 +17,18 @@ namespace HallownestWayfinder
         public RouteGlobalSettings GlobalSettings { get; private set; } = new RouteGlobalSettings();
         public bool ToggleButtonInsideMenu => true;
         public RoutePlan CurrentRoute => RouteCatalog.Routes[GlobalSettings.ActiveRoute];
+        public bool IsSaveCompletion => CurrentRoute.IsSaveCompletion;
         public int CurrentStepIndex
         {
-            get => CurrentRoute.Id == "speedrun_5h"
-                ? Progress.SpeedrunCurrentStep
-                : CurrentRoute.Id == "grubs_46" ? Progress.GrubCurrentStep : Progress.CurrentStep;
+            get => IsSaveCompletion
+                ? SaveCompletionAnalyzer.FindNextStep(CurrentRoute.Steps,
+                    Progress.SaveCompletionDismissedStepIds)
+                : CurrentRoute.Id == "speedrun_5h"
+                    ? Progress.SpeedrunCurrentStep
+                    : CurrentRoute.Id == "grubs_46" ? Progress.GrubCurrentStep : Progress.CurrentStep;
             private set
             {
+                if (IsSaveCompletion) return;
                 if (CurrentRoute.Id == "speedrun_5h") Progress.SpeedrunCurrentStep = value;
                 else if (CurrentRoute.Id == "grubs_46") Progress.GrubCurrentStep = value;
                 else Progress.CurrentStep = value;
@@ -31,6 +36,11 @@ namespace HallownestWayfinder
         }
         public bool HasActiveStep => CurrentStepIndex >= 0 && CurrentStepIndex < CurrentRoute.Steps.Count;
         public RouteStep CurrentStep => HasActiveStep ? CurrentRoute.Steps[CurrentStepIndex] : null;
+        public int CompletedStepCount => IsSaveCompletion
+            ? SaveCompletionAnalyzer.CountCompleted(CurrentRoute.Steps)
+            : CurrentStepIndex;
+        public bool CurrentStepIsAvailable => !IsSaveCompletion ||
+            (CurrentStep != null && SaveCompletionAnalyzer.IsAvailable(CurrentStep));
 
         public override string GetVersion() => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
@@ -64,8 +74,10 @@ namespace HallownestWayfinder
                 Progress.DataVersion = 2;
             }
 
-            if (Progress.DataVersion < 3)
-                Progress.DataVersion = 3;
+            if (Progress.DataVersion < 3) Progress.DataVersion = 3;
+            if (Progress.SaveCompletionDismissedStepIds == null)
+                Progress.SaveCompletionDismissedStepIds = new List<string>();
+            if (Progress.DataVersion < 4) Progress.DataVersion = 4;
 
             ClampProgress();
         }
@@ -92,7 +104,13 @@ namespace HallownestWayfinder
                 {
                     Name = LocalizationService.Text("route", "Rota ativa"),
                     Description = LocalizationService.Text("route_description", "Escolha a rota exibida pelo Hallownest Wayfinder."),
-                    Values = new[] { "112%", "Speedrun 5h", LocalizationService.Text("grubs_route", "Larvas 46/46") },
+                    Values = new[]
+                    {
+                        "112%",
+                        "Speedrun 5h",
+                        LocalizationService.Text("grubs_route", "Larvas 46/46"),
+                        LocalizationService.Text("save_completion_route", "Completar save")
+                    },
                     Saver = value =>
                     {
                         GlobalSettings.ActiveRoute = value;
@@ -153,12 +171,27 @@ namespace HallownestWayfinder
 
         public void NextStep()
         {
+            if (IsSaveCompletion)
+            {
+                RouteStep step = CurrentStep;
+                if (step != null && !Progress.SaveCompletionDismissedStepIds.Contains(step.Id))
+                    Progress.SaveCompletionDismissedStepIds.Add(step.Id);
+                return;
+            }
+
             if (CurrentStepIndex < CurrentRoute.Steps.Count)
                 CurrentStepIndex++;
         }
 
         public void PreviousStep()
         {
+            if (IsSaveCompletion)
+            {
+                int count = Progress.SaveCompletionDismissedStepIds.Count;
+                if (count > 0) Progress.SaveCompletionDismissedStepIds.RemoveAt(count - 1);
+                return;
+            }
+
             if (CurrentStepIndex > 0)
                 CurrentStepIndex--;
         }
@@ -169,7 +202,7 @@ namespace HallownestWayfinder
 
             try
             {
-                if (CurrentStep.IsComplete()) NextStep();
+                if (CurrentStep.IsComplete() && !IsSaveCompletion) NextStep();
             }
             catch (Exception exception)
             {

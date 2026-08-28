@@ -4,6 +4,8 @@ All notable changes to Hallownest Wayfinder will be documented here.
 
 ## Unreleased
 
+- Added `Save Completion`, which scans existing saves and recommends the next unfinished objective with detectable prerequisites.
+- Integrated all 46 individual grub records into the save-completion analysis and added per-save postpone/restore controls.
 - Added complete English localization for the menu, HUD, navigation and all 247 route objectives.
 - Added automatic language detection plus manual Portuguese (Brazil) and English options.
 - Added combined completion rules supporting all/any conditions, visited scenes,

@@ -51,10 +51,19 @@ namespace HallownestWayfinder
             RouteStep step = Mod.CurrentStep;
             bool navigationVisible = Mod.GlobalSettings.NavigationMode != 2;
             NavigationResult navigation = RouteNavigation.Resolve(step, Mod.GlobalSettings.NavigationMode == 0);
-            string heading = $"{LocalizationService.RouteName(Mod.CurrentRoute).ToUpperInvariant()}  •  {Mod.CurrentStepIndex + 1}/{Mod.CurrentRoute.Steps.Count}";
+            string heading = Mod.IsSaveCompletion
+                ? $"{LocalizationService.RouteName(Mod.CurrentRoute).ToUpperInvariant()}  •  {Mod.CompletedStepCount}/{Mod.CurrentRoute.Steps.Count}"
+                : $"{LocalizationService.RouteName(Mod.CurrentRoute).ToUpperInvariant()}  •  {Mod.CurrentStepIndex + 1}/{Mod.CurrentRoute.Steps.Count}";
             string objective = (step.Optional ? LocalizationService.Text("optional", "[OPCIONAL] ") : "") + LocalizationService.StepTitle(step);
             string hint = "→ " + LocalizationService.StepHint(step);
-            string footer = step.IsAutomaticallyTracked
+            string footer = Mod.IsSaveCompletion
+                ? (Mod.CurrentStepIsAvailable
+                    ? LocalizationService.Text("save_analyzed", "Save analisado")
+                    : LocalizationService.Text("prerequisites_missing", "Pré-requisitos não detectados"))
+                    + "  •  " + LocalizationService.Text("later", "F8 ver depois")
+                    + "  •  " + LocalizationService.Text("back", "F7 voltar")
+                    + "  •  " + LocalizationService.Text("hide", "F6 ocultar")
+                : step.IsAutomaticallyTracked
                 ? step.Optional
                     ? LocalizationService.Text("automatic_progress", "Avanço automático") + "  •  " + LocalizationService.Text("skip", "F8 pular") + "  •  " + LocalizationService.Text("back", "F7 voltar") + "  •  " + LocalizationService.Text("hide", "F6 ocultar")
                     : LocalizationService.Text("automatic_progress", "Avanço automático") + "  •  " + LocalizationService.Text("back", "F7 voltar") + "  •  " + LocalizationService.Text("hide", "F6 ocultar")

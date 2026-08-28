@@ -12,11 +12,14 @@ Hallownest Wayfinder displays the next objective of a guided route inside the ga
 - Guided 112% route with automatic progress tracking.
 - Selectable `Speedrun 5h` route with ten segments and independent progress.
 - `Larvas 46/46` diagnostic route that skips rescued grubs and stops at the next missing location.
+- `Save Completion` mode that scans an existing save and recommends the next persistent, unfinished objective whose prerequisites are available.
 - Intelligent room-to-room navigation with an approximate-direction fallback.
 - Embedded icons and a UI designed to fit Hollow Knight's visual style.
 - Independent progress for every save file.
 - Configurable interface size and navigation mode.
 - Portuguese (Brazil) and English localization, with automatic game-language detection and a manual override.
+
+In `Save Completion`, route-only travel instructions and consumable counters are excluded because they cannot reliably describe an existing save. The mode checks permanent progression records, includes all 46 grubs individually and lets you postpone a recommendation with `F8`; `F7` restores the most recently postponed objective.
 
 ## Controls
 

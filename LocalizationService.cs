@@ -23,6 +23,7 @@ namespace HallownestWayfinder
                 ["route"] = "Active route",
                 ["route_description"] = "Choose the route displayed by Hallownest Wayfinder.",
                 ["grubs_route"] = "Grubs 46/46",
+                ["save_completion_route"] = "Save Completion",
                 ["language"] = "Language",
                 ["language_description"] = "Choose the language used by the mod.",
                 ["automatic"] = "Automatic",
@@ -53,7 +54,10 @@ namespace HallownestWayfinder
                 ["exit_pending"] = "Route found; waiting for the room exit position",
                 ["section_unmapped"] = "Section not mapped yet",
                 ["general_direction"] = "General direction",
-                ["last_stag_to_dirtmouth"] = "Use the Last Stag to travel to Dirtmouth"
+                ["last_stag_to_dirtmouth"] = "Use the Last Stag to travel to Dirtmouth",
+                ["save_analyzed"] = "Save analyzed",
+                ["prerequisites_missing"] = "Prerequisites not detected",
+                ["later"] = "F8 later"
             };
 
         private static int _language;
