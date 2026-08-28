@@ -8,5 +8,6 @@ HollowKnightManaged/
 *.pdb
 *.dll
 *.zip
+asset-sources/
 Thumbs.db
 .DS_Store
