@@ -3,7 +3,7 @@
     <TargetFramework>net472</TargetFramework>
     <AssemblyName>HallownestWayfinder</AssemblyName>
     <RootNamespace>HallownestWayfinder</RootNamespace>
-    <AssemblyVersion>0.8.1.0</AssemblyVersion>
+    <AssemblyVersion>0.9.0.0</AssemblyVersion>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <HollowKnightRefs Condition="'$(HollowKnightRefs)' == ''">HollowKnightManaged</HollowKnightRefs>

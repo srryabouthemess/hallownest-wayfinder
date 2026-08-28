@@ -4,12 +4,13 @@ An in-game route guide and navigation assistant for Hollow Knight.
 
 Hallownest Wayfinder displays the next objective of a guided route inside the game. It can automatically detect completed objectives, provide room-aware navigation and keep separate progress for each save file.
 
-> The project is under active development. The current route is a guided 112% playthrough; support for alternative routes, including speedrun routes, is planned.
+> The project is under active development. It currently includes a guided 112% playthrough and a safe, glitchless route for the five-hour speedrun achievement.
 
 ## Features
 
 - Persistent objective HUD while playing.
 - Guided 112% route with automatic progress tracking.
+- Selectable `Speedrun 5h` route with ten segments and independent progress.
 - Intelligent room-to-room navigation with an approximate-direction fallback.
 - Embedded icons and a UI designed to fit Hollow Knight's visual style.
 - Independent progress for every save file.
@@ -53,6 +54,8 @@ The compiled mod will be available at `bin/Release/net472/HallownestWayfinder.dl
 ## Route source and attribution
 
 The current 112% route is adapted and summarized from the Steam guide *112% Completion Walkthrough with Maps* by Almech Alfarion. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and third-party licensing details.
+
+The five-hour speedrun route is adapted and summarized from fireb0rn's Steam guide [*Hollow Knight - 5 Hour Speedrun Achievement Guide by a Speedrunner*](https://steamcommunity.com/sharedfiles/filedetails/?id=1861523602). The in-game instructions are original Portuguese summaries rather than reproductions of the guide text.
 
 ## Contributing
 

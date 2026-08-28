@@ -16,8 +16,18 @@ namespace HallownestWayfinder
         public RouteProgress Progress { get; private set; } = new RouteProgress();
         public RouteGlobalSettings GlobalSettings { get; private set; } = new RouteGlobalSettings();
         public bool ToggleButtonInsideMenu => true;
-        public bool HasActiveStep => Progress.CurrentStep >= 0 && Progress.CurrentStep < RouteDefinition.Steps.Count;
-        public RouteStep CurrentStep => HasActiveStep ? RouteDefinition.Steps[Progress.CurrentStep] : null;
+        public RoutePlan CurrentRoute => RouteCatalog.Routes[GlobalSettings.ActiveRoute];
+        public int CurrentStepIndex
+        {
+            get => CurrentRoute.Id == "speedrun_5h" ? Progress.SpeedrunCurrentStep : Progress.CurrentStep;
+            private set
+            {
+                if (CurrentRoute.Id == "speedrun_5h") Progress.SpeedrunCurrentStep = value;
+                else Progress.CurrentStep = value;
+            }
+        }
+        public bool HasActiveStep => CurrentStepIndex >= 0 && CurrentStepIndex < CurrentRoute.Steps.Count;
+        public RouteStep CurrentStep => HasActiveStep ? CurrentRoute.Steps[CurrentStepIndex] : null;
 
         public override string GetVersion() => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
@@ -51,6 +61,9 @@ namespace HallownestWayfinder
                 Progress.DataVersion = 2;
             }
 
+            if (Progress.DataVersion < 3)
+                Progress.DataVersion = 3;
+
             ClampProgress();
         }
 
@@ -61,6 +74,7 @@ namespace HallownestWayfinder
             GlobalSettings = settings ?? new RouteGlobalSettings();
             GlobalSettings.UiSize = Math.Max(0, Math.Min(GlobalSettings.UiSize, 2));
             GlobalSettings.NavigationMode = Math.Max(0, Math.Min(GlobalSettings.NavigationMode, 2));
+            GlobalSettings.ActiveRoute = Math.Max(0, Math.Min(GlobalSettings.ActiveRoute, RouteCatalog.Routes.Count - 1));
         }
 
         public RouteGlobalSettings OnSaveGlobal() => GlobalSettings;
@@ -69,6 +83,18 @@ namespace HallownestWayfinder
         {
             List<IMenuMod.MenuEntry> entries = new List<IMenuMod.MenuEntry>
             {
+                new IMenuMod.MenuEntry
+                {
+                    Name = "Rota ativa",
+                    Description = "Escolha a rota exibida pelo Hallownest Wayfinder.",
+                    Values = new[] { "112%", "Speedrun 5h" },
+                    Saver = value =>
+                    {
+                        GlobalSettings.ActiveRoute = value;
+                        ClampProgress();
+                    },
+                    Loader = () => GlobalSettings.ActiveRoute
+                },
                 new IMenuMod.MenuEntry
                 {
                     Name = "Tamanho da interface",
@@ -95,14 +121,14 @@ namespace HallownestWayfinder
 
         public void NextStep()
         {
-            if (Progress.CurrentStep < RouteDefinition.Steps.Count)
-                Progress.CurrentStep++;
+            if (CurrentStepIndex < CurrentRoute.Steps.Count)
+                CurrentStepIndex++;
         }
 
         public void PreviousStep()
         {
-            if (Progress.CurrentStep > 0)
-                Progress.CurrentStep--;
+            if (CurrentStepIndex > 0)
+                CurrentStepIndex--;
         }
 
         public void TryAdvanceAutomatically()
@@ -122,6 +148,8 @@ namespace HallownestWayfinder
         private void ClampProgress()
         {
             Progress.CurrentStep = Math.Max(0, Math.Min(Progress.CurrentStep, RouteDefinition.Steps.Count));
+            Progress.SpeedrunCurrentStep = Math.Max(0,
+                Math.Min(Progress.SpeedrunCurrentStep, SpeedrunRouteDefinition.Steps.Count));
         }
     }
 }

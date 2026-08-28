@@ -12,6 +12,7 @@ namespace HallownestWayfinder
         private Texture2D _medallion;
         private Texture2D _arrow;
         private int _lastStep = -1;
+        private string _lastRouteId;
         private float _transitionStarted;
 
         public HallownestWayfinderMod Mod { get; set; }
@@ -24,10 +25,12 @@ namespace HallownestWayfinder
 
             if (IsInsideSave()) Mod.TryAdvanceAutomatically();
 
-            if (Mod != null && Mod.Progress.CurrentStep != _lastStep)
+            if (Mod != null &&
+                (Mod.CurrentStepIndex != _lastStep || Mod.CurrentRoute.Id != _lastRouteId))
             {
                 if (_lastStep >= 0) _transitionStarted = Time.unscaledTime;
-                _lastStep = Mod.Progress.CurrentStep;
+                _lastStep = Mod.CurrentStepIndex;
+                _lastRouteId = Mod.CurrentRoute.Id;
             }
         }
 
@@ -48,7 +51,7 @@ namespace HallownestWayfinder
             RouteStep step = Mod.CurrentStep;
             bool navigationVisible = Mod.GlobalSettings.NavigationMode != 2;
             NavigationResult navigation = RouteNavigation.Resolve(step, Mod.GlobalSettings.NavigationMode == 0);
-            string heading = $"{RouteDefinition.Name.ToUpperInvariant()}  •  {Mod.Progress.CurrentStep + 1}/{RouteDefinition.Steps.Count}";
+            string heading = $"{Mod.CurrentRoute.Name.ToUpperInvariant()}  •  {Mod.CurrentStepIndex + 1}/{Mod.CurrentRoute.Steps.Count}";
             string objective = (step.Optional ? "[OPCIONAL] " : "") + step.Title;
             string hint = "→ " + step.Hint;
             string footer = step.IsAutomaticallyTracked

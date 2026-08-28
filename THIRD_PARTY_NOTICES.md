@@ -16,6 +16,16 @@ The Hallownest Wayfinder graph loader and breadth-first search implementation we
 written independently for this project. No RCPathfinder or RandoMapCore code is
 included in the Hallownest Wayfinder binary.
 
+## Five-hour speedrun route
+
+The route order is adapted from fireb0rn's Steam guide, "Hollow Knight - 5 Hour
+Speedrun Achievement Guide by a Speedrunner":
+
+https://steamcommunity.com/sharedfiles/filedetails/?id=1861523602
+
+Hallownest Wayfinder uses original, concise Portuguese instructions written for
+the in-game HUD and does not redistribute the guide's route-map images.
+
 The following GPL projects were studied for interoperability and architectural
 reference, but their binaries are not bundled:
 
