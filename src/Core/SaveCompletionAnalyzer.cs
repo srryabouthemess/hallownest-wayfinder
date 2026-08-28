@@ -6,21 +6,29 @@ namespace HallownestWayfinder
     {
         public static int FindNextStep(IReadOnlyList<RouteStep> steps, IList<string> dismissed)
         {
-            if (steps == null || PlayerData.instance == null || GameManager.instance == null) return -1;
+            if (!PlayerDataGameState.TryCapture(out PlayerDataGameState? state) || state == null)
+                return -1;
+            return FindNextStep(steps, dismissed, state);
+        }
+
+        public static int FindNextStep(IReadOnlyList<RouteStep> steps, IList<string> dismissed,
+            IGameState state)
+        {
+            if (steps == null) return -1;
 
             int firstIncomplete = -1;
             int firstDismissedIncomplete = -1;
             for (int index = 0; index < steps.Count; index++)
             {
                 RouteStep step = steps[index];
-                if (step == null || IsComplete(step)) continue;
+                if (step == null || IsComplete(step, state)) continue;
                 if (Contains(dismissed, step.Id))
                 {
                     if (firstDismissedIncomplete < 0) firstDismissedIncomplete = index;
                     continue;
                 }
                 if (firstIncomplete < 0) firstIncomplete = index;
-                if (IsAvailable(step)) return index;
+                if (IsAvailable(step, state)) return index;
             }
 
             // If every remaining item has an unknown prerequisite, still show
@@ -30,23 +38,34 @@ namespace HallownestWayfinder
 
         public static int CountCompleted(IReadOnlyList<RouteStep> steps)
         {
-            if (steps == null || PlayerData.instance == null || GameManager.instance == null) return 0;
+            if (!PlayerDataGameState.TryCapture(out PlayerDataGameState? state) || state == null)
+                return 0;
+            return CountCompleted(steps, state);
+        }
+
+        public static int CountCompleted(IReadOnlyList<RouteStep> steps, IGameState state)
+        {
+            if (steps == null) return 0;
 
             int completed = 0;
             foreach (RouteStep step in steps)
-                if (step != null && IsComplete(step)) completed++;
+                if (step != null && IsComplete(step, state)) completed++;
             return completed;
         }
 
         public static bool IsAvailable(RouteStep step)
         {
-            if (step == null || PlayerData.instance == null) return false;
-            return step.ArePrerequisitesSatisfied();
+            if (!PlayerDataGameState.TryCapture(out PlayerDataGameState? state) || state == null)
+                return false;
+            return IsAvailable(step, state);
         }
 
-        private static bool IsComplete(RouteStep step)
+        public static bool IsAvailable(RouteStep step, IGameState state) =>
+            step != null && step.ArePrerequisitesSatisfied(state);
+
+        private static bool IsComplete(RouteStep step, IGameState state)
         {
-            try { return step.IsComplete(); }
+            try { return step.IsComplete(state); }
             catch { return false; }
         }
 

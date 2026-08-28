@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using HutongGames.PlayMaker;
 using UnityEngine;
@@ -17,8 +16,15 @@ namespace HallownestWayfinder
         Unmapped
     }
 
-    public sealed class NavigationResult
+    public struct NavigationResult
     {
+        public NavigationResult()
+        {
+            Kind = NavigationKind.General;
+            Degrees = 0f;
+            Label = string.Empty;
+        }
+
         public NavigationKind Kind { get; set; }
         public float Degrees { get; set; }
         public string Label { get; set; } = string.Empty;
@@ -30,8 +36,13 @@ namespace HallownestWayfinder
         private static string? _objectiveCacheKey;
         private static Transform? _objectiveTarget;
         private static float _nextObjectiveSearch;
+        private static int _transformCacheHandle = -1;
+        private static readonly Dictionary<string, Transform> TransformsByName =
+            new Dictionary<string, Transform>(StringComparer.Ordinal);
+        private static readonly List<Transform> SceneTransforms = new List<Transform>();
 
-        public static NavigationResult Resolve(RouteStep? step, bool intelligent)
+        public static NavigationResult Resolve(RouteStep? step, bool intelligent,
+            IGameState? gameState = null)
         {
             if (step == null)
                 return General(0f);
@@ -44,46 +55,54 @@ namespace HallownestWayfinder
                 ? Vector3.zero
                 : HeroController.instance.transform.position;
 
-            NavigationWaypoint[] points = step.Navigation == null
-                ? Array.Empty<NavigationWaypoint>()
-                : step.Navigation.Where(point => point != null && point.Scene == scene)
-                    .OrderBy(point => point.Order).ToArray();
-
-            foreach (NavigationWaypoint point in points)
+            bool hasPointInScene = false;
+            NavigationResult? bestPoint = null;
+            int bestOrder = int.MaxValue;
+            NavigationWaypoint[]? navigation = step.Navigation;
+            if (navigation != null)
             {
-                Vector2 position = new Vector2(point.X, point.Y);
-                if (point.TargetObjectName != null)
+                foreach (NavigationWaypoint point in navigation)
                 {
-                    Transform? target = FindTransition(point.TargetObjectName);
-                    if (target == null) continue;
-                    position = target.position;
-                }
-                Vector2 delta = position - (Vector2)hero;
-                if (delta.magnitude <= Mathf.Max(0.5f, point.ArrivalRadius))
-                    continue;
+                    if (point == null || point.Scene != scene) continue;
+                    hasPointInScene = true;
+                    Vector2 position = new Vector2(point.X, point.Y);
+                    if (point.TargetObjectName != null)
+                    {
+                        Transform? target = FindTransition(point.TargetObjectName);
+                        if (target == null) continue;
+                        position = target.position;
+                    }
+                    Vector2 delta = position - (Vector2)hero;
+                    if (delta.magnitude <= Mathf.Max(0.5f, point.ArrivalRadius) ||
+                        point.Order >= bestOrder)
+                        continue;
 
-                // A textura original da seta aponta para cima (0 graus).
-                float degrees = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg;
-                return new NavigationResult
-                {
-                    Kind = NavigationKind.Precise,
-                    Degrees = degrees,
-                    Label = point.Label == null || point.Label.Length == 0
-                        ? LocalizationService.Text("next_exit", "Próxima saída")
-                        : point.Label
-                };
+                    bestOrder = point.Order;
+                    bestPoint = new NavigationResult
+                    {
+                        Kind = NavigationKind.Precise,
+                        Degrees = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg,
+                        Label = point.Label == null || point.Label.Length == 0
+                            ? LocalizationService.Text("next_exit")
+                            : point.Label
+                    };
+                }
             }
 
-            if (points.Length > 0)
+            if (bestPoint.HasValue) return bestPoint.Value;
+
+            if (hasPointInScene)
             {
                 return new NavigationResult
                 {
                     Kind = NavigationKind.Arrived,
-                    Label = LocalizationService.Text("point_reached", "Ponto alcançado — siga a instrução")
+                    Label = LocalizationService.Text("point_reached")
                 };
             }
 
-            string? destinationScene = step.GetTargetScene();
+            string? destinationScene = gameState == null
+                ? step.GetTargetScene()
+                : step.GetTargetScene(gameState);
             string? transportInstruction = LocalizationService.StepTransport(step);
             if (destinationScene != null && destinationScene.Length > 0)
             {
@@ -110,7 +129,7 @@ namespace HallownestWayfinder
                             {
                                 Kind = NavigationKind.Precise,
                                 Degrees = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg,
-                                Label = LocalizationService.Text("objective_here", "Objetivo nesta sala")
+                                Label = LocalizationService.Text("objective_here")
                             };
                         }
                     }
@@ -126,7 +145,7 @@ namespace HallownestWayfinder
                     return new NavigationResult
                     {
                         Kind = NavigationKind.Arrived,
-                            Label = LocalizationService.Text("objective_here", "Objetivo nesta sala")
+                            Label = LocalizationService.Text("objective_here")
                     };
                 }
 
@@ -141,14 +160,14 @@ namespace HallownestWayfinder
                         {
                             Kind = NavigationKind.Precise,
                             Degrees = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg,
-                            Label = LocalizationService.Text("next_exit", "Próxima saída")
+                            Label = LocalizationService.Text("next_exit")
                         };
                     }
 
                     return new NavigationResult
                     {
                         Kind = NavigationKind.Unmapped,
-                        Label = LocalizationService.Text("exit_pending", "Saída calculada, aguardando ponto da sala")
+                        Label = LocalizationService.Text("exit_pending")
                     };
                 }
             }
@@ -214,7 +233,7 @@ namespace HallownestWayfinder
                 X = target.position.x,
                 Y = target.position.y,
                 ArrivalRadius = 2.5f,
-                Label = LocalizationService.Text("objective_here", "Objetivo nesta sala")
+                Label = LocalizationService.Text("objective_here")
             };
 
         private static Transform? FindNamedObjective(Scene scene, RouteStep step, Vector3 hero)
@@ -226,17 +245,15 @@ namespace HallownestWayfinder
 
             Transform? closest = null;
             float closestDistance = float.MaxValue;
-            foreach (GameObject root in scene.GetRootGameObjects())
+            EnsureTransformCache(scene);
+            foreach (Transform candidate in SceneTransforms)
             {
-                Transform[] transforms = root.GetComponentsInChildren<Transform>(true);
-                foreach (Transform candidate in transforms)
-                {
-                    if (candidate.name.IndexOf(token, StringComparison.OrdinalIgnoreCase) < 0) continue;
-                    float distance = ((Vector2)candidate.position - (Vector2)hero).sqrMagnitude;
-                    if (distance >= closestDistance) continue;
-                    closest = candidate;
-                    closestDistance = distance;
-                }
+                if (candidate == null ||
+                    candidate.name.IndexOf(token, StringComparison.OrdinalIgnoreCase) < 0) continue;
+                float distance = ((Vector2)candidate.position - (Vector2)hero).sqrMagnitude;
+                if (distance >= closestDistance) continue;
+                closest = candidate;
+                closestDistance = distance;
             }
             return closest;
         }
@@ -304,20 +321,36 @@ namespace HallownestWayfinder
         {
             Kind = NavigationKind.General,
             Degrees = degrees,
-            Label = LocalizationService.Text("general_direction", "Direção geral")
+            Label = LocalizationService.Text("general_direction")
         };
 
         private static Transform? FindTransition(string doorName)
         {
             Scene activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            EnsureTransformCache(activeScene);
+            return TransformsByName.TryGetValue(doorName, out Transform? transform) &&
+                transform != null ? transform : null;
+        }
+
+        private static void EnsureTransformCache(Scene activeScene)
+        {
+            if (_transformCacheHandle == activeScene.handle) return;
+
+            _transformCacheHandle = activeScene.handle;
+            TransformsByName.Clear();
+            SceneTransforms.Clear();
             foreach (GameObject root in activeScene.GetRootGameObjects())
             {
                 Transform[] children = root.GetComponentsInChildren<Transform>(true);
                 foreach (Transform child in children)
-                    if (child.name == doorName) return child;
+                {
+                    SceneTransforms.Add(child);
+                    if (!TransformsByName.ContainsKey(child.name))
+                        TransformsByName[child.name] = child;
+                }
             }
-            return null;
         }
     }
 }
+
 

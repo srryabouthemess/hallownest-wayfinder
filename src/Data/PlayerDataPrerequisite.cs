@@ -9,19 +9,25 @@ namespace HallownestWayfinder
         public static PlayerDataPrerequisite Bool(string field) =>
             new PlayerDataPrerequisite { PlayerBool = field };
 
-        public static PlayerDataPrerequisite Int(string field, int minimum) =>
+        public static PlayerDataPrerequisite MinimumValue(string field, int minimum) =>
             new PlayerDataPrerequisite { PlayerInt = field, Minimum = minimum };
 
         public bool IsSatisfied()
         {
-            if (PlayerData.instance == null) return false;
+            return PlayerDataGameState.TryCapture(out PlayerDataGameState? state) &&
+                state != null && IsSatisfied(state);
+        }
 
+        public bool IsSatisfied(IGameState state)
+        {
             try
             {
-                if (!string.IsNullOrEmpty(PlayerBool))
-                    return PlayerData.instance.GetBool(PlayerBool);
-                if (!string.IsNullOrEmpty(PlayerInt))
-                    return PlayerData.instance.GetInt(PlayerInt) >= Minimum;
+                string? playerBool = PlayerBool;
+                if (!string.IsNullOrEmpty(playerBool))
+                    return state.GetBool(playerBool!);
+                string? playerInt = PlayerInt;
+                if (!string.IsNullOrEmpty(playerInt))
+                    return state.GetInt(playerInt!) >= Minimum;
             }
             catch
             {

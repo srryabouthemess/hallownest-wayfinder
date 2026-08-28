@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 namespace HallownestWayfinder
 {
@@ -21,13 +22,15 @@ namespace HallownestWayfinder
 
         public static CompletionChecklistSnapshot? Read()
         {
-            PlayerData? player = PlayerData.instance;
-            if (player == null) return null;
-
-            return FromValues(player.charmsOwned, player.maxHealthBase,
-                player.MPReserveMax, player.nailSmithUpgrades,
-                player.dreamOrbs, player.dreamOrbsSpent);
+            if (!PlayerDataGameState.TryCapture(out PlayerDataGameState? state) || state == null)
+                return null;
+            return Read(state);
         }
+
+        public static CompletionChecklistSnapshot Read(IGameState state) =>
+            FromValues(state.CharmsOwned, state.MaxHealthBase,
+                state.SoulReserveMaximum, state.NailUpgrades,
+                state.CurrentEssence, state.SpentEssence);
 
         public static CompletionChecklistSnapshot FromValues(int charms, int maxHealthBase,
             int reserveSoulMaximum, int nailUpgrades, int currentEssence, int spentEssence) =>
@@ -45,9 +48,17 @@ namespace HallownestWayfinder
             CompletionChecklistSnapshot? snapshot = Read();
             if (snapshot == null) return null;
 
-            return string.Format(
-                LocalizationService.Text("completion_checklist",
-                    "Amuletos {0}/40  •  Máscaras {1}/9  •  Vasos {2}/3  •  Ferrão {3}/4  •  Essência {4}/2400"),
+            return string.Format(CultureInfo.InvariantCulture,
+                LocalizationService.Text("completion_checklist"),
+                snapshot.Charms, snapshot.Masks, snapshot.Vessels,
+                snapshot.NailUpgrades, snapshot.Essence);
+        }
+
+        public static string Format(IGameState state)
+        {
+            CompletionChecklistSnapshot snapshot = Read(state);
+            return string.Format(CultureInfo.InvariantCulture,
+                LocalizationService.Text("completion_checklist"),
                 snapshot.Charms, snapshot.Masks, snapshot.Vessels,
                 snapshot.NailUpgrades, snapshot.Essence);
         }
@@ -56,3 +67,4 @@ namespace HallownestWayfinder
             Math.Max(minimum, Math.Min(value, maximum));
     }
 }
+

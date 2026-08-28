@@ -16,13 +16,26 @@ namespace HallownestWayfinder
         public string? TransportInstruction { get; set; }
         public string? TargetScene { get; set; }
 
+        [Newtonsoft.Json.JsonIgnore]
         public bool IsAutomaticallyTracked => Completion.IsTracked;
 
         public string? GetTargetScene()
         {
-            if (!string.IsNullOrEmpty(Completion.GrubScene) && !Completion.IsGrubRescued())
+            if (PlayerDataGameState.TryCapture(out PlayerDataGameState? state) && state != null)
+                return GetTargetScene(state);
+            return GetStaticTargetScene();
+        }
+
+        public string? GetTargetScene(IGameState state)
+        {
+            if (!string.IsNullOrEmpty(Completion.GrubScene) && !Completion.IsGrubRescued(state))
                 return Completion.GrubScene;
 
+            return GetStaticTargetScene();
+        }
+
+        private string? GetStaticTargetScene()
+        {
             if (!string.IsNullOrEmpty(TransportScene)) return TransportScene;
             if (!string.IsNullOrEmpty(TargetScene)) return TargetScene;
             if (!string.IsNullOrEmpty(Completion.Scene)) return Completion.Scene;
@@ -31,8 +44,15 @@ namespace HallownestWayfinder
         }
 
         public bool IsComplete() => Completion.IsComplete();
+        public bool IsComplete(IGameState state) => Completion.IsComplete(state);
 
         public bool ArePrerequisitesSatisfied()
+        {
+            return PlayerDataGameState.TryCapture(out PlayerDataGameState? state) &&
+                state != null && ArePrerequisitesSatisfied(state);
+        }
+
+        public bool ArePrerequisitesSatisfied(IGameState state)
         {
             PlayerDataPrerequisite[][]? prerequisites = Prerequisites;
             if (prerequisites == null || prerequisites.Length == 0) return true;
@@ -43,7 +63,7 @@ namespace HallownestWayfinder
                 bool satisfied = true;
                 foreach (PlayerDataPrerequisite condition in alternative)
                 {
-                    if (condition == null || !condition.IsSatisfied())
+                    if (condition == null || !condition.IsSatisfied(state))
                     {
                         satisfied = false;
                         break;

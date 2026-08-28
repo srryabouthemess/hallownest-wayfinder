@@ -71,10 +71,10 @@ namespace HallownestWayfinder
             Type? actualType = playerField?.FieldType ?? playerProperty?.PropertyType;
             if (actualType == expectedType) return;
 
-            string actual = actualType == null ? "inexistente" : actualType.Name;
-            errors.Add("Rota '" + route.Id + "', etapa '" + step.Id +
-                "': PlayerData." + field + " deveria ser " + expectedType.Name +
-                ", mas é " + actual + ".");
+            string actual = actualType == null ? "missing" : actualType.Name;
+            errors.Add("Route '" + route.Id + "', step '" + step.Id +
+                "': PlayerData." + field + " should be " + expectedType.Name +
+                ", but is " + actual + ".");
         }
     }
 }

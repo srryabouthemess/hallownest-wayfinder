@@ -6,8 +6,8 @@ using System.Reflection;
 namespace HallownestWayfinder
 {
     /// <summary>
-    /// Grafo vanilla independente. Ele guarda apenas fatos de conectividade
-    /// entre salas; o algoritmo de busca foi escrito para o HallownestWayfinder.
+    /// Independent vanilla graph. It stores only room connectivity facts;
+    /// the pathfinding algorithm belongs to Hallownest Wayfinder.
     /// </summary>
     public static class VanillaRouteGraph
     {
@@ -21,6 +21,19 @@ namespace HallownestWayfinder
         private static readonly Dictionary<string, List<Edge>> Edges = Load();
         private static readonly string[] RequiredFields = CollectRequiredFields();
         private static readonly Dictionary<string, string> Cache = new Dictionary<string, string>();
+        private static IGameState? _gameState;
+        private static string? _accessSignature;
+
+        public static void SetGameState(IGameState state)
+        {
+            string signature = AccessSignature(state);
+            if (!string.Equals(signature, _accessSignature, StringComparison.Ordinal))
+            {
+                Cache.Clear();
+                _accessSignature = signature;
+            }
+            _gameState = state;
+        }
 
         public static bool TryGetNextDoor(string? fromScene, string? targetScene, out string? door)
         {
@@ -30,7 +43,7 @@ namespace HallownestWayfinder
                 fromScene == targetScene)
                 return false;
 
-            string cacheKey = fromScene + "\n" + targetScene + "\n" + AccessSignature();
+            string cacheKey = fromScene + "\n" + targetScene;
             if (Cache.TryGetValue(cacheKey, out string cachedDoor))
             {
                 door = cachedDoor;
@@ -118,7 +131,7 @@ namespace HallownestWayfinder
                 FieldInfo? playerField = typeof(PlayerData).GetField(field,
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 if (playerField?.FieldType != typeof(bool))
-                    errors.Add("PlayerData." + field + " não é um campo booleano válido.");
+                    errors.Add("PlayerData." + field + " is not a valid Boolean field.");
             }
             return errors;
         }
@@ -126,16 +139,14 @@ namespace HallownestWayfinder
         private static bool IsAvailable(Edge edge)
         {
             string? field = edge.RequiredPlayerBool;
-            return field == null ||
-                (PlayerData.instance != null && PlayerData.instance.GetBool(field));
+            return field == null || (_gameState != null && _gameState.GetBool(field));
         }
 
-        private static string AccessSignature()
+        private static string AccessSignature(IGameState state)
         {
-            if (PlayerData.instance == null) return "no-save";
             char[] signature = new char[RequiredFields.Length];
             for (int index = 0; index < RequiredFields.Length; index++)
-                signature[index] = PlayerData.instance.GetBool(RequiredFields[index]) ? '1' : '0';
+                signature[index] = state.GetBool(RequiredFields[index]) ? '1' : '0';
             return new string(signature);
         }
 

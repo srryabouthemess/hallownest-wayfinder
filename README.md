@@ -59,11 +59,15 @@ dotnet build -c Release -p:HollowKnightRefs="C:\path\to\hollow_knight_Data\Manag
 
 Release artifacts are generated at `bin/Publish/HallownestWayfinder.dll` and `bin/Publish/Publish.zip`.
 
-Run the data-integrity suite with:
+Run the data-integrity and behavioral suite with:
 
 ```powershell
 dotnet test tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj -c Release
 ```
+
+Route gameplay data is stored in `Assets/routes.json`. Objectives, hints and UI
+copy are editable in `Assets/localization_pt.txt` and
+`Assets/localization_en.txt`, so content corrections do not require changing C#.
 
 ## Route source and attribution
 

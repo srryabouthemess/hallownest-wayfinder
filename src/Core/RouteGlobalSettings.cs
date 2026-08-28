@@ -4,13 +4,13 @@ namespace HallownestWayfinder
 {
     public sealed class RouteGlobalSettings
     {
-        // 0 = pequeno, 1 = médio, 2 = grande.
+        // 0 = small, 1 = medium, 2 = large.
         public int UiSize { get; set; } = 1;
-        // 0 = inteligente, 1 = geral, 2 = desligada.
-        public int NavigationMode { get; set; } = 0;
-        // Índice da rota selecionada em RouteCatalog.Routes.
+        // 0 = smart, 1 = general, 2 = off.
+        public int NavigationMode { get; set; }
+        // Index of the selected route in RouteCatalog.Routes.
         public int ActiveRoute { get; set; }
-        // 0 = automático, 1 = português (Brasil), 2 = inglês.
+        // 0 = automatic, 1 = Portuguese (Brazil), 2 = English.
         public int Language { get; set; }
         public KeyCode ToggleHudKey { get; set; } = KeyCode.F6;
         public KeyCode PreviousStepKey { get; set; } = KeyCode.F7;

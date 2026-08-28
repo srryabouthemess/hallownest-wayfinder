@@ -23,20 +23,24 @@ jobs:
       - name: Restore
         run: dotnet restore tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj
 
-      - name: Run tests
-        run: dotnet test tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj -c Release --no-restore
-
-      - name: Build release artifacts
-        run: dotnet build HallownestWayfinder.csproj -c Release --no-restore
-
-      - name: Verify tag and prepare artifacts
+      - name: Read version from tag
+        id: version
         shell: pwsh
         run: |
-          [xml]$props = Get-Content Directory.Build.props
-          $version = $props.Project.PropertyGroup.VersionPrefix
-          if ($env:GITHUB_REF_NAME -ne "v$version") {
-            throw "Tag $env:GITHUB_REF_NAME does not match VersionPrefix $version."
+          if ($env:GITHUB_REF_NAME -notmatch '^v(?<version>\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)$') {
+            throw "Tag $env:GITHUB_REF_NAME is not a supported semantic version."
           }
+          "value=$($Matches.version)" >> $env:GITHUB_OUTPUT
+
+      - name: Run tests
+        run: dotnet test tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj -c Release --no-restore -warnaserror
+
+      - name: Build release artifacts
+        run: dotnet build HallownestWayfinder.csproj -c Release --no-restore -warnaserror -p:VersionPrefix=${{ steps.version.outputs.value }}
+
+      - name: Prepare artifacts
+        shell: pwsh
+        run: |
           Copy-Item bin/Publish/Publish.zip bin/Publish/HallownestWayfinder.zip
 
       - name: Create GitHub release

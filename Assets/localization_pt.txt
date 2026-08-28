@@ -1,4 +1,57 @@
 # id|title|hint
+# Linhas de interface: @chave|texto
+@route|Rota ativa
+@route_description|Escolha a rota exibida pelo Hallownest Wayfinder.
+@route.completion_112|Rota 112%
+@route.speedrun_5h|Speedrun 5h • Sem glitches
+@route.grubs_46|Larvas 46/46
+@route.save_completion|Completar save
+@language|Idioma
+@language_description|Escolha o idioma usado pelo mod.
+@automatic|Automático
+@portuguese|Português (Brasil)
+@english|English
+@ui_size|Tamanho da interface
+@ui_size_description|Altera o tamanho do painel de objetivo.
+@small|Pequeno
+@medium|Médio
+@large|Grande
+@navigation_arrow|Seta de navegação
+@navigation_description|Inteligente usa rotas mapeadas; Geral mostra uma direção aproximada.
+@smart|Inteligente
+@general|Geral
+@off|Desligada
+@optional|[OPCIONAL]
+@automatic_progress|Avanço automático
+@complete|{0} concluir
+@skip|{0} pular
+@back|{0} voltar
+@hide|{0} ocultar
+@later|{0} ver depois
+@navigation|Navegação:
+@smart_unmapped|Navegação inteligente: trecho ainda não mapeado
+@arrow_approximate|Seta: direção geral (aproximada)
+@next_exit|Próxima saída
+@point_reached|Ponto alcançado — siga a instrução
+@objective_here|Objetivo nesta sala
+@exit_pending|Saída calculada, aguardando ponto da sala
+@section_unmapped|Trecho ainda não mapeado
+@general_direction|Direção geral
+@last_stag_to_dirtmouth|Use o Último Besouro para viajar até Dirtmouth
+@save_analyzed|Save analisado
+@prerequisites_missing|Pré-requisitos não detectados
+@toggle_key|Tecla: mostrar/ocultar
+@toggle_key_description|Escolha a tecla que mostra ou oculta o HUD.
+@previous_key|Tecla: voltar etapa
+@previous_key_description|Escolha a tecla que retorna à etapa anterior.
+@next_key|Tecla: avançar etapa
+@next_key_description|Escolha a tecla que avança ou adia a etapa.
+@reset_route|Resetar progresso da rota
+@reset_route_description|Reinicia somente o progresso manual da rota atualmente selecionada.
+@keep_progress|Manter
+@reset_now|Resetar agora
+@route_completed|ROTA CONCLUÍDA
+@completion_checklist|Amuletos {0}/40  •  Máscaras {1}/9  •  Vasos {2}/3  •  Ferrão {3}/4  •  Essência {4}/2400
 fury|Pegar o amuleto Fúria dos Caídos|Na Passagem do Rei, antes de entrar em Dirtmouth, desça pela abertura com espinhos. Atravesse usando ataques para baixo nos espinhos e alcance o baú à direita.
 dirtmouth|Ir para Dirtmouth|Volte ao caminho principal da Passagem do Rei, siga sempre à direita e atravesse o grande portão para chegar a Dirtmouth.
 crossroads|Descer para a Encruzilhada Esquecida|Em Dirtmouth, caminhe à direita do banco e pule no poço aberto.

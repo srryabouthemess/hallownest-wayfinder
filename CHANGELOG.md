@@ -4,6 +4,17 @@ All notable changes to Hallownest Wayfinder will be documented here.
 
 ## Unreleased
 
+- Cached save analysis, scene collections, transition transforms, navigation
+  results, localization selection and HUD layout to remove per-frame scans and
+  allocations.
+- Replaced fixed per-route progress fields with a versioned route-ID dictionary
+  and automatic migration of existing saves.
+- Added a testable game-state abstraction plus behavioral tests for completion,
+  prerequisites, save analysis, gated BFS and progress migration.
+- Moved route content to `Assets/routes.json`, interface text to both localization
+  resources and source files into responsibility-based `src/` folders.
+- Enabled .NET analyzers and warnings-as-errors in CI, bounded navigation caches
+  by access state and made release tags the authoritative assembly version.
 - Fixed Portuguese language detection, route recovery on advanced saves, bench
   completion checks and repeated automatic-advance error logging.
 - Added usable in-room intelligent navigation and moved navigation calculation

@@ -1,9 +1,8 @@
 namespace HallownestWayfinder
 {
     /// <summary>
-    /// Um ponto de passagem dentro de uma sala. As coordenadas usam o mesmo
-    /// espaço de mundo do HeroController. Vários pontos da mesma sala podem
-    /// ser ordenados para formar um pequeno percurso interno.
+    /// A waypoint inside a room. Coordinates use HeroController's world space.
+    /// Multiple points in one room can be ordered into a short internal path.
     /// </summary>
     public sealed class NavigationWaypoint
     {

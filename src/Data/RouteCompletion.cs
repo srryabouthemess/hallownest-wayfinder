@@ -17,6 +17,7 @@ namespace HallownestWayfinder
         public string? GrubScene { get; set; }
         public int GrubCountInScene { get; set; } = 1;
 
+        [Newtonsoft.Json.JsonIgnore]
         public bool IsTracked =>
             !string.IsNullOrEmpty(PlayerBool) ||
             HasValues(AllPlayerBools) ||
@@ -32,8 +33,14 @@ namespace HallownestWayfinder
 
         public bool IsComplete()
         {
-            if (!string.IsNullOrEmpty(PlayerBool) &&
-                !PlayerData.instance.GetBool(PlayerBool))
+            return PlayerDataGameState.TryCapture(out PlayerDataGameState? state) &&
+                state != null && IsComplete(state);
+        }
+
+        public bool IsComplete(IGameState state)
+        {
+            string? playerBool = PlayerBool;
+            if (!string.IsNullOrEmpty(playerBool) && !state.GetBool(playerBool!))
             {
                 return false;
             }
@@ -42,7 +49,7 @@ namespace HallownestWayfinder
             if (allPlayerBools != null && allPlayerBools.Length > 0)
             {
                 foreach (string field in allPlayerBools)
-                    if (!PlayerData.instance.GetBool(field)) return false;
+                    if (!state.GetBool(field)) return false;
             }
 
             string[]? anyPlayerBools = AnyPlayerBools;
@@ -50,14 +57,13 @@ namespace HallownestWayfinder
             {
                 bool any = false;
                 foreach (string field in anyPlayerBools)
-                    if (PlayerData.instance.GetBool(field)) any = true;
+                    if (state.GetBool(field)) any = true;
                 if (!any) return false;
             }
 
-            if (!string.IsNullOrEmpty(Scene) &&
-                GameManager.instance.sceneName != Scene &&
-                (PlayerData.instance.scenesVisited == null ||
-                 !PlayerData.instance.scenesVisited.Contains(Scene)))
+            string? scene = Scene;
+            if (!string.IsNullOrEmpty(scene) &&
+                state.SceneName != scene && !state.HasVisitedScene(scene!))
             {
                 return false;
             }
@@ -67,43 +73,40 @@ namespace HallownestWayfinder
             {
                 int sum = 0;
                 foreach (string field in playerIntSum)
-                    sum += PlayerData.instance.GetInt(field);
+                    sum += state.GetInt(field);
                 if (sum < PlayerIntSumMinimum) return false;
             }
 
-            if (!string.IsNullOrEmpty(VisitedScene) &&
-                GameManager.instance.sceneName != VisitedScene &&
-                (PlayerData.instance.scenesVisited == null ||
-                 !PlayerData.instance.scenesVisited.Contains(VisitedScene)))
+            string? visitedScene = VisitedScene;
+            if (!string.IsNullOrEmpty(visitedScene) &&
+                state.SceneName != visitedScene && !state.HasVisitedScene(visitedScene!))
             {
                 return false;
             }
 
             if (!string.IsNullOrEmpty(BenchScene))
             {
-                bool sittingThere = GameManager.instance.sceneName == BenchScene &&
-                    PlayerData.instance.atBench;
-                bool savedThere = PlayerData.instance.respawnScene == BenchScene;
+                bool sittingThere = state.SceneName == BenchScene && state.AtBench;
+                bool savedThere = state.RespawnScene == BenchScene;
                 if (!sittingThere && !savedThere) return false;
             }
 
-            if (NoRelics &&
-                PlayerData.instance.trinket1 + PlayerData.instance.trinket2 +
-                PlayerData.instance.trinket3 + PlayerData.instance.trinket4 > 0)
+            if (NoRelics && state.RelicCount > 0)
             {
                 return false;
             }
 
-            if (PantheonCount > 0 && CompletedPantheons() < PantheonCount)
+            if (PantheonCount > 0 && state.CompletedPantheons < PantheonCount)
                 return false;
 
-            if (!string.IsNullOrEmpty(PlayerInt) &&
-                PlayerData.instance.GetInt(PlayerInt) < Minimum)
+            string? playerInt = PlayerInt;
+            if (!string.IsNullOrEmpty(playerInt) && state.GetInt(playerInt!) < Minimum)
             {
                 return false;
             }
 
-            if (!string.IsNullOrEmpty(GrubScene) && !IsGrubRescued())
+            string? grubScene = GrubScene;
+            if (!string.IsNullOrEmpty(grubScene) && !IsGrubRescued(state))
                 return false;
 
             return IsTracked;
@@ -111,29 +114,21 @@ namespace HallownestWayfinder
 
         public bool IsGrubRescued()
         {
-            if (PlayerData.instance == null || PlayerData.instance.scenesGrubRescued == null ||
-                !PlayerData.instance.scenesGrubRescued.Contains(GrubScene))
-            {
-                return false;
-            }
+            return PlayerDataGameState.TryCapture(out PlayerDataGameState? state) &&
+                state != null && IsGrubRescued(state);
+        }
+
+        public bool IsGrubRescued(IGameState state)
+        {
+            string? grubScene = GrubScene;
+            if (string.IsNullOrEmpty(grubScene) || !state.HasRescuedGrub(grubScene!)) return false;
 
             if (GrubCountInScene <= 1) return true;
 
-            int rescuedInSharedScenes = PlayerData.instance.grubsCollected -
-                PlayerData.instance.scenesGrubRescued.Count + 1;
+            int rescuedInSharedScenes = state.GrubsCollected - state.GrubSceneCount + 1;
             return rescuedInSharedScenes >= GrubCountInScene;
         }
 
         private static bool HasValues(string[]? values) => values != null && values.Length > 0;
-
-        private static int CompletedPantheons()
-        {
-            int completed = 0;
-            if (PlayerData.instance.bossDoorStateTier1.completed) completed++;
-            if (PlayerData.instance.bossDoorStateTier2.completed) completed++;
-            if (PlayerData.instance.bossDoorStateTier3.completed) completed++;
-            if (PlayerData.instance.bossDoorStateTier4.completed) completed++;
-            return completed;
-        }
     }
 }

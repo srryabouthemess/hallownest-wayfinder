@@ -1,4 +1,57 @@
 # id|title|hint
+# Interface lines: @key|text
+@route|Active route
+@route_description|Choose the route displayed by Hallownest Wayfinder.
+@route.completion_112|112% Route
+@route.speedrun_5h|5h Speedrun • Glitchless
+@route.grubs_46|Grubs 46/46
+@route.save_completion|Save Completion
+@language|Language
+@language_description|Choose the language used by the mod.
+@automatic|Automatic
+@portuguese|Portuguese (Brazil)
+@english|English
+@ui_size|Interface size
+@ui_size_description|Changes the size of the objective panel.
+@small|Small
+@medium|Medium
+@large|Large
+@navigation_arrow|Navigation arrow
+@navigation_description|Smart uses mapped routes; General shows an approximate direction.
+@smart|Smart
+@general|General
+@off|Off
+@optional|[OPTIONAL]
+@automatic_progress|Automatic progress
+@complete|{0} complete
+@skip|{0} skip
+@back|{0} back
+@hide|{0} hide
+@later|{0} later
+@navigation|Navigation:
+@smart_unmapped|Smart navigation: section not mapped yet
+@arrow_approximate|Arrow: general direction (approximate)
+@next_exit|Next exit
+@point_reached|Point reached — follow the instruction
+@objective_here|Objective is in this room
+@exit_pending|Route found; waiting for the room exit position
+@section_unmapped|Section not mapped yet
+@general_direction|General direction
+@last_stag_to_dirtmouth|Use the Last Stag to travel to Dirtmouth
+@save_analyzed|Save analyzed
+@prerequisites_missing|Prerequisites not detected
+@toggle_key|Key: show/hide
+@toggle_key_description|Choose the key that shows or hides the HUD.
+@previous_key|Key: previous step
+@previous_key_description|Choose the key that returns to the previous step.
+@next_key|Key: next step
+@next_key_description|Choose the key that advances or postpones the step.
+@reset_route|Reset route progress
+@reset_route_description|Reset only the manual progress of the currently selected route.
+@keep_progress|Keep
+@reset_now|Reset now
+@route_completed|ROUTE COMPLETE
+@completion_checklist|Charms {0}/40  •  Masks {1}/9  •  Vessels {2}/3  •  Nail {3}/4  •  Essence {4}/2400
 fury|Get Fury of the Fallen|In King's Pass, before entering Dirtmouth, drop into the spike passage. Pogo across the spikes and reach the chest on the right.
 dirtmouth|Go to Dirtmouth|Return to the main path through King's Pass, continue right and pass through the large gate.
 crossroads|Enter the Forgotten Crossroads|Walk right from the Dirtmouth bench and jump into the open well.

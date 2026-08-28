@@ -12,5 +12,6 @@
     <EmbeddedResource Include="Assets\vanilla_transitions.txt" />
     <EmbeddedResource Include="Assets\localization_en.txt" />
     <EmbeddedResource Include="Assets\localization_pt.txt" />
+    <EmbeddedResource Include="Assets\routes.json" />
   </ItemGroup>
 </Project>

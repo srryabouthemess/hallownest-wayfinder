@@ -1,0 +1,4974 @@
+[
+  {
+    "Id": "completion_112",
+    "Name": "Rota 112%",
+    "EnglishName": "112% Route",
+    "Steps": [
+      {
+        "Id": "fury",
+        "Icon": "Fury_of_the_Fallen.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_6",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Tutorial_01"
+      },
+      {
+        "Id": "dirtmouth",
+        "Icon": "Elderbug.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "Scene": "Town",
+          "GrubCountInScene": 1
+        },
+        "Navigation": [
+          {
+            "Scene": "Tutorial_01",
+            "ArrivalRadius": 2.5,
+            "TargetObjectName": "right1"
+          }
+        ]
+      },
+      {
+        "Id": "crossroads",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "Scene": "Crossroads_01",
+          "GrubCountInScene": 1
+        },
+        "Navigation": [
+          {
+            "Scene": "Town",
+            "ArrivalRadius": 2.5,
+            "TargetObjectName": "bot1"
+          }
+        ]
+      },
+      {
+        "Id": "crossroads_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 225.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapCrossroads",
+          "GrubCountInScene": 1
+        },
+        "Navigation": [
+          {
+            "Scene": "Crossroads_01",
+            "ArrivalRadius": 2.5,
+            "TargetObjectName": "left1"
+          },
+          {
+            "Scene": "Crossroads_07",
+            "ArrivalRadius": 2.5,
+            "TargetObjectName": "bot1"
+          }
+        ],
+        "TargetScene": "Crossroads_33"
+      },
+      {
+        "Id": "grub_1",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Crossroads_35",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "crossroads_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerBool": "openedCrossroads",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_47"
+      },
+      {
+        "Id": "grub_2",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Crossroads_03",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_3",
+        "Icon": "grub.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "GrubScene": "Crossroads_48",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_4",
+        "Icon": "grub.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "GrubScene": "Crossroads_31",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "gruz_mother",
+        "Icon": "gruz_mother.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "killedBigFly",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_04"
+      },
+      {
+        "Id": "sly",
+        "Icon": "Sly_Basement.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "slyRescued",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Room_shop"
+      },
+      {
+        "Id": "false_knight",
+        "Icon": "False_Knight.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "killedFalseKnight",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_10"
+      },
+      {
+        "Id": "vengeful_spirit",
+        "Icon": "Vengeful_Spirit_Icon.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasSpell",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_ShamanTemple"
+      },
+      {
+        "Id": "soul_catcher",
+        "Icon": "Soul_Catcher.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_20",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSpell"
+            }
+          ]
+        ],
+        "TargetScene": "Crossroads_ShamanTemple"
+      },
+      {
+        "Id": "greenpath",
+        "Icon": "Elder_Baldur.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "Scene": "Fungus1_01",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_5",
+        "Icon": "grub.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "GrubScene": "Fungus1_06",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "greenpath_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 270.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapGreenpath",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_06"
+      },
+      {
+        "Id": "hunters_journal",
+        "Icon": "Hunter.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "PlayerBool": "hasJournal",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_08"
+      },
+      {
+        "Id": "grub_6",
+        "Icon": "grub.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "GrubScene": "Fungus1_07",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "greenpath_bench",
+        "Icon": "bench.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "atBench",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "zote",
+        "Icon": "Vengefly_King_Zote.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "zoteRescuedBuzzer",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_20_v02"
+      },
+      {
+        "Id": "grub_7",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Fungus1_21",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "greenpath_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "openedGreenpath",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_16_alt"
+      },
+      {
+        "Id": "wanderers_journal",
+        "Icon": "Wanderers_Journal.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "trinket1",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_22"
+      },
+      {
+        "Id": "hornet",
+        "Icon": "Hornet.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasDash",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_04"
+      },
+      {
+        "Id": "c03_dirtmouth",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "Scene": "Town",
+          "GrubCountInScene": 1
+        },
+        "TransportScene": "Fungus1_16_alt",
+        "TransportInstruction": "Use o Último Besouro para viajar até Dirtmouth"
+      },
+      {
+        "Id": "c03_compass",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 90.0,
+        "SkippableInRoute": true,
+        "Completion": {
+          "PlayerBool": "gotCharm_2",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Room_mapper"
+      },
+      {
+        "Id": "c03_grub6",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Crossroads_05",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c03_wastes",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "visitedFungus",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDash"
+            }
+          ]
+        ],
+        "TargetScene": "Fungus2_06"
+      },
+      {
+        "Id": "c03_ogres",
+        "Icon": "Shrumal_Warrior.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "notchShroomOgres",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDash"
+            }
+          ]
+        ],
+        "TargetScene": "Fungus2_05"
+      },
+      {
+        "Id": "c03_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 225.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapFungalWastes",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c03_claw",
+        "Icon": "Mantis_Claw.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasWalljump",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c04_grub7",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Fungus2_18",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_queen_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "openedFungalWastes",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_lantern",
+        "Icon": "Lumafly_Lantern.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasLantern",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_grub8",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Fungus2_20",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_spore",
+        "Icon": "Spore_Shroom.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_17",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_deepnest_grub",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Deepnest_03",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_deepnest_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 225.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapDeepnest",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_city",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "visitedRuins",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasWalljump"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c04_nail1",
+        "Icon": "Nailsmith.png",
+        "ArrowDegrees": 270.0,
+        "SkippableInRoute": true,
+        "Completion": {
+          "PlayerInt": "nailSmithUpgrades",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_lemm",
+        "Icon": "Wanderers_Journal.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "metRelicDealer",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_grub10",
+        "Icon": "grub.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "GrubScene": "Ruins1_05",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_city_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 270.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapCity",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_spell_twister",
+        "Icon": "Spell_Twister.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_33",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_soul_master",
+        "Icon": "Soul_Master.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "quakeLevel",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedRuins"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c04_grub11",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Ruins1_32",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_storerooms",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedRuins1",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_salubra",
+        "Icon": "Salubra.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "salubraNotch1",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_peak",
+        "Icon": "Elder_Baldur.png",
+        "Completion": {
+          "PlayerBool": "visitedMines",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c05_grub12",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Mines_03",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_peak_map",
+        "Icon": "Cornifer.png",
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapMines",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_shop_key",
+        "Icon": "Shopkeepers_Key.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "PlayerBool": "hasSlykey",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_heart",
+        "Icon": "Crystal_Heart.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasSuperDash",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedMines"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c05_grubs",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "grubsCollected",
+          "Minimum": 18,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_dark",
+        "Icon": "Descending_Dark.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "quakeLevel",
+          "Minimum": 2,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c06_dream_nail",
+        "Icon": "Dream_Nail.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "hasDreamNail",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c06_dreamshield",
+        "Icon": "Dreamshield.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_38",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c06_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedRestingGrounds",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c07_elegant",
+        "Icon": "Elegant_Key.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "AnyPlayerBools": [
+            "hasWhiteKey",
+            "usedWhiteKey"
+          ],
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c07_shade_soul",
+        "Icon": "Vengeful_Spirit_Icon.png",
+        "Completion": {
+          "PlayerInt": "fireballLevel",
+          "Minimum": 2,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasWhiteKey"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "usedWhiteKey"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c07_waterways",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "openedWaterwaysManhole",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c08_grub17",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Waterways_04",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c08_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 315.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapWaterways",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c08_dung",
+        "Icon": "Dung_Defender.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedDungDefender",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c08_isma",
+        "Icon": "Ismas_Tear.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasAcidArmour",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "killedDungDefender"
+            },
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c09_grub18",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Waterways_13",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c09_ore1",
+        "Icon": "Pale_Ore.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerInt": "ore",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c09_grub19",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Abyss_17",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c09_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 180.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapAbyss",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c09_broken",
+        "Icon": "Broken_Vessel.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "killedInfectedKnight",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c09_wings",
+        "Icon": "Monarch_Wings.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerBool": "hasDoubleJump",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "killedInfectedKnight"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c09_lost_kin",
+        "Icon": "Lost_Kin.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "infectedKnightDreamDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            },
+            {
+              "PlayerBool": "killedInfectedKnight"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c09_hidden_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedHiddenStation",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_ritual",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "nightmareLanternLit",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c10_cliffs_map",
+        "Icon": "Cornifer.png",
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapCliffs",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_joni",
+        "Icon": "Jonis_Blessing.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_27",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_cyclone",
+        "Icon": "Cyclone_Slash.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasCyclone",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_gorb",
+        "Icon": "Gorb.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerInt": "aladarSlugDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_stag_nest",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "openedStagNest",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c11_grimmchild",
+        "Icon": "Grimmchild.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_40",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c11_failed",
+        "Icon": "Failed_Champion.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "falseKnightDreamDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c11_xero",
+        "Icon": "Xero.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "xeroDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c11_dreamgate",
+        "Icon": "Dreamgate.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasDreamGate",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c12_deep_focus",
+        "Icon": "Deep_Focus.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_34",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c12_guardians",
+        "Icon": "Crystal_Guardian.png",
+        "Completion": {
+          "PlayerBool": "defeatedMegaBeamMiner2",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c12_ore",
+        "Icon": "Pale_Ore.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerInt": "ore",
+          "Minimum": 3,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_sheo",
+        "Icon": "Great_Slash.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasUpwardSlash",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_thorns",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_12",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_grubs",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "grubsCollected",
+          "Minimum": 27,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_wraiths",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "screamLevel",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_noeyes",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "noEyesDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c14_souleater",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_21",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c15_kings_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "openedRuins2",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c15_edge_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 180.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapOutskirts",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c15_hornet2",
+        "Icon": "Hornet.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hornetOutskirtsDefeated",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c15_brand",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasKingsBrand",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c16_abyss",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "visitedAbyss",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasKingsBrand"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c16_shriek",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "screamLevel",
+          "Minimum": 2,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasKingsBrand"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c16_cloak",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasShadowDash",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasKingsBrand"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c17_grimm",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedGrimm",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "gotCharm_40"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c17_nail",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "nailSmithUpgrades",
+          "Minimum": 3,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_fluke",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerBool": "killedFlukeMother",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_dashmaster",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_31",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_bretta",
+        "ArrowDegrees": 270.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "brettaRescued",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_lords",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "defeatedMantisLords",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_pride",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_13",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c18_mawlek",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "killedMawlek",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c18_notch",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "notchFogCanyon",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c18_fragile",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_25",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c18_hu",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "elderHuDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c18_fog_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 270.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapFogCanyon",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c18_uumuu",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "killedMegaJellyfish",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c18_monomon",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "monomonDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            },
+            {
+              "PlayerBool": "killedMegaJellyfish"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c19_gardens_map",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 270.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "mapRoyalGardens",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c19_love_key",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "hasLoveKey",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c19_marmu",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "mumCaterpillarDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c19_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedRoyalGardens",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c19_traitor",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "killedTraitorLord",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c19_queen",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotQueenFragment",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "killedTraitorLord"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c20_herrah",
+        "Completion": {
+          "PlayerBool": "hegemolDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c20_weaver",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_39",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c20_galien",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "galienDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c20_pass",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasTramPass",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c20_zote",
+        "Icon": "Vengefly_King_Zote.png",
+        "ArrowDegrees": 180.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "zoteRescuedDeepnest",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c20_nosk",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "killedMimicSpider",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c20_sharp",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_16",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c21_hive",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "visitedHive",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasTramPass"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c21_knight",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedHiveKnight",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c21_hiveblood",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_29",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "killedHiveKnight"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c22_markoth",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "markothDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c22_dashslash",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasDashSlash",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c22_quickslash",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_32",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c23_collector",
+        "Completion": {
+          "PlayerBool": "collectorDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLoveKey"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "openedLoveDoor"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c23_grubs",
+        "Icon": "grub.png",
+        "Completion": {
+          "PlayerInt": "grubsCollected",
+          "Minimum": 44,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c23_final_grub",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Ruins2_03",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c23_watchers",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedBlackKnight",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c23_lurien",
+        "Completion": {
+          "PlayerBool": "lurienDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            },
+            {
+              "PlayerBool": "killedBlackKnight"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c24_white_defender",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "killedWhiteDefender",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            },
+            {
+              "PlayerBool": "killedDungDefender"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c24_colosseum",
+        "Completion": {
+          "PlayerBool": "colosseumGoldCompleted",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c25_zote",
+        "ArrowDegrees": 180.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "PlayerBool": "killedGreyPrince",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c25_grubfather",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_35",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerInt": "grubsCollected",
+              "Minimum": 46
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c25_sly",
+        "Icon": "Sly_Basement.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_26",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c25_awoken",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "dreamNailUpgraded",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c26_flower",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "xunRewardGiven",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c27_palace",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "visitedWhitePalace",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "dreamNailUpgraded"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c27_kingsoul",
+        "Completion": {
+          "PlayerBool": "gotKingFragment",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedWhitePalace"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c28_lifeblood",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_9",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c28_void",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "gotShadeCharm",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "gotCharm_36"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "gotQueenFragment"
+            },
+            {
+              "PlayerBool": "gotKingFragment"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c29_pure_nail",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "nailSmithUpgrades",
+          "Minimum": 4,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerInt": "nailSmithUpgrades",
+              "Minimum": 3
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c29_unbreakable",
+        "ArrowDegrees": 270.0,
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "AllPlayerBools": [
+            "fragileHealth_unbreakable",
+            "fragileGreed_unbreakable",
+            "fragileStrength_unbreakable"
+          ],
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c29_grimm_end",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "AnyPlayerBools": [
+            "defeatedNightmareGrimm",
+            "destroyedNightmareLantern"
+          ],
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "gotCharm_40"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c30_godhome",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasGodfinder",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c30_pantheons",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PantheonCount": 4,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasGodfinder"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "speedrun_5h",
+    "Name": "Speedrun 5h • Sem glitches",
+    "EnglishName": "5h Speedrun • Glitchless",
+    "Steps": [
+      {
+        "Id": "sr01_fury",
+        "Icon": "Fury_of_the_Fallen.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_6",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Tutorial_01"
+      },
+      {
+        "Id": "sr01_geo",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerInt": "geo",
+          "Minimum": 50,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr01_stag",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerBool": "openedCrossroads",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_47"
+      },
+      {
+        "Id": "sr01_false_knight",
+        "Icon": "False_Knight.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "killedFalseKnight",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_10"
+      },
+      {
+        "Id": "sr01_spell",
+        "Icon": "Vengeful_Spirit_Icon.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasSpell",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_ShamanTemple"
+      },
+      {
+        "Id": "sr01_soul_catcher",
+        "Icon": "Soul_Catcher.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_20",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_ShamanTemple"
+      },
+      {
+        "Id": "sr02_vengefly",
+        "Icon": "Vengefly_King_Zote.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "zoteRescuedBuzzer",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_20_v02"
+      },
+      {
+        "Id": "sr02_journal",
+        "Icon": "Wanderers_Journal.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "trinket1",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_22"
+      },
+      {
+        "Id": "sr02_bench",
+        "Icon": "bench.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "BenchScene": "Fungus1_16_alt",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_16_alt"
+      },
+      {
+        "Id": "sr02_hornet",
+        "Icon": "Hornet.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasDash",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_04"
+      },
+      {
+        "Id": "sr03_queen_bench",
+        "Icon": "bench.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "BenchScene": "Fungus2_02",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr03_seal",
+        "Icon": "Wanderers_Journal.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerIntSum": [
+            "trinket2",
+            "soldTrinket2"
+          ],
+          "PlayerIntSumMinimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr03_claw",
+        "Icon": "Mantis_Claw.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasWalljump",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr03_city",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "visitedRuins",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr04_nail",
+        "Icon": "Nailsmith.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "nailSmithUpgrades",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr04_seal",
+        "Icon": "Wanderers_Journal.png",
+        "Completion": {
+          "PlayerIntSum": [
+            "trinket2",
+            "soldTrinket2"
+          ],
+          "PlayerIntSumMinimum": 2,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr04_bench",
+        "Icon": "bench.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "tollBenchCity",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr04_twister",
+        "Icon": "Spell_Twister.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_33",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr04_master",
+        "Icon": "Soul_Master.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "quakeLevel",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr04_sell",
+        "Icon": "Wanderers_Journal.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "metRelicDealer",
+          "NoRelics": true,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr04_key",
+        "Icon": "Elegant_Key.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "simpleKeys",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr04_stag",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedRuins1",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr05_gruz",
+        "Icon": "gruz_mother.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "killedBigFly",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_04"
+      },
+      {
+        "Id": "sr05_sly",
+        "Icon": "Sly_Basement.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "slyRescued",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Room_shop"
+      },
+      {
+        "Id": "sr05_steady",
+        "Icon": "Salubra.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_14",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr05_shaman",
+        "Icon": "Salubra.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_19",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr05_notch",
+        "Icon": "Salubra.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "charmSlots",
+          "Minimum": 4,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr05_lantern",
+        "Icon": "Lumafly_Lantern.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasLantern",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr05_peak",
+        "Icon": "Crystal_Heart.png",
+        "Completion": {
+          "PlayerBool": "visitedMines",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr06_heart",
+        "Icon": "Crystal_Heart.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasSuperDash",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr06_dark",
+        "Icon": "Descending_Dark.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "quakeLevel",
+          "Minimum": 2,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr06_dream",
+        "Icon": "Dream_Nail.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "hasDreamNail",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr06_stag",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedRestingGrounds",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr07_waterways",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "openedWaterwaysManhole",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr07_dung",
+        "Icon": "Dung_Defender.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedDungDefender",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr07_isma",
+        "Icon": "Ismas_Tear.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasAcidArmour",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr07_skip",
+        "Icon": "Monarch_Wings.png",
+        "SkippableInRoute": true,
+        "NotRequiredFor112": true,
+        "Completion": {
+          "VisitedScene": "Ruins2_03",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr07_watchers",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedBlackKnight",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr07_lurien",
+        "Icon": "Dream_Nail.png",
+        "Completion": {
+          "PlayerBool": "lurienDefeated",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr07_kings",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "openedRuins2",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr08_archives",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "VisitedScene": "Fungus3_archive",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr08_uumuu",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "killedMegaJellyfish",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr08_monomon",
+        "Icon": "Dream_Nail.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "monomonDefeated",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr08_gardens",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "visitedRoyalGardens",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr09_bench",
+        "Icon": "bench.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "tollBenchQueensGardens",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr09_herrah",
+        "Icon": "Dream_Nail.png",
+        "Completion": {
+          "PlayerBool": "hegemolDefeated",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr09_stag",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedDeepnest",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr10_egg",
+        "Icon": "Dream_Nail.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedBlackEggDoor",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "sr10_hollow_knight",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedHollowKnight",
+          "GrubCountInScene": 1
+        }
+      }
+    ]
+  },
+  {
+    "Id": "grubs_46",
+    "Name": "Larvas 46/46",
+    "EnglishName": "Grubs 46/46",
+    "Steps": [
+      {
+        "Id": "grub_crossroads_acid",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Crossroads_35",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_center",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Crossroads_05",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_stag",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Crossroads_03",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_spike",
+        "Icon": "grub.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "GrubScene": "Crossroads_31",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_guarded",
+        "Icon": "grub.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "GrubScene": "Crossroads_48",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_greenpath_cornifer",
+        "Icon": "grub.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "GrubScene": "Fungus1_06",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_greenpath_journal",
+        "Icon": "grub.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "GrubScene": "Fungus1_07",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_greenpath_mmc",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Fungus1_13",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_greenpath_stag",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Fungus1_21",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_cliffs",
+        "Icon": "grub.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "GrubScene": "Fungus1_28",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_fungal_bouncy",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Fungus2_18",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_fungal_spore",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Fungus2_20",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_deepnest_spike",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Deepnest_03",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_city_left",
+        "Icon": "grub.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "GrubScene": "Ruins1_05",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_soul_sanctum",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Ruins1_32",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_city_guarded",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Ruins_House_01",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_peak_spike",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Mines_03",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_chest",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Mines_04",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_mimic",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Mines_16",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_crushers",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Mines_19",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_crown",
+        "Icon": "grub.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "GrubScene": "Mines_24",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_heart",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Mines_31",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_mound",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Mines_35",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_resting",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "RestingGrounds_10",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_waterways_main",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Waterways_04",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "openedWaterwaysManhole"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_isma",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Waterways_13",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "openedWaterwaysManhole"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_waterways_tram",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Waterways_14",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "openedWaterwaysManhole"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_basin_dive",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Abyss_17",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasDoubleJump"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_basin_wings",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Abyss_19",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasDoubleJump"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_dark_deepnest",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Deepnest_39",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_deepnest_mimic",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Deepnest_36",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_deepnest_nosk",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Deepnest_31",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_beasts_den",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Deepnest_Spider_Town",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_kingdom_camp",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Deepnest_East_11",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_kingdom_oro",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Deepnest_East_14",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_kings_station",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Ruins2_07",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedRuins"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_gardens_stag",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Fungus3_10",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_gardens_top",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Fungus3_22",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_gardens_marmu",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Fungus3_48",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_fog",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Fungus3_47",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_hive_external",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Hive_03",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasTramPass"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_hive_internal",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Hive_04",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasTramPass"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_collector",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Ruins2_11",
+          "GrubCountInScene": 3
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedRuins"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_watcher",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Ruins2_03",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedRuins"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "save_completion",
+    "Name": "Completar save",
+    "EnglishName": "Save Completion",
+    "Steps": [
+      {
+        "Id": "fury",
+        "Icon": "Fury_of_the_Fallen.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_6",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Tutorial_01"
+      },
+      {
+        "Id": "crossroads_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerBool": "openedCrossroads",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_47"
+      },
+      {
+        "Id": "gruz_mother",
+        "Icon": "gruz_mother.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "killedBigFly",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_04"
+      },
+      {
+        "Id": "sly",
+        "Icon": "Sly_Basement.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "slyRescued",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Room_shop"
+      },
+      {
+        "Id": "false_knight",
+        "Icon": "False_Knight.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "killedFalseKnight",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_10"
+      },
+      {
+        "Id": "vengeful_spirit",
+        "Icon": "Vengeful_Spirit_Icon.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasSpell",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Crossroads_ShamanTemple"
+      },
+      {
+        "Id": "soul_catcher",
+        "Icon": "Soul_Catcher.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_20",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSpell"
+            }
+          ]
+        ],
+        "TargetScene": "Crossroads_ShamanTemple"
+      },
+      {
+        "Id": "hunters_journal",
+        "Icon": "Hunter.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "PlayerBool": "hasJournal",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_08"
+      },
+      {
+        "Id": "zote",
+        "Icon": "Vengefly_King_Zote.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "zoteRescuedBuzzer",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_20_v02"
+      },
+      {
+        "Id": "greenpath_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "openedGreenpath",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_16_alt"
+      },
+      {
+        "Id": "hornet",
+        "Icon": "Hornet.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasDash",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Fungus1_04"
+      },
+      {
+        "Id": "c03_compass",
+        "Icon": "Cornifer.png",
+        "ArrowDegrees": 90.0,
+        "SkippableInRoute": true,
+        "Completion": {
+          "PlayerBool": "gotCharm_2",
+          "GrubCountInScene": 1
+        },
+        "TargetScene": "Room_mapper"
+      },
+      {
+        "Id": "c03_wastes",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "visitedFungus",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDash"
+            }
+          ]
+        ],
+        "TargetScene": "Fungus2_06"
+      },
+      {
+        "Id": "c03_ogres",
+        "Icon": "Shrumal_Warrior.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "notchShroomOgres",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDash"
+            }
+          ]
+        ],
+        "TargetScene": "Fungus2_05"
+      },
+      {
+        "Id": "c03_claw",
+        "Icon": "Mantis_Claw.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasWalljump",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c04_queen_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "openedFungalWastes",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_lantern",
+        "Icon": "Lumafly_Lantern.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasLantern",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_spore",
+        "Icon": "Spore_Shroom.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_17",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_city",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "visitedRuins",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasWalljump"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c04_nail1",
+        "Icon": "Nailsmith.png",
+        "ArrowDegrees": 270.0,
+        "SkippableInRoute": true,
+        "Completion": {
+          "PlayerInt": "nailSmithUpgrades",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_lemm",
+        "Icon": "Wanderers_Journal.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "metRelicDealer",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_spell_twister",
+        "Icon": "Spell_Twister.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_33",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c04_soul_master",
+        "Icon": "Soul_Master.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "quakeLevel",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedRuins"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c04_storerooms",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedRuins1",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_salubra",
+        "Icon": "Salubra.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "salubraNotch1",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_peak",
+        "Icon": "Elder_Baldur.png",
+        "Completion": {
+          "PlayerBool": "visitedMines",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c05_shop_key",
+        "Icon": "Shopkeepers_Key.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "PlayerBool": "hasSlykey",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c05_heart",
+        "Icon": "Crystal_Heart.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasSuperDash",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedMines"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c05_dark",
+        "Icon": "Descending_Dark.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "quakeLevel",
+          "Minimum": 2,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c06_dream_nail",
+        "Icon": "Dream_Nail.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "hasDreamNail",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c06_dreamshield",
+        "Icon": "Dreamshield.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_38",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c06_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedRestingGrounds",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c07_elegant",
+        "Icon": "Elegant_Key.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "AnyPlayerBools": [
+            "hasWhiteKey",
+            "usedWhiteKey"
+          ],
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c07_shade_soul",
+        "Icon": "Vengeful_Spirit_Icon.png",
+        "Completion": {
+          "PlayerInt": "fireballLevel",
+          "Minimum": 2,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasWhiteKey"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "usedWhiteKey"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c07_waterways",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "openedWaterwaysManhole",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c08_dung",
+        "Icon": "Dung_Defender.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedDungDefender",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c08_isma",
+        "Icon": "Ismas_Tear.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasAcidArmour",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "killedDungDefender"
+            },
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c09_broken",
+        "Icon": "Broken_Vessel.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "killedInfectedKnight",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c09_wings",
+        "Icon": "Monarch_Wings.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerBool": "hasDoubleJump",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "killedInfectedKnight"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c09_lost_kin",
+        "Icon": "Lost_Kin.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "infectedKnightDreamDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            },
+            {
+              "PlayerBool": "killedInfectedKnight"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c09_hidden_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedHiddenStation",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_ritual",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "nightmareLanternLit",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c10_joni",
+        "Icon": "Jonis_Blessing.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_27",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_cyclone",
+        "Icon": "Cyclone_Slash.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasCyclone",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_gorb",
+        "Icon": "Gorb.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerInt": "aladarSlugDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c10_stag_nest",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "openedStagNest",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c11_grimmchild",
+        "Icon": "Grimmchild.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_40",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c11_failed",
+        "Icon": "Failed_Champion.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "PlayerBool": "falseKnightDreamDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c11_xero",
+        "Icon": "Xero.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "xeroDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c11_dreamgate",
+        "Icon": "Dreamgate.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasDreamGate",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c12_deep_focus",
+        "Icon": "Deep_Focus.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_34",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c12_guardians",
+        "Icon": "Crystal_Guardian.png",
+        "Completion": {
+          "PlayerBool": "defeatedMegaBeamMiner2",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_sheo",
+        "Icon": "Great_Slash.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasUpwardSlash",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_thorns",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_12",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_wraiths",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "screamLevel",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c13_noeyes",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "noEyesDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c14_souleater",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_21",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c15_kings_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "openedRuins2",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c15_hornet2",
+        "Icon": "Hornet.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hornetOutskirtsDefeated",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c15_brand",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasKingsBrand",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c16_abyss",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "visitedAbyss",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasKingsBrand"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c16_shriek",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "screamLevel",
+          "Minimum": 2,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasKingsBrand"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c16_cloak",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasShadowDash",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasKingsBrand"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c17_grimm",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedGrimm",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "gotCharm_40"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c17_nail",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "nailSmithUpgrades",
+          "Minimum": 3,
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_fluke",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "PlayerBool": "killedFlukeMother",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_dashmaster",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_31",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_lords",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "defeatedMantisLords",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c17_pride",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_13",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c18_mawlek",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "killedMawlek",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c18_notch",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "notchFogCanyon",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c18_fragile",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_25",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c18_hu",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "elderHuDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c18_uumuu",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "killedMegaJellyfish",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c18_monomon",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "monomonDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            },
+            {
+              "PlayerBool": "killedMegaJellyfish"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c19_love_key",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "hasLoveKey",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c19_marmu",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "mumCaterpillarDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c19_station",
+        "Icon": "LastStag.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "openedRoyalGardens",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c19_traitor",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "killedTraitorLord",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c19_queen",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotQueenFragment",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "killedTraitorLord"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c20_herrah",
+        "Completion": {
+          "PlayerBool": "hegemolDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c20_weaver",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_39",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c20_galien",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "galienDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c20_pass",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasTramPass",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c20_nosk",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "killedMimicSpider",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c20_sharp",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_16",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c21_hive",
+        "Icon": "crawlid.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "visitedHive",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasTramPass"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c21_knight",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedHiveKnight",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c21_hiveblood",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_29",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "killedHiveKnight"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c22_markoth",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerInt": "markothDefeated",
+          "Minimum": 1,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c22_dashslash",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "hasDashSlash",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c22_quickslash",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_32",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c23_collector",
+        "Completion": {
+          "PlayerBool": "collectorDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLoveKey"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "openedLoveDoor"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c23_watchers",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "killedBlackKnight",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c23_lurien",
+        "Completion": {
+          "PlayerBool": "lurienDefeated",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            },
+            {
+              "PlayerBool": "killedBlackKnight"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c24_white_defender",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "killedWhiteDefender",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasDreamNail"
+            },
+            {
+              "PlayerBool": "killedDungDefender"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c24_colosseum",
+        "Completion": {
+          "PlayerBool": "colosseumGoldCompleted",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_acid",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Crossroads_35",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_center",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Crossroads_05",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_stag",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Crossroads_03",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_spike",
+        "Icon": "grub.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "GrubScene": "Crossroads_31",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_crossroads_guarded",
+        "Icon": "grub.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "GrubScene": "Crossroads_48",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_greenpath_cornifer",
+        "Icon": "grub.png",
+        "ArrowDegrees": 135.0,
+        "Completion": {
+          "GrubScene": "Fungus1_06",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_greenpath_journal",
+        "Icon": "grub.png",
+        "ArrowDegrees": 225.0,
+        "Completion": {
+          "GrubScene": "Fungus1_07",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_greenpath_mmc",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Fungus1_13",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_greenpath_stag",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Fungus1_21",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_cliffs",
+        "Icon": "grub.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "GrubScene": "Fungus1_28",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_fungal_bouncy",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Fungus2_18",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_fungal_spore",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Fungus2_20",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_deepnest_spike",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Deepnest_03",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_city_left",
+        "Icon": "grub.png",
+        "ArrowDegrees": 45.0,
+        "Completion": {
+          "GrubScene": "Ruins1_05",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_soul_sanctum",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Ruins1_32",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_city_guarded",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Ruins_House_01",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_peak_spike",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Mines_03",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_chest",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Mines_04",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_mimic",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Mines_16",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_crushers",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Mines_19",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_crown",
+        "Icon": "grub.png",
+        "ArrowDegrees": 315.0,
+        "Completion": {
+          "GrubScene": "Mines_24",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_peak_heart",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Mines_31",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_mound",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Mines_35",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerInt": "quakeLevel",
+              "Minimum": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_resting",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "RestingGrounds_10",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "grub_waterways_main",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Waterways_04",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "openedWaterwaysManhole"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_isma",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Waterways_13",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "openedWaterwaysManhole"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_waterways_tram",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Waterways_14",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "openedWaterwaysManhole"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_basin_dive",
+        "Icon": "grub.png",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "GrubScene": "Abyss_17",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasDoubleJump"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_basin_wings",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Abyss_19",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSuperDash"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasDoubleJump"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_dark_deepnest",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Deepnest_39",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_deepnest_mimic",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Deepnest_36",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_deepnest_nosk",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Deepnest_31",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_beasts_den",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Deepnest_Spider_Town",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_kingdom_camp",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Deepnest_East_11",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_kingdom_oro",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Deepnest_East_14",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasLantern"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "defeatedMantisLords"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_kings_station",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Ruins2_07",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedRuins"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_gardens_stag",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Fungus3_10",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_gardens_top",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Fungus3_22",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_gardens_marmu",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Fungus3_48",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_fog",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "GrubScene": "Fungus3_47",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasAcidArmour"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "hasShadowDash"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_hive_external",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Hive_03",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasTramPass"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_hive_internal",
+        "Icon": "grub.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "GrubScene": "Hive_04",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasTramPass"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_collector",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Ruins2_11",
+          "GrubCountInScene": 3
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedRuins"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "grub_watcher",
+        "Icon": "grub.png",
+        "Completion": {
+          "GrubScene": "Ruins2_03",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedRuins"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c25_grubfather",
+        "Icon": "grub.png",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_35",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerInt": "grubsCollected",
+              "Minimum": 46
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c25_sly",
+        "Icon": "Sly_Basement.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_26",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c25_awoken",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "dreamNailUpgraded",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c26_flower",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "xunRewardGiven",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c27_palace",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "visitedWhitePalace",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "dreamNailUpgraded"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c27_kingsoul",
+        "Completion": {
+          "PlayerBool": "gotKingFragment",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "visitedWhitePalace"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c28_lifeblood",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_9",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c28_void",
+        "ArrowDegrees": 180.0,
+        "Completion": {
+          "PlayerBool": "gotShadeCharm",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "gotCharm_36"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "gotQueenFragment"
+            },
+            {
+              "PlayerBool": "gotKingFragment"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c29_pure_nail",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerInt": "nailSmithUpgrades",
+          "Minimum": 4,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerInt": "nailSmithUpgrades",
+              "Minimum": 3
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c29_grimm_end",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "AnyPlayerBools": [
+            "defeatedNightmareGrimm",
+            "destroyedNightmareLantern"
+          ],
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "gotCharm_40"
+            }
+          ]
+        ]
+      },
+      {
+        "Id": "c30_godhome",
+        "ArrowDegrees": 270.0,
+        "Completion": {
+          "PlayerBool": "hasGodfinder",
+          "GrubCountInScene": 1
+        }
+      },
+      {
+        "Id": "c30_pantheons",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PantheonCount": 4,
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasGodfinder"
+            }
+          ]
+        ]
+      }
+    ],
+    "IsSaveCompletion": true
+  }
+]

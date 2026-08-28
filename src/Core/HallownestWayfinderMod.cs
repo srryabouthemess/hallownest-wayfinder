@@ -30,6 +30,12 @@ namespace HallownestWayfinder
         private GameObject? _hudObject;
         private readonly HashSet<string> _automaticAdvanceErrors =
             new HashSet<string>(StringComparer.Ordinal);
+        private IGameState? _gameState;
+        private float _nextGameStateRefresh;
+        private string? _analysisRouteId;
+        private int _cachedSaveStep = -1;
+        private int _cachedCompletedSteps;
+        private bool _cachedStepAvailable;
 
         public RouteProgress Progress { get; private set; } = new RouteProgress();
         public RouteGlobalSettings GlobalSettings { get; private set; } = new RouteGlobalSettings();
@@ -38,28 +44,44 @@ namespace HallownestWayfinder
         public bool IsSaveCompletion => CurrentRoute.IsSaveCompletion;
         public int CurrentStepIndex
         {
-            get => IsSaveCompletion
-                ? SaveCompletionAnalyzer.FindNextStep(CurrentRoute.Steps,
-                    Progress.SaveCompletionDismissedStepIds)
-                : CurrentRoute.Id == "speedrun_5h"
-                    ? Progress.SpeedrunCurrentStep
-                    : CurrentRoute.Id == "grubs_46" ? Progress.GrubCurrentStep : Progress.CurrentStep;
+            get
+            {
+                if (IsSaveCompletion)
+                {
+                    RefreshGameState();
+                    return _cachedSaveStep;
+                }
+                return GetStoredProgress(CurrentRoute.Id);
+            }
             private set
             {
                 if (IsSaveCompletion) return;
-                if (CurrentRoute.Id == "speedrun_5h") Progress.SpeedrunCurrentStep = value;
-                else if (CurrentRoute.Id == "grubs_46") Progress.GrubCurrentStep = value;
-                else Progress.CurrentStep = value;
+                Progress.StepByRoute[CurrentRoute.Id] = value;
             }
         }
         public bool HasActiveStep => CurrentStepIndex >= 0 && CurrentStepIndex < CurrentRoute.Steps.Count;
         public bool IsRouteComplete => CompletedStepCount >= CurrentRoute.Steps.Count;
         public RouteStep? CurrentStep => HasActiveStep ? CurrentRoute.Steps[CurrentStepIndex] : null;
         public int CompletedStepCount => IsSaveCompletion
-            ? SaveCompletionAnalyzer.CountCompleted(CurrentRoute.Steps)
+            ? GetSaveCompletedCount()
             : CurrentStepIndex;
-        public bool CurrentStepIsAvailable => !IsSaveCompletion ||
-            (CurrentStep != null && SaveCompletionAnalyzer.IsAvailable(CurrentStep));
+        public bool CurrentStepIsAvailable
+        {
+            get
+            {
+                if (!IsSaveCompletion) return true;
+                RefreshGameState();
+                return _cachedStepAvailable;
+            }
+        }
+        public IGameState? CurrentGameState
+        {
+            get
+            {
+                RefreshGameState();
+                return _gameState;
+            }
+        }
 
         public override string GetVersion()
         {
@@ -80,15 +102,15 @@ namespace HallownestWayfinder
             _automaticAdvanceErrors.Clear();
 
             foreach (string error in RouteDataValidator.Validate(RouteCatalog.Routes))
-                LogError("Dados de rota inválidos: " + error);
+                LogError("Invalid route data: " + error);
             foreach (string error in VanillaRouteGraph.ValidateRequirements())
-                LogError("Grafo de navegação inválido: " + error);
+                LogError("Invalid navigation graph: " + error);
 
             _hudObject = new GameObject("HallownestWayfinder HUD");
             UObject.DontDestroyOnLoad(_hudObject);
             RouteHud hud = _hudObject.AddComponent<RouteHud>();
             hud.Mod = this;
-            Log("HallownestWayfinder carregado. Controles configuráveis disponíveis no menu do mod.");
+            Log("Hallownest Wayfinder loaded. Configurable controls are available in the mod menu.");
         }
 
         public void Unload()
@@ -102,7 +124,7 @@ namespace HallownestWayfinder
         {
             Progress = settings ?? new RouteProgress();
 
-            // Versão 2 removeu Myla, que ocupava o antigo índice 7.
+            // Version 2 removed Myla, which occupied the old index 7.
             if (Progress.DataVersion < 2)
             {
                 if (Progress.CurrentStep > 7) Progress.CurrentStep--;
@@ -114,7 +136,10 @@ namespace HallownestWayfinder
                 Progress.SaveCompletionDismissedStepIds = new List<string>();
             if (Progress.DataVersion < 4) Progress.DataVersion = 4;
 
+            Progress.MigrateRouteDictionary();
+
             ClampProgress();
+            InvalidateGameState();
         }
 
         public RouteProgress OnSaveLocal() => Progress;
@@ -140,31 +165,26 @@ namespace HallownestWayfinder
             {
                 new IMenuMod.MenuEntry
                 {
-                    Name = LocalizationService.Text("route", "Rota ativa"),
-                    Description = LocalizationService.Text("route_description", "Escolha a rota exibida pelo Hallownest Wayfinder."),
-                    Values = new[]
-                    {
-                        "112%",
-                        "Speedrun 5h",
-                        LocalizationService.Text("grubs_route", "Larvas 46/46"),
-                        LocalizationService.Text("save_completion_route", "Completar save")
-                    },
+                    Name = LocalizationService.Text("route"),
+                    Description = LocalizationService.Text("route_description"),
+                    Values = RouteMenuNames(),
                     Saver = value =>
                     {
                         GlobalSettings.ActiveRoute = value;
                         ClampProgress();
+                        InvalidateGameState();
                     },
                     Loader = () => GlobalSettings.ActiveRoute
                 },
                 new IMenuMod.MenuEntry
                 {
-                    Name = LocalizationService.Text("language", "Idioma"),
-                    Description = LocalizationService.Text("language_description", "Escolha o idioma usado pelo mod."),
+                    Name = LocalizationService.Text("language"),
+                    Description = LocalizationService.Text("language_description"),
                     Values = new[]
                     {
-                        LocalizationService.Text("automatic", "Automático"),
-                        LocalizationService.Text("portuguese", "Português (Brasil)"),
-                        LocalizationService.Text("english", "English")
+                        LocalizationService.Text("automatic"),
+                        LocalizationService.Text("portuguese"),
+                        LocalizationService.Text("english")
                     },
                     Saver = value =>
                     {
@@ -175,26 +195,26 @@ namespace HallownestWayfinder
                 },
                 new IMenuMod.MenuEntry
                 {
-                    Name = LocalizationService.Text("ui_size", "Tamanho da interface"),
-                    Description = LocalizationService.Text("ui_size_description", "Altera o tamanho do painel de objetivo."),
+                    Name = LocalizationService.Text("ui_size"),
+                    Description = LocalizationService.Text("ui_size_description"),
                     Values = new[]
                     {
-                        LocalizationService.Text("small", "Pequeno"),
-                        LocalizationService.Text("medium", "Médio"),
-                        LocalizationService.Text("large", "Grande")
+                        LocalizationService.Text("small"),
+                        LocalizationService.Text("medium"),
+                        LocalizationService.Text("large")
                     },
                     Saver = value => GlobalSettings.UiSize = value,
                     Loader = () => GlobalSettings.UiSize
                 },
                 new IMenuMod.MenuEntry
                 {
-                    Name = LocalizationService.Text("navigation_arrow", "Seta de navegação"),
-                    Description = LocalizationService.Text("navigation_description", "Inteligente usa rotas mapeadas; Geral mostra uma direção aproximada."),
+                    Name = LocalizationService.Text("navigation_arrow"),
+                    Description = LocalizationService.Text("navigation_description"),
                     Values = new[]
                     {
-                        LocalizationService.Text("smart", "Inteligente"),
-                        LocalizationService.Text("general", "Geral"),
-                        LocalizationService.Text("off", "Desligada")
+                        LocalizationService.Text("smart"),
+                        LocalizationService.Text("general"),
+                        LocalizationService.Text("off")
                     },
                     Saver = value => GlobalSettings.NavigationMode = value,
                     Loader = () => GlobalSettings.NavigationMode
@@ -202,25 +222,25 @@ namespace HallownestWayfinder
             };
 
             entries.Add(CreateKeyEntry(
-                LocalizationService.Text("toggle_key", "Tecla: mostrar/ocultar"),
-                LocalizationService.Text("toggle_key_description", "Escolha a tecla que mostra ou oculta o HUD."),
+                LocalizationService.Text("toggle_key"),
+                LocalizationService.Text("toggle_key_description"),
                 KeyBindingAction.ToggleHud));
             entries.Add(CreateKeyEntry(
-                LocalizationService.Text("previous_key", "Tecla: voltar etapa"),
-                LocalizationService.Text("previous_key_description", "Escolha a tecla que retorna à etapa anterior."),
+                LocalizationService.Text("previous_key"),
+                LocalizationService.Text("previous_key_description"),
                 KeyBindingAction.PreviousStep));
             entries.Add(CreateKeyEntry(
-                LocalizationService.Text("next_key", "Tecla: avançar etapa"),
-                LocalizationService.Text("next_key_description", "Escolha a tecla que avança ou adia a etapa."),
+                LocalizationService.Text("next_key"),
+                LocalizationService.Text("next_key_description"),
                 KeyBindingAction.NextStep));
             entries.Add(new IMenuMod.MenuEntry
             {
-                Name = LocalizationService.Text("reset_route", "Resetar progresso da rota"),
-                Description = LocalizationService.Text("reset_route_description", "Reinicia somente o progresso manual da rota atualmente selecionada."),
+                Name = LocalizationService.Text("reset_route"),
+                Description = LocalizationService.Text("reset_route_description"),
                 Values = new[]
                 {
-                    LocalizationService.Text("keep_progress", "Manter"),
-                    LocalizationService.Text("reset_now", "Resetar agora")
+                    LocalizationService.Text("keep_progress"),
+                    LocalizationService.Text("reset_now")
                 },
                 Saver = value =>
                 {
@@ -237,11 +257,10 @@ namespace HallownestWayfinder
 
         public void ResetCurrentRoute()
         {
-            if (CurrentRoute.Id == "speedrun_5h") Progress.SpeedrunCurrentStep = 0;
-            else if (CurrentRoute.Id == "grubs_46") Progress.GrubCurrentStep = 0;
-            else if (IsSaveCompletion) Progress.SaveCompletionDismissedStepIds.Clear();
-            else Progress.CurrentStep = 0;
+            if (IsSaveCompletion) Progress.SaveCompletionDismissedStepIds.Clear();
+            else Progress.StepByRoute[CurrentRoute.Id] = 0;
             _automaticAdvanceErrors.Clear();
+            InvalidateGameState();
         }
 
         public void NextStep()
@@ -251,6 +270,7 @@ namespace HallownestWayfinder
                 RouteStep? step = CurrentStep;
                 if (step != null && !Progress.SaveCompletionDismissedStepIds.Contains(step.Id))
                     Progress.SaveCompletionDismissedStepIds.Add(step.Id);
+                InvalidateGameState();
                 return;
             }
 
@@ -264,6 +284,7 @@ namespace HallownestWayfinder
             {
                 int count = Progress.SaveCompletionDismissedStepIds.Count;
                 if (count > 0) Progress.SaveCompletionDismissedStepIds.RemoveAt(count - 1);
+                InvalidateGameState();
                 return;
             }
 
@@ -275,31 +296,91 @@ namespace HallownestWayfinder
         {
             if (!HasActiveStep || GameManager.instance == null || PlayerData.instance == null) return;
 
+            RefreshGameState();
+            IGameState? state = _gameState;
+            if (state == null) return;
+
             RoutePlan route = CurrentRoute;
             RouteStep? step = CurrentStep;
             if (step == null) return;
             try
             {
-                if (step.IsComplete() && !IsSaveCompletion) NextStep();
+                if (step.IsComplete(state) && !IsSaveCompletion) NextStep();
             }
             catch (Exception exception)
             {
                 string errorKey = route.Id + "\n" + step.Id;
                 if (_automaticAdvanceErrors.Add(errorKey))
                 {
-                    LogError("Falha ao avaliar a etapa '" + step.Id +
-                        "' da rota '" + route.Id + "': " + exception);
+                    LogError("Failed to evaluate step '" + step.Id +
+                        "' from route '" + route.Id + "': " + exception);
                 }
             }
         }
 
         private void ClampProgress()
         {
-            Progress.CurrentStep = Math.Max(0, Math.Min(Progress.CurrentStep, RouteDefinition.Steps.Count));
-            Progress.SpeedrunCurrentStep = Math.Max(0,
-                Math.Min(Progress.SpeedrunCurrentStep, SpeedrunRouteDefinition.Steps.Count));
-            Progress.GrubCurrentStep = Math.Max(0,
-                Math.Min(Progress.GrubCurrentStep, GrubRouteDefinition.Steps.Count));
+            foreach (RoutePlan route in RouteCatalog.Routes)
+            {
+                if (route.IsSaveCompletion) continue;
+                int progress = GetStoredProgress(route.Id);
+                Progress.StepByRoute[route.Id] = Math.Max(0, Math.Min(progress, route.Steps.Count));
+            }
+        }
+
+        public void RefreshGameState(bool force = false)
+        {
+            string routeId = CurrentRoute.Id;
+            if (!force && _gameState != null && _analysisRouteId == routeId &&
+                Time.unscaledTime < _nextGameStateRefresh)
+                return;
+
+            _nextGameStateRefresh = Time.unscaledTime + 0.25f;
+            _analysisRouteId = routeId;
+            if (!PlayerDataGameState.TryCapture(out PlayerDataGameState? state) || state == null)
+            {
+                _gameState = null;
+                _cachedSaveStep = -1;
+                _cachedCompletedSteps = 0;
+                _cachedStepAvailable = false;
+                return;
+            }
+
+            _gameState = state;
+            VanillaRouteGraph.SetGameState(state);
+            if (!IsSaveCompletion) return;
+
+            _cachedSaveStep = SaveCompletionAnalyzer.FindNextStep(CurrentRoute.Steps,
+                Progress.SaveCompletionDismissedStepIds, state);
+            _cachedCompletedSteps = SaveCompletionAnalyzer.CountCompleted(CurrentRoute.Steps, state);
+            _cachedStepAvailable = _cachedSaveStep >= 0 &&
+                _cachedSaveStep < CurrentRoute.Steps.Count &&
+                SaveCompletionAnalyzer.IsAvailable(CurrentRoute.Steps[_cachedSaveStep], state);
+        }
+
+        private int GetSaveCompletedCount()
+        {
+            RefreshGameState();
+            return _cachedCompletedSteps;
+        }
+
+        private int GetStoredProgress(string routeId)
+        {
+            return Progress.StepByRoute.TryGetValue(routeId, out int value) ? value : 0;
+        }
+
+        private void InvalidateGameState()
+        {
+            _nextGameStateRefresh = 0f;
+            _analysisRouteId = null;
+        }
+
+        private static string[] RouteMenuNames()
+        {
+            string[] names = new string[RouteCatalog.Routes.Count];
+            for (int index = 0; index < names.Length; index++)
+                names[index] = LocalizationService.RouteName(RouteCatalog.Routes[index]);
+            return names;
         }
 
         public static string KeyName(KeyCode key) => key.ToString();
@@ -358,4 +439,5 @@ namespace HallownestWayfinder
         }
     }
 }
+
 
