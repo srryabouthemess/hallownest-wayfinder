@@ -16,6 +16,7 @@ Hallownest Wayfinder displays the next objective of a guided route inside the ga
 - Embedded icons and a UI designed to fit Hollow Knight's visual style.
 - Independent progress for every save file.
 - Configurable interface size and navigation mode.
+- Portuguese (Brazil) and English localization, with automatic game-language detection and a manual override.
 
 ## Controls
 
@@ -56,7 +57,7 @@ The compiled mod will be available at `bin/Release/net472/HallownestWayfinder.dl
 
 The current 112% route is adapted and summarized from the Steam guide *112% Completion Walkthrough with Maps* by Almech Alfarion. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and third-party licensing details.
 
-The five-hour speedrun route is adapted and summarized from fireb0rn's Steam guide [*Hollow Knight - 5 Hour Speedrun Achievement Guide by a Speedrunner*](https://steamcommunity.com/sharedfiles/filedetails/?id=1861523602). The in-game instructions are original Portuguese summaries rather than reproductions of the guide text.
+The five-hour speedrun route is adapted and summarized from fireb0rn's Steam guide [*Hollow Knight - 5 Hour Speedrun Achievement Guide by a Speedrunner*](https://steamcommunity.com/sharedfiles/filedetails/?id=1861523602). The in-game instructions are original summaries, available in Portuguese and English, rather than reproductions of the guide text.
 
 The grub diagnostic reads Hollow Knight's individual rescued-scene records.
 Its complete vanilla scene checklist was verified against the public location

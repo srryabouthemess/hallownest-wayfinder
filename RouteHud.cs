@@ -51,14 +51,14 @@ namespace HallownestWayfinder
             RouteStep step = Mod.CurrentStep;
             bool navigationVisible = Mod.GlobalSettings.NavigationMode != 2;
             NavigationResult navigation = RouteNavigation.Resolve(step, Mod.GlobalSettings.NavigationMode == 0);
-            string heading = $"{Mod.CurrentRoute.Name.ToUpperInvariant()}  •  {Mod.CurrentStepIndex + 1}/{Mod.CurrentRoute.Steps.Count}";
-            string objective = (step.Optional ? "[OPCIONAL] " : "") + step.Title;
-            string hint = "→ " + step.Hint;
+            string heading = $"{LocalizationService.RouteName(Mod.CurrentRoute).ToUpperInvariant()}  •  {Mod.CurrentStepIndex + 1}/{Mod.CurrentRoute.Steps.Count}";
+            string objective = (step.Optional ? LocalizationService.Text("optional", "[OPCIONAL] ") : "") + LocalizationService.StepTitle(step);
+            string hint = "→ " + LocalizationService.StepHint(step);
             string footer = step.IsAutomaticallyTracked
                 ? step.Optional
-                    ? "Avanço automático  •  F8 pular  •  F7 voltar  •  F6 ocultar"
-                    : "Avanço automático  •  F7 voltar  •  F6 ocultar"
-                : "F8 concluir  •  F7 voltar  •  F6 ocultar";
+                    ? LocalizationService.Text("automatic_progress", "Avanço automático") + "  •  " + LocalizationService.Text("skip", "F8 pular") + "  •  " + LocalizationService.Text("back", "F7 voltar") + "  •  " + LocalizationService.Text("hide", "F6 ocultar")
+                    : LocalizationService.Text("automatic_progress", "Avanço automático") + "  •  " + LocalizationService.Text("back", "F7 voltar") + "  •  " + LocalizationService.Text("hide", "F6 ocultar")
+                : LocalizationService.Text("complete", "F8 concluir") + "  •  " + LocalizationService.Text("back", "F7 voltar") + "  •  " + LocalizationService.Text("hide", "F6 ocultar");
 
             Texture2D icon = IconLoader.Get(step.Icon);
             float iconSize = icon == null ? 0f : 78f * scale;
@@ -109,14 +109,14 @@ namespace HallownestWayfinder
             if (navigationVisible)
             {
                 string navigationText = navigation.Kind == NavigationKind.Precise
-                    ? "◇ Navegação: " + navigation.Label
+                    ? "◇ " + LocalizationService.Text("navigation", "Navegação: ") + navigation.Label
                     : navigation.Kind == NavigationKind.Transport
                         ? "◇ " + navigation.Label
                         : navigation.Kind == NavigationKind.Arrived
                             ? "◇ " + navigation.Label
                             : navigation.Kind == NavigationKind.Unmapped
-                                ? "◇ Navegação inteligente: trecho ainda não mapeado"
-                                : "◇ Seta: direção geral (aproximada)";
+                                ? "◇ " + LocalizationService.Text("smart_unmapped", "Navegação inteligente: trecho ainda não mapeado")
+                                : "◇ " + LocalizationService.Text("arrow_approximate", "Seta: direção geral (aproximada)");
                 GUI.Label(new Rect(panel.x + padding, y, contentWidth, navigationHeight), navigationText, _footerStyle);
                 y += navigationHeight + 5f * scale;
             }

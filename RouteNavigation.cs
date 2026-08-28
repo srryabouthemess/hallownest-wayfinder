@@ -54,7 +54,9 @@ namespace HallownestWayfinder
                 {
                     Kind = NavigationKind.Precise,
                     Degrees = degrees,
-                    Label = string.IsNullOrEmpty(point.Label) ? "Próxima saída" : point.Label
+                    Label = string.IsNullOrEmpty(point.Label)
+                        ? LocalizationService.Text("next_exit", "Próxima saída")
+                        : point.Label
                 };
             }
 
@@ -63,27 +65,28 @@ namespace HallownestWayfinder
                 return new NavigationResult
                 {
                     Kind = NavigationKind.Arrived,
-                    Label = "Ponto alcançado — siga a instrução"
+                    Label = LocalizationService.Text("point_reached", "Ponto alcançado — siga a instrução")
                 };
             }
 
             string destinationScene = step.GetTargetScene();
+            string transportInstruction = LocalizationService.StepTransport(step);
             if (!string.IsNullOrEmpty(destinationScene))
             {
                 if (scene == destinationScene)
                 {
-                    if (!string.IsNullOrEmpty(step.TransportInstruction))
+                    if (!string.IsNullOrEmpty(transportInstruction))
                     {
                         return new NavigationResult
                         {
                             Kind = NavigationKind.Transport,
-                            Label = step.TransportInstruction
+                            Label = transportInstruction
                         };
                     }
                     return new NavigationResult
                     {
                         Kind = NavigationKind.Arrived,
-                        Label = "Objetivo nesta sala"
+                            Label = LocalizationService.Text("objective_here", "Objetivo nesta sala")
                     };
                 }
 
@@ -97,31 +100,31 @@ namespace HallownestWayfinder
                         {
                             Kind = NavigationKind.Precise,
                             Degrees = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg,
-                            Label = "Próxima saída"
+                            Label = LocalizationService.Text("next_exit", "Próxima saída")
                         };
                     }
 
                     return new NavigationResult
                     {
                         Kind = NavigationKind.Unmapped,
-                        Label = "Saída calculada, aguardando ponto da sala"
+                        Label = LocalizationService.Text("exit_pending", "Saída calculada, aguardando ponto da sala")
                     };
                 }
             }
 
-            if (!string.IsNullOrEmpty(step.TransportInstruction))
+            if (!string.IsNullOrEmpty(transportInstruction))
             {
                 return new NavigationResult
                 {
                     Kind = NavigationKind.Transport,
-                    Label = step.TransportInstruction
+                    Label = transportInstruction
                 };
             }
 
             return new NavigationResult
             {
                 Kind = NavigationKind.Unmapped,
-                Label = "Trecho ainda não mapeado"
+                Label = LocalizationService.Text("section_unmapped", "Trecho ainda não mapeado")
             };
         }
 
@@ -129,7 +132,7 @@ namespace HallownestWayfinder
         {
             Kind = NavigationKind.General,
             Degrees = degrees,
-            Label = "Direção geral"
+            Label = LocalizationService.Text("general_direction", "Direção geral")
         };
 
         private static Transform FindTransition(string doorName)

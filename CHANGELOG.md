@@ -4,6 +4,8 @@ All notable changes to Hallownest Wayfinder will be documented here.
 
 ## Unreleased
 
+- Added complete English localization for the menu, HUD, navigation and all 247 route objectives.
+- Added automatic language detection plus manual Portuguese (Brazil) and English options.
 - Added combined completion rules supporting all/any conditions, visited scenes,
   specific benches, cumulative item totals and Pantheon completion.
 - Automated all 19 route steps that previously required manual advancement,

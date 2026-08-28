@@ -78,6 +78,8 @@ namespace HallownestWayfinder
             GlobalSettings.UiSize = Math.Max(0, Math.Min(GlobalSettings.UiSize, 2));
             GlobalSettings.NavigationMode = Math.Max(0, Math.Min(GlobalSettings.NavigationMode, 2));
             GlobalSettings.ActiveRoute = Math.Max(0, Math.Min(GlobalSettings.ActiveRoute, RouteCatalog.Routes.Count - 1));
+            GlobalSettings.Language = Math.Max(0, Math.Min(GlobalSettings.Language, 2));
+            LocalizationService.SetLanguage(GlobalSettings.Language);
         }
 
         public RouteGlobalSettings OnSaveGlobal() => GlobalSettings;
@@ -88,9 +90,9 @@ namespace HallownestWayfinder
             {
                 new IMenuMod.MenuEntry
                 {
-                    Name = "Rota ativa",
-                    Description = "Escolha a rota exibida pelo Hallownest Wayfinder.",
-                    Values = new[] { "112%", "Speedrun 5h", "Larvas 46/46" },
+                    Name = LocalizationService.Text("route", "Rota ativa"),
+                    Description = LocalizationService.Text("route_description", "Escolha a rota exibida pelo Hallownest Wayfinder."),
+                    Values = new[] { "112%", "Speedrun 5h", LocalizationService.Text("grubs_route", "Larvas 46/46") },
                     Saver = value =>
                     {
                         GlobalSettings.ActiveRoute = value;
@@ -100,17 +102,44 @@ namespace HallownestWayfinder
                 },
                 new IMenuMod.MenuEntry
                 {
-                    Name = "Tamanho da interface",
-                    Description = "Altera o tamanho do painel de objetivo.",
-                    Values = new[] { "Pequeno", "Médio", "Grande" },
+                    Name = LocalizationService.Text("language", "Idioma"),
+                    Description = LocalizationService.Text("language_description", "Escolha o idioma usado pelo mod."),
+                    Values = new[]
+                    {
+                        LocalizationService.Text("automatic", "Automático"),
+                        LocalizationService.Text("portuguese", "Português (Brasil)"),
+                        LocalizationService.Text("english", "English")
+                    },
+                    Saver = value =>
+                    {
+                        GlobalSettings.Language = value;
+                        LocalizationService.SetLanguage(value);
+                    },
+                    Loader = () => GlobalSettings.Language
+                },
+                new IMenuMod.MenuEntry
+                {
+                    Name = LocalizationService.Text("ui_size", "Tamanho da interface"),
+                    Description = LocalizationService.Text("ui_size_description", "Altera o tamanho do painel de objetivo."),
+                    Values = new[]
+                    {
+                        LocalizationService.Text("small", "Pequeno"),
+                        LocalizationService.Text("medium", "Médio"),
+                        LocalizationService.Text("large", "Grande")
+                    },
                     Saver = value => GlobalSettings.UiSize = value,
                     Loader = () => GlobalSettings.UiSize
                 },
                 new IMenuMod.MenuEntry
                 {
-                    Name = "Seta de navegação",
-                    Description = "Inteligente usa rotas mapeadas; Geral mostra uma direção aproximada.",
-                    Values = new[] { "Inteligente", "Geral", "Desligada" },
+                    Name = LocalizationService.Text("navigation_arrow", "Seta de navegação"),
+                    Description = LocalizationService.Text("navigation_description", "Inteligente usa rotas mapeadas; Geral mostra uma direção aproximada."),
+                    Values = new[]
+                    {
+                        LocalizationService.Text("smart", "Inteligente"),
+                        LocalizationService.Text("general", "Geral"),
+                        LocalizationService.Text("off", "Desligada")
+                    },
                     Saver = value => GlobalSettings.NavigationMode = value,
                     Loader = () => GlobalSettings.NavigationMode
                 }

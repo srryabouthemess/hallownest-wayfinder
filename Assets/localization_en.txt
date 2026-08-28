@@ -1,0 +1,259 @@
+# id|title|hint
+fury|Get Fury of the Fallen|In King's Pass, before entering Dirtmouth, drop into the spike passage. Pogo across the spikes and reach the chest on the right.
+dirtmouth|Go to Dirtmouth|Return to the main path through King's Pass, continue right and pass through the large gate.
+crossroads|Enter the Forgotten Crossroads|Walk right from the Dirtmouth bench and jump into the open well.
+crossroads_map|Buy the Crossroads map|From the bottom of the well, descend and head left. Follow Cornifer's paper trail and humming.
+grub_1|Rescue the first grub|Leave Cornifer's room to the left and continue to the glass jar. Break it with the Nail.
+crossroads_station|Unlock the first Stag Station|Reach the lower-left station, pay 50 Geo and ring the bell.
+grub_2|Rescue the second grub|Leave the station to the right, climb the next room and break the hidden wall on the left.
+grub_3|Rescue the third grub|Climb near the Crystal Peak entrance, take the upper-right exit and continue to the grub.
+grub_4|Rescue the fourth grub|Return near the second grub, take the opposite passage and descend to the jar.
+gruz_mother|Defeat Gruz Mother|Continue down from the fourth grub and defeat Gruz Mother in the large arena.
+sly|Rescue Sly|Enter the small house beyond Gruz Mother and speak with Sly until he wakes up.
+false_knight|Defeat False Knight|Climb from the room east of the Crossroads station and head left to the arena.
+vengeful_spirit|Obtain Vengeful Spirit|Follow the Snail Shaman into the Ancestral Mound and complete his trial.
+soul_catcher|Obtain Soul Catcher|Defeat the Elder Baldur inside the Ancestral Mound and collect the charm beyond it.
+greenpath|Enter Greenpath|Use Vengeful Spirit to defeat the Elder Baldur blocking the way.
+grub_5|Rescue the fifth grub|After first seeing Hornet, cut the vine in the hidden passage, descend and head right.
+greenpath_map|Buy the Greenpath map|Follow Cornifer's paper trail and humming through Greenpath.
+hunters_journal|Obtain the Hunter's Journal|Reach the Hunter's hut, enter and accept his journal.
+grub_6|Rescue the sixth grub|Leave the Hunter's hut, return left and explore the lower passage.
+greenpath_bench|Use the 50 Geo bench|Return to Hornet's route, climb west and pay to unlock the bench.
+zote|Rescue Zote|Defeat the Vengefly King, then speak to Zote.
+grub_7|Rescue the seventh grub|Defeat the Moss Knight guarding the jar in upper Greenpath.
+greenpath_station|Unlock Greenpath Station|Follow the Stag signs, pay 140 Geo and ring the bell.
+wanderers_journal|Obtain the Wanderer's Journal|Search the passage before Hornet's arena near the Lake of Unn.
+hornet|Defeat Hornet and obtain the dash|Defeat Hornet and collect the Mothwing Cloak.
+
+c03_dirtmouth|Ch. 03 • Return to Dirtmouth|Use the Greenpath Stag Station and travel back to Dirtmouth.
+c03_compass|Ch. 03 • Buy the quill and compass|Buy the Quill and Wayward Compass from Iselda. Prioritize Gathering Swarm at Sly if needed.
+c03_grub6|Ch. 03 • Rescue the next grub|Descend through the well, head left and use the dash to reach the grub in the lower-right room.
+c03_wastes|Ch. 03 • Enter the Fungal Wastes|Cross the gap at the bottom of the Crossroads with the dash and descend through the mushroom passages.
+c03_ogres|Ch. 03 • Defeat the Shrumal Warriors|Descend the first shaft, head left and defeat both warriors to earn a Charm Notch.
+c03_map|Ch. 03 • Buy the Fungal Wastes map|Pass Queen's Station and find Cornifer below the acid pools.
+c03_claw|Ch. 03 • Obtain Mantis Claw|Reach Mantis Village, activate the lower lever and collect the Claw above.
+
+c04_grub7|Ch. 04 • Rescue a Fungal Wastes grub|Use Mantis Claw to climb the bouncing-mushroom tunnels toward Queen's Station.
+c04_queen_station|Ch. 04 • Unlock Queen's Station|Pay the toll at the lower-left platform and call the Last Stag.
+c04_lantern|Ch. 04 • Buy Lumafly Lantern|Travel to Dirtmouth, buy the Lantern from Sly for 1800 Geo and return to Queen's Station.
+c04_grub8|Ch. 04 • Rescue the grub above acid|Cross the acid-and-bouncing-mushroom room near the Mantis Village shortcut.
+c04_spore|Ch. 04 • Obtain Spore Shroom|Cross the acid pools below the grub, collect the charm and break the wall on the left.
+c04_deepnest_grub|Ch. 04 • Make a short Deepnest visit|Drop through the fragile floor, stay near the right wall and rescue the real grub among the mimics.
+c04_deepnest_map|Ch. 04 • Buy the Deepnest map|Descend and head left to Cornifer. Do not wander farther during this first visit.
+c04_city|Ch. 04 • Enter the City of Tears|Return to the Wastes, follow Hornet's path and use the City Crest at the great statue.
+c04_nail1|Ch. 04 • Sharpen the Nail|Find the Nailsmith in the lower city and buy the first upgrade for 250 Geo.
+c04_lemm|Ch. 04 • Meet Lemm|Climb the central platforms, open the building on the right and sell your first relics.
+c04_grub10|Ch. 04 • Rescue the City grub|Climb the elevators above Lemm and enter the side room on the right.
+c04_city_map|Ch. 04 • Buy the City map|Open the shortcut to the elevated bench and buy the map from Cornifer.
+c04_spell_twister|Ch. 04 • Obtain Spell Twister|Look for the dark ceiling opening inside Soul Sanctum before the main arena.
+c04_soul_master|Ch. 04 • Defeat Soul Master|Open the Sanctum shortcuts, defeat Soul Master and obtain Desolate Dive.
+c04_grub11|Ch. 04 • Rescue the Sanctum grub|After the boss, stop at the ledge and find the grub before breaking through the final floor.
+c04_storerooms|Ch. 04 • Unlock City Storerooms|Cross the upper walkway, take the Simple Key and drop the large block to open the station.
+
+c05_salubra|Ch. 05 • Buy a Charm Notch from Salubra|Travel to the Crossroads and buy the first available notch from Salubra.
+c05_peak|Ch. 05 • Enter Crystal Peak|Take the lift above Myla and use Desolate Dive on the unstable floor.
+c05_grub12|Ch. 05 • Rescue the conveyor grub|Climb the vertical conveyors, dash across the spikes and activate the lever beyond the grub.
+c05_peak_map|Ch. 05 • Buy the Crystal Peak map|Climb through the laser passages until you find Cornifer.
+c05_shop_key|Ch. 05 • Obtain the Shopkeeper's Key|Continue up the right side of the mines and collect the key at the top.
+c05_heart|Ch. 05 • Obtain Crystal Heart|Cross the large laser challenge on the right and inspect the broken mining golem.
+c05_grubs|Ch. 05 • Rescue the Crystal Peak grubs|Use Crystal Heart to reach the grubs beyond chasms, crushers and the lower rooms.
+c05_dark|Ch. 05 • Obtain Descending Dark|Cross the dark room to Crystallized Mound, free the trapped Shaman and upgrade the dive.
+c06_dream_nail|Ch. 06 • Obtain the Dream Nail|Drop from Crystallized Mound into Resting Grounds and complete the memorial sequence.
+c06_dreamshield|Ch. 06 • Obtain Dreamshield|Explore the passage below the Seer's house before unlocking the station.
+c06_station|Ch. 06 • Unlock Resting Grounds Station|Cross the main shaft and activate the station lever.
+c07_elegant|Ch. 07 • Buy the Elegant Key|Give the Shopkeeper's Key to Sly, buy the Elegant Key and get the Resting Grounds map.
+c07_shade_soul|Ch. 07 • Obtain Shade Soul|Return to Soul Sanctum, open the elegant door and defeat the Soul Warrior.
+c07_waterways|Ch. 07 • Open the Royal Waterways|Use a Simple Key on the hatch near the lower City elevator.
+
+c08_grub17|Ch. 08 • Rescue the Waterways grub|From the lower bench, climb and break through the wall on the left.
+c08_map|Ch. 08 • Buy the Waterways map|Pass the Hwurmps and find Cornifer in the upper-left corner.
+c08_dung|Ch. 08 • Defeat Dung Defender|Follow the brown tunnels beyond the bench and defeat Ogrim.
+c08_isma|Ch. 08 • Obtain Isma's Tear|Crystal Dash through the spike tunnel, defeat the guards and reach Isma's Grove.
+c09_grub18|Ch. 09 • Rescue the grub after Isma|Swim through the acid to the right and climb the wall.
+c09_ore1|Ch. 09 • Obtain the Basin Pale Ore|Descend into Ancient Basin and explore the Mawlek area in the lower-left corner.
+c09_grub19|Ch. 09 • Rescue the Basin grub|Use Descending Dark on the loose floor near the Lesser Mawleks.
+c09_map|Ch. 09 • Buy the Ancient Basin map|Descend through the alcoves to the right of the fountain and find Cornifer.
+c09_broken|Ch. 09 • Defeat Broken Vessel|Cross the spike chasm on the left and continue to the arena.
+c09_wings|Ch. 09 • Obtain Monarch Wings|After the fight, head left and down to the ancient shell.
+c09_lost_kin|Ch. 09 • Defeat Lost Kin|Dream Nail Broken Vessel's body and defeat its dream form.
+c09_hidden_station|Ch. 09 • Unlock Hidden Station|Double-jump through the corridor below the tram, break the far-right wall and pay the toll.
+
+c10_ritual|Ch. 10 • Light the Nightmare Lantern|Climb from Greenpath to Howling Cliffs, Dream Nail the hidden corpse and light the brazier.
+c10_cliffs_map|Ch. 10 • Buy the Howling Cliffs map|Return to the cliff face and follow Cornifer's humming.
+c10_joni|Ch. 10 • Obtain Joni's Blessing|Follow the blue flowers through the dark room to Joni's Repose.
+c10_cyclone|Ch. 10 • Learn Cyclone Slash|Reach the top of the cliffs and find Mato's hut beneath the ledge.
+c10_gorb|Ch. 10 • Defeat Gorb|Continue to the upper-left monument and challenge the warrior spirit.
+c10_stag_nest|Ch. 10 • Visit the Stag Nest|Use a Vengefly to reach the ledge left of Gorb and collect the Vessel Fragment inside.
+c11_grimmchild|Ch. 11 • Receive Grimmchild|Return to Dirtmouth, enter the main tent and speak with Troupe Master Grimm.
+c11_failed|Ch. 11 • Defeat Failed Champion|Break the wall above False Knight's old arena and enter the fallen body's dream.
+c11_xero|Ch. 11 • Defeat Xero|Challenge the red spirit above the Resting Grounds memorial.
+c11_dreamgate|Ch. 11 • Unlock Dreamgate|Give Essence to the Seer until she grants Dreamgate and the other rewards.
+c12_deep_focus|Ch. 12 • Obtain Deep Focus|Return to Crystal Peak and Crystal Dash through the lasers to the hidden geode.
+c12_guardians|Ch. 12 • Defeat both Crystal Guardians|Defeat the guardian on the bench, then climb the right wall to face its enraged form.
+c12_ore|Ch. 12 • Obtain the Crown Pale Ore|Climb to Hallownest's Crown and collect the ore at the statue.
+c13_sheo|Ch. 13 • Learn Great Slash|Cross the Durandoos and spikes in lower Greenpath to reach Sheo's house.
+c13_thorns|Ch. 13 • Obtain Thorns of Agony|Cross the Lumaflies and spikes in the corridor east of the station.
+c13_grubs|Ch. 13 • Search Greenpath|Rescue both lower-corridor grubs and collect the hidden Vessel Fragment.
+c13_wraiths|Ch. 13 • Obtain Howling Wraiths|Descend into Fog Canyon, enter Overgrown Mound and reach the dead Shaman.
+c13_noeyes|Ch. 13 • Defeat No Eyes|Enter Stone Sanctuary, cross the darkness and challenge the spirit.
+
+c14_souleater|Ch. 14 • Obtain Soul Eater|Break the hidden walls and ceiling near the sarcophagus below Resting Grounds.
+c15_kings_station|Ch. 15 • Unlock King's Station|Descend through the eastern City elevators and pay the lower station toll.
+c15_edge_map|Ch. 15 • Buy the Kingdom's Edge map|Leave through the broken station, enter Kingdom's Edge and descend to Cornifer's pipe.
+c15_hornet2|Ch. 15 • Defeat Hornet Sentinel|Cross the upper route through Kingdom's Edge and follow Hornet to the arena.
+c15_brand|Ch. 15 • Obtain King's Brand|After Hornet, cross the Cast-Off Shell and inspect the mark on the far left.
+c16_abyss|Ch. 16 • Enter the Abyss|Travel to Hidden Station, descend through the Basin and open the gate with King's Brand.
+c16_shriek|Ch. 16 • Obtain Abyss Shriek|At the lower-left Abyss, cast Howling Wraiths in the center of the face-filled room.
+c16_cloak|Ch. 16 • Obtain Shade Cloak|Light the lighthouse, cross the Void sea and bathe in the dark fountain.
+c17_grimm|Ch. 17 • Defeat Troupe Master Grimm|Return to the Dirtmouth tent with Grimmchild equipped and defeat Grimm.
+c17_nail|Ch. 17 • Upgrade to the Coiled Nail|Sell relics to Lemm and take the required Pale Ore to the Nailsmith.
+c17_fluke|Ch. 17 • Defeat Flukemarm|Dive through the floor below the Waterways bench and find the hidden path on the left.
+c17_dashmaster|Ch. 17 • Obtain Dashmaster|Enter the Wastes from the Waterways and collect the charm beneath the statue.
+c17_bretta|Ch. 17 • Rescue Bretta|Cross the narrow spike passages west of the Dashmaster statue.
+c17_lords|Ch. 17 • Defeat the Mantis Lords|Open the arena levers below Mantis Village and challenge all three Lords.
+c17_pride|Ch. 17 • Obtain Mark of Pride|After the victory, enter the newly opened treasure room on the right.
+c18_mawlek|Ch. 18 • Defeat Brooding Mawlek|Break the doorway below the Greenpath exit in the Infected Crossroads and cross the spikes.
+c18_notch|Ch. 18 • Obtain the Fog Canyon Charm Notch|Descend into Fog Canyon and cross the room of explosive bubbles.
+c18_fragile|Ch. 18 • Buy the Fragile charms|Equip Defender's Crest for a discount and buy Heart, Greed and Strength from Leg Eater.
+c18_hu|Ch. 18 • Defeat Elder Hu|Travel to eastern Fungal Wastes and challenge the spirit at the memorial.
+c18_fog_map|Ch. 18 • Buy the Fog Canyon map|Pass above the Shade Gate in the western corridor to reach Cornifer.
+c18_uumuu|Ch. 18 • Defeat Uumuu|Enter Teacher's Archives and wait for Quirrel to expose the boss.
+c18_monomon|Ch. 18 • Release Monomon|After Uumuu, meet Quirrel by the tank and Dream Nail Monomon.
+
+c19_gardens_map|Ch. 19 • Buy the Queen's Gardens map|Enter from Queen's Station, survive the Mantis ambush and follow the signs to Cornifer.
+c19_love_key|Ch. 19 • Obtain Love Key|Descend to the room with the large corpse and defeat the Traitor Mantises.
+c19_marmu|Ch. 19 • Defeat Marmu|Reach the warrior's grave on the eastern side of the Gardens.
+c19_station|Ch. 19 • Unlock Queen's Gardens Station|Continue right after Marmu, pay the station toll and open the shortcut.
+c19_traitor|Ch. 19 • Defeat Traitor Lord|Cross the spike platforms above the station and use Shade Cloak in the arena.
+c19_queen|Ch. 19 • Receive half of Kingsoul|Enter the White Lady's sanctuary after Traitor Lord and speak with her.
+c20_herrah|Ch. 20 • Release Herrah|Enter Beast's Den in Distant Village, escape the trap and end Herrah's dream.
+c20_weaver|Ch. 20 • Obtain Weaversong|Break the wall behind the Stalking Devout and cross the spike floor.
+c20_galien|Ch. 20 • Defeat Galien|Find the fallen warrior near the pale mushrooms and challenge his spirit.
+c20_pass|Ch. 20 • Obtain the Tram Pass|Climb into the Failed Tramway and search the broken car on the far left.
+c20_zote|Ch. 20 • Rescue Zote in Deepnest|Descend from the Failed Tramway and free Zote from the webs.
+c20_nosk|Ch. 20 • Defeat Nosk|Break the wall near the Deepnest Hot Spring and follow the familiar figure.
+c20_sharp|Ch. 20 • Obtain Sharp Shadow|Pass through the Shade Gate in the Garpede room and reach the charm.
+c21_hive|Ch. 21 • Enter the Hive|Use the Tram Pass, travel right twice and break the wall above the insects.
+c21_knight|Ch. 21 • Defeat Hive Knight|Cross the great chambers to the far right and break the barriers before the arena.
+c21_hiveblood|Ch. 21 • Obtain Hiveblood|Pass beneath the arena after the boss and enter the queen's chamber.
+c22_markoth|Ch. 22 • Defeat Markoth|Return to Kingdom's Edge, cross the lower Shade Gate and challenge the fallen warrior.
+c22_dashslash|Ch. 22 • Learn Dash Slash|Travel right through the Great Hoppers and buy the technique from Oro for 800 Geo.
+c22_quickslash|Ch. 22 • Obtain Quick Slash|Pass the Great Hoppers, climb the structure on the right and collect the charm.
+c23_collector|Ch. 23 • Defeat the Collector|Use Love Key to enter the Tower of Love and climb to the arena.
+c23_grubs|Ch. 23 • Free the Tower grubs|After the Collector, explore the upper room, take the map and free all three grubs.
+c23_final_grub|Ch. 23 • Rescue the final grub|Open the Watcher's Spire levers and search above the right exit.
+c23_watchers|Ch. 23 • Defeat the Watcher Knights|Break the chandelier chain to reduce the fight, then enter the upper arena.
+c23_lurien|Ch. 23 • Release Lurien|Climb to the tower's summit and end the Watcher's dream.
+
+c24_white_defender|Ch. 24 • Defeat White Defender|Enter Ogrim's dream in the chamber beneath the broken Waterways elevator.
+c24_colosseum|Ch. 24 • Complete the Colosseum|Finish all three Trials in the Colosseum of Fools and defeat God Tamer.
+c25_zote|Ch. 25 • Defeat Grey Prince Zote|Enter Bretta's basement in Dirtmouth and Dream Nail the statue.
+c25_grubfather|Ch. 25 • Collect the grub rewards|Visit Grubhome in the Crossroads and collect every reward from Grubfather.
+c25_sly|Ch. 25 • Receive Nailmaster's Glory|With all three Nail Arts, visit Sly's basement and buy his remaining items.
+c25_awoken|Ch. 25 • Awaken the Dream Nail|Gather 2400 Essence and keep returning to the Seer until she disappears.
+c26_flower|Ch. 26 • Deliver the Delicate Flower|Carry the flower from the Grey Mourner to the Gardens grave without taking damage.
+c27_palace|Ch. 27 • Enter White Palace|Use the Awoken Dream Nail on the royal corpse in Ancient Basin.
+c27_kingsoul|Ch. 27 • Complete Kingsoul|Clear all three White Palace wings, reach the throne and strike the Pale King's body.
+c28_lifeblood|Ch. 28 • Obtain Lifeblood Core|Equip enough Lifeblood, open the sealed Abyss door and collect the charm before leaving.
+c28_void|Ch. 28 • Transform Kingsoul into Void Heart|Break the floor at the bottom of the Abyss, Dream Nail the black egg and climb through the birthplace.
+c29_pure_nail|Ch. 29 • Forge the Pure Nail|Sell the remaining relics and give the Nailsmith 4000 Geo and three Pale Ore.
+c29_unbreakable|Ch. 29 • Upgrade the Fragile charms|Before ending the Troupe, give the charms to Divine and buy their Unbreakable forms.
+c29_grimm_end|Ch. 29 • End the Grimm Troupe quest|Complete the Ritual against Nightmare King Grimm or banish the Troupe with Brumm.
+c30_godhome|Ch. 30 • Open Godhome|Reach the Junk Pit above Flukemarm and open the sarcophagus with a Simple Key.
+c30_pantheons|Ch. 30 • Complete the Pantheons|Complete the first four Pantheons for 112%. Pantheon of Hallownest remains optional.
+
+sr01_fury|Segment 01 • Obtain Fury of the Fallen|Before Dirtmouth, pogo across the spike passage in King's Pass.
+sr01_geo|Segment 01 • Gather 50 Geo|Break Geo deposits on the way to the Crossroads station. Do not stop to farm ordinary enemies.
+sr01_stag|Segment 01 • Open the Crossroads station|Pay 50 Geo, ring the bell and use the bench only if you need health.
+sr01_false_knight|Segment 01 • Defeat False Knight|Defeat the boss, collect City Crest and open his Geo chest.
+sr01_spell|Segment 01 • Obtain Vengeful Spirit|Follow the Shaman, complete Ancestral Mound and receive the spell.
+sr01_soul_catcher|Segment 01 • Obtain and equip Soul Catcher|Collect the charm after the Elder Baldur and equip it before Greenpath.
+sr02_vengefly|Segment 02 • Defeat Vengefly King|Defeat Vengefly King in upper Greenpath for quick Geo.
+sr02_journal|Segment 02 • Obtain the Wanderer's Journal|Break the wall before Hornet's arena and collect the relic for later.
+sr02_bench|Segment 02 • Use the Greenpath bench|Sit at the station bench, but do not spend Geo unlocking the Stag.
+sr02_hornet|Segment 02 • Defeat Hornet and obtain the dash|Collect Mothwing Cloak and save and quit as soon as the pickup finishes.
+sr03_queen_bench|Segment 03 • Use the Queen's Station bench|Cross Fog Canyon and sit at the station bench before entering Fungal Wastes.
+sr03_seal|Segment 03 • Obtain the Hallownest Seal|Collect the route's seal to help pay for the City purchases.
+sr03_claw|Segment 03 • Obtain Mantis Claw|Cross the bouncing mushrooms, activate the village lever and collect the wall-climb ability.
+sr03_city|Segment 03 • Enter the City of Tears|Reach the eastern Wastes gate, collecting the journal and Geo deposits on the way.
+sr04_nail|Segment 04 • Buy the first Nail upgrade|Use the lower bench, pay the Nailsmith 250 Geo and save and quit back to the bench.
+sr04_seal|Segment 04 • Obtain the Sanctum-route seal|Climb through the City and collect the Hallownest Seal before Soul Sanctum.
+sr04_bench|Segment 04 • Buy the Soul Sanctum bench|Sell a relic to Lemm if needed, pay for the bench and sit before the Sanctum.
+sr04_twister|Segment 04 • Obtain Spell Twister|Find the ceiling opening before the main arena and collect the charm.
+sr04_master|Segment 04 • Defeat Soul Master|Defeat the boss, obtain Desolate Dive and collect the chest and seal on the way out.
+sr04_sell|Segment 04 • Sell every relic to Lemm|Equip Spell Twister, sell all relics and save and quit. Protect this Geo.
+sr04_key|Segment 04 • Obtain a Simple Key|Collect the City Simple Key for the Royal Waterways hatch.
+sr04_stag|Segment 04 • Unlock City Storerooms|Open the station, ring the bell and travel to the Crossroads.
+sr05_gruz|Segment 05 • Defeat Gruz Mother|From the Crossroads bench, defeat Gruz Mother and open the route to Sly and Salubra.
+sr05_sly|Segment 05 • Rescue Sly|Enter the abandoned village house and speak with Sly until he returns to Dirtmouth.
+sr05_steady|Segment 05 • Buy Steady Body|Buy Steady Body from Salubra.
+sr05_shaman|Segment 05 • Buy Shaman Stone|Buy Shaman Stone and prioritize it together with Spell Twister.
+sr05_notch|Segment 05 • Buy a Charm Notch|With five charms collected, buy Salubra's first notch and save and quit.
+sr05_lantern|Segment 05 • Buy Lumafly Lantern|Equip Shaman Stone and Spell Twister, then buy the Lantern from Sly for 1800 Geo.
+sr05_peak|Segment 05 • Enter Crystal Peak|Save and quit, return to the Crossroads and dive through the mine entrance.
+sr06_heart|Segment 06 • Obtain Crystal Heart|Cross the right side of Crystal Peak. The nearby safety bench is optional.
+sr06_dark|Segment 06 • Obtain Descending Dark|Reach Crystallized Mound and upgrade the dive. Use its invincibility during bosses.
+sr06_dream|Segment 06 • Obtain the Dream Nail|Drop into Resting Grounds and complete the memorial sequence.
+sr06_stag|Segment 06 • Unlock Resting Grounds Station|Open the station and travel to City Storerooms.
+sr07_waterways|Segment 07 • Open the Royal Waterways|Use the Simple Key on the lower avenue hatch and use the Waterways bench.
+sr07_dung|Segment 07 • Defeat Dung Defender|Enter with full health and Soul. Use Descending Dark while he is underground.
+sr07_isma|Segment 07 • Obtain Isma's Tear|Activate the lever, Crystal Dash through the spikes and reach Isma's Grove.
+sr07_skip|Segment 07 • Perform the Watcher pogo|Try the background-object pogo below the Spire. Get Monarch Wings instead if preferred.
+sr07_watchers|Segment 07 • Defeat Watcher Knights|Use the Spire bench, drop the chandelier and use Descending Dark heavily.
+sr07_lurien|Segment 07 • Release Lurien|Climb to the top, end the Watcher's dream and collect the Geo chest on the way down.
+sr07_kings|Segment 07 • Unlock King's Station|Open the lower City station and travel to Dirtmouth.
+sr08_archives|Segment 08 • Reach Teacher's Archives|Cross Greenpath and Fog Canyon. Use the safety bench at the top of the Archives.
+sr08_uumuu|Segment 08 • Defeat Uumuu|Play patiently, lure Uumuu near the center and dive when Quirrel opens its defense.
+sr08_monomon|Segment 08 • Release Monomon|Meet Quirrel by the tank and Dream Nail the Teacher.
+sr08_gardens|Segment 08 • Head to Queen's Gardens|Use the Archives bench again, head left and cross the acid into the Gardens.
+sr09_bench|Segment 09 • Buy the bench before Deepnest|Enter the Gardens through the acid route, pay for the bench before Deepnest and sit.
+sr09_herrah|Segment 09 • Release Herrah|Enter Beast's Den, cross the trap and end Herrah's dream.
+sr09_stag|Segment 09 • Unlock Distant Village Station|Pay the station toll and travel directly to Dirtmouth.
+sr10_egg|Segment 10 • Enter the Temple of the Black Egg|With all Dreamers defeated, cross the Crossroads and enter the temple.
+sr10_hollow_knight|Segment 10 • Defeat the Hollow Knight|Manage Soul, heal during the self-stabs and use Descending Dark as your main damage.
+
+grub_crossroads_acid|Forgotten Crossroads • Acid passage|From Cornifer, follow the western passage to the jar above the acid.
+grub_crossroads_center|Forgotten Crossroads • Central room|Use the dash to reach the grub in the central Crossroads room.
+grub_crossroads_stag|Forgotten Crossroads • Near the station|Leave the station to the right, climb and break the hidden wall on the left.
+grub_crossroads_spike|Forgotten Crossroads • Spike corridor|Find the jar in the spike corridor in the southeast of the area.
+grub_crossroads_guarded|Forgotten Crossroads • Guarded grub|Climb through the eastern area and defeat the enemy guarding the jar.
+grub_greenpath_cornifer|Greenpath • Near Cornifer|After first seeing Hornet, cut the hidden vine and follow the passage.
+grub_greenpath_journal|Greenpath • Near the Hunter|Descend from the Hunter's hut and explore the lower passage.
+grub_greenpath_mmc|Greenpath • Sheo's route|Explore the lower corridors on the way to Sheo's house.
+grub_greenpath_stag|Greenpath • Moss Knight|Defeat the Moss Knight guarding the jar in upper Greenpath.
+grub_cliffs|Howling Cliffs|Search the hidden passage in Howling Cliffs.
+grub_fungal_bouncy|Fungal Wastes • Bouncing mushrooms|Use Mantis Claw and the bouncing mushrooms near Queen's Station.
+grub_fungal_spore|Fungal Wastes • Spore Shroom|Cross the acid room near the Spore Shroom charm.
+grub_deepnest_spike|Deepnest • Fragile floor|Drop through the Wastes floor and find the real grub among the mimics.
+grub_city_left|City of Tears • Western tower|Climb above Lemm and enter the side room.
+grub_soul_sanctum|City of Tears • Soul Sanctum|After Soul Master, find the jar before breaking the final floor.
+grub_city_guarded|City of Tears • Guarded grub|Explore the isolated City building and defeat the guards.
+grub_peak_spike|Crystal Peak • Conveyors and spikes|Climb the vertical conveyors, cross the spikes and activate the lever.
+grub_peak_chest|Crystal Peak • Below the chest|Find the lower hidden passage beneath the chest area.
+grub_peak_mimic|Crystal Peak • Mimic|Break the false walls and identify the real grub among the mimics.
+grub_peak_crushers|Crystal Peak • Crushers|Cross the moving piston and crusher challenge.
+grub_peak_crown|Crystal Peak • Hallownest's Crown|Climb toward the summit and explore the Crown route.
+grub_peak_heart|Crystal Peak • Crystal Heart|Use Crystal Heart to cross the chasm near the ability.
+grub_mound|Crystal Peak • Crystallized Mound|Explore Crystallized Mound near the Shaman and Descending Dark.
+grub_resting|Resting Grounds|Break the sarcophagus and cross the hidden tunnels below the area.
+grub_waterways_main|Royal Waterways • Main corridor|Climb from the lower bench and break through the wall on the left.
+grub_isma|Royal Waterways • Isma's Grove|After obtaining Isma's Tear, swim through the acid and climb the wall.
+grub_waterways_tram|Royal Waterways • Near the Tram|Use the Tram access to reach the isolated Waterways section.
+grub_basin_dive|Ancient Basin • Desolate Dive|Dive through the loose floor near the Lesser Mawleks.
+grub_basin_wings|Ancient Basin • Monarch Wings|Use the double jump to reach the jar in western Basin.
+grub_dark_deepnest|Deepnest • Dark room|Bring the Lantern and search the dark Deepnest corridors.
+grub_deepnest_mimic|Deepnest • Grub mimics|Find the real grub among the mimic creatures.
+grub_deepnest_nosk|Deepnest • Nosk route|Search the breakable passages near the Hot Spring and Nosk's route.
+grub_beasts_den|Deepnest • Beast's Den|Explore Beast's Den before releasing Herrah.
+grub_kingdom_camp|Kingdom's Edge • Camp|Search near the camp and the large ancient shells.
+grub_kingdom_oro|Kingdom's Edge • Near Oro|Cross the Great Hopper corridors near Oro's house.
+grub_kings_station|City of Tears • King's Station|Find the hidden room in the corridors near King's Station.
+grub_gardens_stag|Queen's Gardens • Station|Explore the corridors around Queen's Gardens Station.
+grub_gardens_top|Queen's Gardens • Upper area|Use your movement abilities to cross the upper spikes.
+grub_gardens_marmu|Queen's Gardens • Near Marmu|Search the passages around Marmu's grave.
+grub_fog|Fog Canyon|Cross the explosive bubbles and find the isolated passage.
+grub_hive_external|The Hive • Entrance|Break the Tram tunnel wall and explore the outer Hive.
+grub_hive_internal|The Hive • Interior|Cross the large inner chambers using the bees as platforms.
+grub_collector|Tower of Love • Three grubs|Defeat the Collector and break all three jars in the upper room.
+grub_watcher|Watcher's Spire|Open the levers and search above the tower's right exit.
+
