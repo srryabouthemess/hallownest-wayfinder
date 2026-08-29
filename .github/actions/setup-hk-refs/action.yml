@@ -1,0 +1,92 @@
+name: Set up Hollow Knight references
+description: Download a pinned official Modding API archive for reproducible builds.
+
+inputs:
+  api-tag:
+    description: Official hk-modding/api release tag.
+    required: false
+    default: 1.5.78.11833-77
+  asset-name:
+    description: Windows Modding API archive name.
+    required: false
+    default: moddingapi.v77.windows.zip
+  api-sha256:
+    description: Published SHA-256 checksum of the Modding API archive.
+    required: false
+    default: bc9f0db3d0916b05cd5a2420bb602fb1b239ce3ff6c289fd84bffb682fb8f1d6
+  vanilla-url:
+    description: Full vanilla reference archive used by HKBuildUtils 0.6.1.
+    required: false
+    default: https://files.catbox.moe/i4sdl6.zip
+  vanilla-sha256:
+    description: Pinned SHA-256 checksum of the vanilla reference archive.
+    required: false
+    default: 15dbd6a5668c722c9b1e585b944756063a7f4b41f9c0e161a3c7649f1d3ab08e
+
+outputs:
+  refs-path:
+    description: Directory containing Assembly-CSharp.dll.
+    value: ${{ steps.download.outputs.refs-path }}
+
+runs:
+  using: composite
+  steps:
+    - name: Download and extract Modding API
+      id: download
+      shell: pwsh
+      env:
+        MODDING_API_TAG: ${{ inputs.api-tag }}
+        MODDING_API_ASSET: ${{ inputs.asset-name }}
+        MODDING_API_SHA256: ${{ inputs.api-sha256 }}
+        VANILLA_REFS_URL: ${{ inputs.vanilla-url }}
+        VANILLA_REFS_SHA256: ${{ inputs.vanilla-sha256 }}
+      run: |
+        $downloadDirectory = Join-Path $env:RUNNER_TEMP "hallownest-wayfinder-references"
+        $referencesDirectory = Join-Path $downloadDirectory "managed"
+        $vanillaArchive = Join-Path $downloadDirectory "vanilla.zip"
+        $moddingApiArchive = Join-Path $downloadDirectory $env:MODDING_API_ASSET
+        New-Item -ItemType Directory -Path $downloadDirectory -Force | Out-Null
+
+        curl.exe --location --fail --silent --show-error `
+          --retry 5 --retry-all-errors --retry-delay 3 `
+          --output $vanillaArchive $env:VANILLA_REFS_URL
+        if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $vanillaArchive)) {
+          throw "Could not download the vanilla Hollow Knight references."
+        }
+
+        $downloaded = $false
+        for ($attempt = 1; $attempt -le 3; $attempt++) {
+          gh release download $env:MODDING_API_TAG `
+            --repo hk-modding/api `
+            --pattern $env:MODDING_API_ASSET `
+            --dir $downloadDirectory `
+            --clobber
+          if ($LASTEXITCODE -eq 0) {
+            $downloaded = $true
+            break
+          }
+          if ($attempt -lt 3) {
+            Start-Sleep -Seconds (5 * $attempt)
+          }
+        }
+        if (-not $downloaded -or -not (Test-Path -LiteralPath $moddingApiArchive)) {
+          throw "Could not download $env:MODDING_API_ASSET after three attempts."
+        }
+
+        $vanillaHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $vanillaArchive).Hash
+        $moddingApiHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $moddingApiArchive).Hash
+        if ($vanillaHash -ne $env:VANILLA_REFS_SHA256) {
+          throw "The vanilla reference archive checksum does not match."
+        }
+        if ($moddingApiHash -ne $env:MODDING_API_SHA256) {
+          throw "The Modding API archive checksum does not match."
+        }
+
+        New-Item -ItemType Directory -Path $referencesDirectory -Force | Out-Null
+        Expand-Archive -LiteralPath $vanillaArchive -DestinationPath $referencesDirectory -Force
+        Expand-Archive -LiteralPath $moddingApiArchive -DestinationPath $referencesDirectory -Force
+        if (-not (Test-Path -LiteralPath (Join-Path $referencesDirectory "Assembly-CSharp.dll"))) {
+          throw "The combined references do not contain Assembly-CSharp.dll."
+        }
+
+        "refs-path=$referencesDirectory" >> $env:GITHUB_OUTPUT

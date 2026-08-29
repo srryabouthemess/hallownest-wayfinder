@@ -8,6 +8,9 @@ All notable changes to Hallownest Wayfinder will be documented here.
   progression across the 112%, speedrun and save-completion routes.
 - Added Sprintmaster as its own automatically tracked objective in the 112% and
   save-completion routes.
+- Fixed CI and release builds by provisioning pinned, checksum-verified Hollow
+  Knight references with retry-capable downloads instead of the fragile
+  HKBuildUtils HTTP downloader.
 - Cached save analysis, scene collections, transition transforms, navigation
   results, localization selection and HUD layout to remove per-frame scans and
   allocations.

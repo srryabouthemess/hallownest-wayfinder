@@ -26,8 +26,14 @@ jobs:
       - name: Restore
         run: dotnet restore tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj
 
+      - name: Set up Hollow Knight references
+        id: hk-refs
+        uses: ./.github/actions/setup-hk-refs
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Build mod
-        run: dotnet build HallownestWayfinder.csproj -c Release --no-restore -warnaserror
+        run: dotnet build HallownestWayfinder.csproj -c Release --no-restore -warnaserror '-p:HollowKnightRefs=${{ steps.hk-refs.outputs.refs-path }}'
 
       - name: Run tests
-        run: dotnet test tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj -c Release --no-restore -warnaserror
+        run: dotnet test tests/HallownestWayfinder.Tests/HallownestWayfinder.Tests.csproj -c Release --no-restore -warnaserror '-p:HollowKnightRefs=${{ steps.hk-refs.outputs.refs-path }}'
