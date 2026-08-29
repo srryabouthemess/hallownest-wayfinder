@@ -30,10 +30,10 @@ namespace HallownestWayfinder.Tests
         {
             Dictionary<string, int> expected = new Dictionary<string, int>
             {
-                ["completion_112"] = 154,
+                ["completion_112"] = 155,
                 ["speedrun_5h"] = 49,
                 ["grubs_46"] = 44,
-                ["save_completion"] = 153
+                ["save_completion"] = 154
             };
 
             Assert.Equal(expected.Count, RouteCatalog.Routes.Count);

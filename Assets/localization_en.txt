@@ -203,6 +203,7 @@ c24_colosseum|Ch. 24 • Complete the Colosseum|Finish all three Trials in the C
 c25_zote|Ch. 25 • Defeat Grey Prince Zote|Enter Bretta's basement in Dirtmouth and Dream Nail the statue.
 c25_grubfather|Ch. 25 • Collect the grub rewards|Visit Grubhome in the Crossroads and collect every reward from Grubfather.
 c25_sly|Ch. 25 • Receive Nailmaster's Glory|With all three Nail Arts, visit Sly's basement and buy his remaining items.
+c25_sprintmaster|Ch. 25 • Buy Sprintmaster|After delivering the Shopkeeper's Key, buy Sprintmaster from Sly.
 c25_awoken|Ch. 25 • Awaken the Dream Nail|Gather 2400 Essence and keep returning to the Seer until she disappears.
 c26_flower|Ch. 26 • Deliver the Delicate Flower|Carry the flower from the Grey Mourner to the Gardens grave without taking damage.
 c27_palace|Ch. 27 • Enter White Palace|Use the Awoken Dream Nail on the royal corpse in Ancient Basin.

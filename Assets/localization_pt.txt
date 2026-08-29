@@ -195,6 +195,7 @@ c24_colosseum|Cap. 24 • Completar o Coliseu|Suba à Arena dos Tolos, conclua a
 c25_zote|Cap. 25 • Derrotar Príncipe Cinzento Zote|Em Dirtmouth, entre no porão da casa de Bretta e use o Ferrão dos Sonhos na estátua.
 c25_grubfather|Cap. 25 • Receber recompensas das larvas|Visite o Lar das Larvas na Encruzilhada e recolha todas as recompensas do Pai das Larvas.
 c25_sly|Cap. 25 • Receber Glória do Mestre|Com as três artes aprendidas, visite o porão de Sly e depois compre os fragmentos e amuletos restantes.
+c25_sprintmaster|Cap. 25 • Comprar Mestre da Corrida|Depois de entregar a Chave do Lojista, compre o amuleto Mestre da Corrida com Sly.
 c25_awoken|Cap. 25 • Despertar o Ferrão dos Sonhos|Reúna 2400 de essência e entregue-a à Vidente até ela desaparecer.
 c26_flower|Cap. 26 • Entregar a Flor Delicada|Aceite a flor com a Mourner Cinzenta e atravesse Campos, Encruzilhada, Cânion e Jardins sem sofrer dano até o túmulo.
 c27_palace|Cap. 27 • Entrar no Palácio Branco|Na Bacia Antiga, use o Ferrão Desperto no molde real morto e atravesse o sonho até o portão.

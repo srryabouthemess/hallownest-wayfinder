@@ -861,6 +861,7 @@
       },
       {
         "Id": "c10_ritual",
+        "Icon": "Grimm_flame_pin.png",
         "ArrowDegrees": 315.0,
         "Completion": {
           "PlayerBool": "nightmareLanternLit",
@@ -1682,6 +1683,27 @@
         }
       },
       {
+        "Id": "c25_sprintmaster",
+        "Icon": "Sprintmaster.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_37",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSlykey"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "gaveSlykey"
+            }
+          ]
+        ]
+      },
+      {
         "Id": "c25_awoken",
         "Icon": "Awoken_Dream_Nail.png",
         "ArrowDegrees": 90.0,
@@ -1783,6 +1805,7 @@
       },
       {
         "Id": "c29_unbreakable",
+        "Icon": "Unbreakable_Strength.png",
         "ArrowDegrees": 270.0,
         "SkippableInRoute": true,
         "NotRequiredFor112": true,
@@ -1797,6 +1820,7 @@
       },
       {
         "Id": "c29_grimm_end",
+        "Icon": "Nightmare_Heart.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "AnyPlayerBools": [
@@ -1815,6 +1839,7 @@
       },
       {
         "Id": "c30_godhome",
+        "Icon": "Godtuner_Lit.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "hasGodfinder",
@@ -3527,6 +3552,7 @@
       },
       {
         "Id": "c10_ritual",
+        "Icon": "Grimm_flame_pin.png",
         "ArrowDegrees": 315.0,
         "Completion": {
           "PlayerBool": "nightmareLanternLit",
@@ -4926,6 +4952,27 @@
         }
       },
       {
+        "Id": "c25_sprintmaster",
+        "Icon": "Sprintmaster.png",
+        "ArrowDegrees": 90.0,
+        "Completion": {
+          "PlayerBool": "gotCharm_37",
+          "GrubCountInScene": 1
+        },
+        "Prerequisites": [
+          [
+            {
+              "PlayerBool": "hasSlykey"
+            }
+          ],
+          [
+            {
+              "PlayerBool": "gaveSlykey"
+            }
+          ]
+        ]
+      },
+      {
         "Id": "c25_awoken",
         "Icon": "Awoken_Dream_Nail.png",
         "ArrowDegrees": 90.0,
@@ -5027,6 +5074,7 @@
       },
       {
         "Id": "c29_grimm_end",
+        "Icon": "Nightmare_Heart.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "AnyPlayerBools": [
@@ -5045,6 +5093,7 @@
       },
       {
         "Id": "c30_godhome",
+        "Icon": "Godtuner_Lit.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "hasGodfinder",
