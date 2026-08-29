@@ -85,6 +85,14 @@ runs:
         New-Item -ItemType Directory -Path $referencesDirectory -Force | Out-Null
         Expand-Archive -LiteralPath $vanillaArchive -DestinationPath $referencesDirectory -Force
         Expand-Archive -LiteralPath $moddingApiArchive -DestinationPath $referencesDirectory -Force
+
+        # HKBuildUtils references every DLL in this directory. This native tool
+        # has no .NET metadata and causes MSB3246 when passed to the compiler.
+        $nativeSceneRepacker = Join-Path $referencesDirectory "unityscenerepacker.dll"
+        if (Test-Path -LiteralPath $nativeSceneRepacker) {
+          Remove-Item -LiteralPath $nativeSceneRepacker -Force
+        }
+
         if (-not (Test-Path -LiteralPath (Join-Path $referencesDirectory "Assembly-CSharp.dll"))) {
           throw "The combined references do not contain Assembly-CSharp.dll."
         }
