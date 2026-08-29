@@ -4,7 +4,7 @@ All notable changes to Hallownest Wayfinder will be documented here.
 
 ## Unreleased
 
-- Added 21 objective icons for bosses, Dreamers, relics and late-game
+- Added 52 objective icons for bosses, Dreamers, abilities, charms and late-game
   progression across the 112%, speedrun and save-completion routes.
 - Cached save analysis, scene collections, transition transforms, navigation
   results, localization selection and HUD layout to remove per-frame scans and

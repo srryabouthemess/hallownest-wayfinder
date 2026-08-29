@@ -456,7 +456,7 @@
       },
       {
         "Id": "c04_nail1",
-        "Icon": "Nailsmith.png",
+        "Icon": "Sharpened_Nail.png",
         "ArrowDegrees": 270.0,
         "SkippableInRoute": true,
         "Completion": {
@@ -1010,6 +1010,7 @@
       },
       {
         "Id": "c13_thorns",
+        "Icon": "Thorns_of_Agony.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_12",
@@ -1028,6 +1029,7 @@
       },
       {
         "Id": "c13_wraiths",
+        "Icon": "Howling_Wraiths.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "screamLevel",
@@ -1037,6 +1039,7 @@
       },
       {
         "Id": "c13_noeyes",
+        "Icon": "No_Eyes.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerInt": "noEyesDefeated",
@@ -1053,6 +1056,7 @@
       },
       {
         "Id": "c14_souleater",
+        "Icon": "Soul_Eater.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_21",
@@ -1090,6 +1094,7 @@
       },
       {
         "Id": "c15_brand",
+        "Icon": "Kings_Brand.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "hasKingsBrand",
@@ -1114,6 +1119,7 @@
       },
       {
         "Id": "c16_shriek",
+        "Icon": "Abyss_Shriek.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "screamLevel",
@@ -1130,6 +1136,7 @@
       },
       {
         "Id": "c16_cloak",
+        "Icon": "Shade_Cloak.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "hasShadowDash",
@@ -1161,6 +1168,7 @@
       },
       {
         "Id": "c17_nail",
+        "Icon": "Coiled_Nail.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "nailSmithUpgrades",
@@ -1179,6 +1187,7 @@
       },
       {
         "Id": "c17_dashmaster",
+        "Icon": "Dashmaster.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "gotCharm_31",
@@ -1187,6 +1196,7 @@
       },
       {
         "Id": "c17_bretta",
+        "Icon": "Bretta.png",
         "ArrowDegrees": 270.0,
         "SkippableInRoute": true,
         "NotRequiredFor112": true,
@@ -1206,6 +1216,7 @@
       },
       {
         "Id": "c17_pride",
+        "Icon": "Mark_of_Pride.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_13",
@@ -1221,6 +1232,7 @@
       },
       {
         "Id": "c18_mawlek",
+        "Icon": "Brooding_Mawlek.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "killedMawlek",
@@ -1229,6 +1241,7 @@
       },
       {
         "Id": "c18_notch",
+        "Icon": "Charm_Notch.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "notchFogCanyon",
@@ -1237,6 +1250,7 @@
       },
       {
         "Id": "c18_fragile",
+        "Icon": "Fragile_Strength.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_25",
@@ -1245,6 +1259,7 @@
       },
       {
         "Id": "c18_hu",
+        "Icon": "Elder_Hu.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerInt": "elderHuDefeated",
@@ -1318,6 +1333,7 @@
       },
       {
         "Id": "c19_love_key",
+        "Icon": "Love_Key.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "hasLoveKey",
@@ -1326,6 +1342,7 @@
       },
       {
         "Id": "c19_marmu",
+        "Icon": "Marmu.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerInt": "mumCaterpillarDefeated",
@@ -1351,6 +1368,7 @@
       },
       {
         "Id": "c19_traitor",
+        "Icon": "Traitor_Lord.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "killedTraitorLord",
@@ -1397,6 +1415,7 @@
       },
       {
         "Id": "c20_weaver",
+        "Icon": "Weaversong.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "gotCharm_39",
@@ -1405,6 +1424,7 @@
       },
       {
         "Id": "c20_galien",
+        "Icon": "Galien.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "galienDefeated",
@@ -1421,6 +1441,7 @@
       },
       {
         "Id": "c20_pass",
+        "Icon": "Tram_Pass.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "hasTramPass",
@@ -1449,6 +1470,7 @@
       },
       {
         "Id": "c20_sharp",
+        "Icon": "Sharp_Shadow.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_16",
@@ -1482,6 +1504,7 @@
       },
       {
         "Id": "c21_hiveblood",
+        "Icon": "Hiveblood.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_29",
@@ -1514,6 +1537,7 @@
       },
       {
         "Id": "c22_dashslash",
+        "Icon": "Dash_Slash.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "hasDashSlash",
@@ -1522,6 +1546,7 @@
       },
       {
         "Id": "c22_quickslash",
+        "Icon": "Quick_Slash.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "gotCharm_32",
@@ -1658,6 +1683,7 @@
       },
       {
         "Id": "c25_awoken",
+        "Icon": "Awoken_Dream_Nail.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "dreamNailUpgraded",
@@ -1666,6 +1692,7 @@
       },
       {
         "Id": "c26_flower",
+        "Icon": "Delicate_Flower.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "xunRewardGiven",
@@ -1674,6 +1701,7 @@
       },
       {
         "Id": "c27_palace",
+        "Icon": "Pale_King.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "visitedWhitePalace",
@@ -1704,6 +1732,7 @@
       },
       {
         "Id": "c28_lifeblood",
+        "Icon": "Lifeblood_Core.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "gotCharm_9",
@@ -1958,7 +1987,7 @@
       },
       {
         "Id": "sr04_nail",
-        "Icon": "Nailsmith.png",
+        "Icon": "Sharpened_Nail.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "nailSmithUpgrades",
@@ -2273,6 +2302,7 @@
       },
       {
         "Id": "sr10_hollow_knight",
+        "Icon": "Hollow_Knight.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "killedHollowKnight",
@@ -3207,7 +3237,7 @@
       },
       {
         "Id": "c04_nail1",
-        "Icon": "Nailsmith.png",
+        "Icon": "Sharpened_Nail.png",
         "ArrowDegrees": 270.0,
         "SkippableInRoute": true,
         "Completion": {
@@ -3626,6 +3656,7 @@
       },
       {
         "Id": "c13_thorns",
+        "Icon": "Thorns_of_Agony.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_12",
@@ -3634,6 +3665,7 @@
       },
       {
         "Id": "c13_wraiths",
+        "Icon": "Howling_Wraiths.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "screamLevel",
@@ -3643,6 +3675,7 @@
       },
       {
         "Id": "c13_noeyes",
+        "Icon": "No_Eyes.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerInt": "noEyesDefeated",
@@ -3659,6 +3692,7 @@
       },
       {
         "Id": "c14_souleater",
+        "Icon": "Soul_Eater.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_21",
@@ -3685,6 +3719,7 @@
       },
       {
         "Id": "c15_brand",
+        "Icon": "Kings_Brand.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "hasKingsBrand",
@@ -3709,6 +3744,7 @@
       },
       {
         "Id": "c16_shriek",
+        "Icon": "Abyss_Shriek.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "screamLevel",
@@ -3725,6 +3761,7 @@
       },
       {
         "Id": "c16_cloak",
+        "Icon": "Shade_Cloak.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "hasShadowDash",
@@ -3756,6 +3793,7 @@
       },
       {
         "Id": "c17_nail",
+        "Icon": "Coiled_Nail.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "nailSmithUpgrades",
@@ -3774,6 +3812,7 @@
       },
       {
         "Id": "c17_dashmaster",
+        "Icon": "Dashmaster.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "gotCharm_31",
@@ -3791,6 +3830,7 @@
       },
       {
         "Id": "c17_pride",
+        "Icon": "Mark_of_Pride.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_13",
@@ -3806,6 +3846,7 @@
       },
       {
         "Id": "c18_mawlek",
+        "Icon": "Brooding_Mawlek.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "killedMawlek",
@@ -3814,6 +3855,7 @@
       },
       {
         "Id": "c18_notch",
+        "Icon": "Charm_Notch.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "notchFogCanyon",
@@ -3822,6 +3864,7 @@
       },
       {
         "Id": "c18_fragile",
+        "Icon": "Fragile_Strength.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_25",
@@ -3830,6 +3873,7 @@
       },
       {
         "Id": "c18_hu",
+        "Icon": "Elder_Hu.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerInt": "elderHuDefeated",
@@ -3881,6 +3925,7 @@
       },
       {
         "Id": "c19_love_key",
+        "Icon": "Love_Key.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "hasLoveKey",
@@ -3889,6 +3934,7 @@
       },
       {
         "Id": "c19_marmu",
+        "Icon": "Marmu.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerInt": "mumCaterpillarDefeated",
@@ -3914,6 +3960,7 @@
       },
       {
         "Id": "c19_traitor",
+        "Icon": "Traitor_Lord.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "killedTraitorLord",
@@ -3960,6 +4007,7 @@
       },
       {
         "Id": "c20_weaver",
+        "Icon": "Weaversong.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "gotCharm_39",
@@ -3968,6 +4016,7 @@
       },
       {
         "Id": "c20_galien",
+        "Icon": "Galien.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "galienDefeated",
@@ -3984,6 +4033,7 @@
       },
       {
         "Id": "c20_pass",
+        "Icon": "Tram_Pass.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "hasTramPass",
@@ -4001,6 +4051,7 @@
       },
       {
         "Id": "c20_sharp",
+        "Icon": "Sharp_Shadow.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_16",
@@ -4034,6 +4085,7 @@
       },
       {
         "Id": "c21_hiveblood",
+        "Icon": "Hiveblood.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "gotCharm_29",
@@ -4066,6 +4118,7 @@
       },
       {
         "Id": "c22_dashslash",
+        "Icon": "Dash_Slash.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "hasDashSlash",
@@ -4074,6 +4127,7 @@
       },
       {
         "Id": "c22_quickslash",
+        "Icon": "Quick_Slash.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "gotCharm_32",
@@ -4873,6 +4927,7 @@
       },
       {
         "Id": "c25_awoken",
+        "Icon": "Awoken_Dream_Nail.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "dreamNailUpgraded",
@@ -4881,6 +4936,7 @@
       },
       {
         "Id": "c26_flower",
+        "Icon": "Delicate_Flower.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "xunRewardGiven",
@@ -4889,6 +4945,7 @@
       },
       {
         "Id": "c27_palace",
+        "Icon": "Pale_King.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "visitedWhitePalace",
@@ -4919,6 +4976,7 @@
       },
       {
         "Id": "c28_lifeblood",
+        "Icon": "Lifeblood_Core.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "gotCharm_9",
