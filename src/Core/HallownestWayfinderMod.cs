@@ -120,9 +120,9 @@ namespace HallownestWayfinder
             _instance = null;
         }
 
-        public void OnLoadLocal(RouteProgress? settings)
+        public void OnLoadLocal(RouteProgress? s)
         {
-            Progress = settings ?? new RouteProgress();
+            Progress = s ?? new RouteProgress();
 
             // Version 2 removed Myla, which occupied the old index 7.
             if (Progress.DataVersion < 2)
@@ -144,9 +144,9 @@ namespace HallownestWayfinder
 
         public RouteProgress OnSaveLocal() => Progress;
 
-        public void OnLoadGlobal(RouteGlobalSettings? settings)
+        public void OnLoadGlobal(RouteGlobalSettings? s)
         {
-            GlobalSettings = settings ?? new RouteGlobalSettings();
+            GlobalSettings = s ?? new RouteGlobalSettings();
             GlobalSettings.UiSize = Math.Max(0, Math.Min(GlobalSettings.UiSize, 2));
             GlobalSettings.NavigationMode = Math.Max(0, Math.Min(GlobalSettings.NavigationMode, 2));
             GlobalSettings.ActiveRoute = Math.Max(0, Math.Min(GlobalSettings.ActiveRoute, RouteCatalog.Routes.Count - 1));
