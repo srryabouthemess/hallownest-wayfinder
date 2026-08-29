@@ -1145,6 +1145,7 @@
       },
       {
         "Id": "c17_grimm",
+        "Icon": "Grimm.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "killedGrimm",
@@ -1169,6 +1170,7 @@
       },
       {
         "Id": "c17_fluke",
+        "Icon": "Flukemarm.png",
         "ArrowDegrees": 225.0,
         "Completion": {
           "PlayerBool": "killedFlukeMother",
@@ -1195,6 +1197,7 @@
       },
       {
         "Id": "c17_lords",
+        "Icon": "Mantis_Lords.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "defeatedMantisLords",
@@ -1269,6 +1272,7 @@
       },
       {
         "Id": "c18_uumuu",
+        "Icon": "Uumuu.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "killedMegaJellyfish",
@@ -1284,6 +1288,7 @@
       },
       {
         "Id": "c18_monomon",
+        "Icon": "Monomon.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "monomonDefeated",
@@ -1361,6 +1366,7 @@
       },
       {
         "Id": "c19_queen",
+        "Icon": "Kingsoul_Left.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "gotQueenFragment",
@@ -1376,6 +1382,7 @@
       },
       {
         "Id": "c20_herrah",
+        "Icon": "Herrah.png",
         "Completion": {
           "PlayerBool": "hegemolDefeated",
           "GrubCountInScene": 1
@@ -1433,6 +1440,7 @@
       },
       {
         "Id": "c20_nosk",
+        "Icon": "Nosk.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "killedMimicSpider",
@@ -1465,6 +1473,7 @@
       },
       {
         "Id": "c21_knight",
+        "Icon": "Hive_Knight.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "killedHiveKnight",
@@ -1488,6 +1497,7 @@
       },
       {
         "Id": "c22_markoth",
+        "Icon": "Markoth.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerInt": "markothDefeated",
@@ -1520,6 +1530,7 @@
       },
       {
         "Id": "c23_collector",
+        "Icon": "The_Collector.png",
         "Completion": {
           "PlayerBool": "collectorDefeated",
           "GrubCountInScene": 1
@@ -1556,6 +1567,7 @@
       },
       {
         "Id": "c23_watchers",
+        "Icon": "Watcher_Knight.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "killedBlackKnight",
@@ -1564,6 +1576,7 @@
       },
       {
         "Id": "c23_lurien",
+        "Icon": "Lurien.png",
         "Completion": {
           "PlayerBool": "lurienDefeated",
           "GrubCountInScene": 1
@@ -1581,6 +1594,7 @@
       },
       {
         "Id": "c24_white_defender",
+        "Icon": "White_Defender.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "killedWhiteDefender",
@@ -1599,6 +1613,7 @@
       },
       {
         "Id": "c24_colosseum",
+        "Icon": "Trial_of_the_Fool.png",
         "Completion": {
           "PlayerBool": "colosseumGoldCompleted",
           "GrubCountInScene": 1
@@ -1606,6 +1621,7 @@
       },
       {
         "Id": "c25_zote",
+        "Icon": "Zote.png",
         "ArrowDegrees": 180.0,
         "SkippableInRoute": true,
         "NotRequiredFor112": true,
@@ -1673,6 +1689,7 @@
       },
       {
         "Id": "c27_kingsoul",
+        "Icon": "Kingsoul.png",
         "Completion": {
           "PlayerBool": "gotKingFragment",
           "GrubCountInScene": 1
@@ -1695,6 +1712,7 @@
       },
       {
         "Id": "c28_void",
+        "Icon": "Void_Heart.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "gotShadeCharm",
@@ -1718,6 +1736,7 @@
       },
       {
         "Id": "c29_pure_nail",
+        "Icon": "Pure_Nail.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "nailSmithUpgrades",
@@ -1775,6 +1794,7 @@
       },
       {
         "Id": "c30_pantheons",
+        "Icon": "Pure_Vessel.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PantheonCount": 4,
@@ -1907,7 +1927,7 @@
       },
       {
         "Id": "sr03_seal",
-        "Icon": "Wanderers_Journal.png",
+        "Icon": "Hallownest_Seal.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerIntSum": [
@@ -1948,7 +1968,7 @@
       },
       {
         "Id": "sr04_seal",
-        "Icon": "Wanderers_Journal.png",
+        "Icon": "Hallownest_Seal.png",
         "Completion": {
           "PlayerIntSum": [
             "trinket2",
@@ -2156,6 +2176,7 @@
       },
       {
         "Id": "sr07_watchers",
+        "Icon": "Watcher_Knight.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "killedBlackKnight",
@@ -2164,7 +2185,7 @@
       },
       {
         "Id": "sr07_lurien",
-        "Icon": "Dream_Nail.png",
+        "Icon": "Lurien.png",
         "Completion": {
           "PlayerBool": "lurienDefeated",
           "GrubCountInScene": 1
@@ -2190,6 +2211,7 @@
       },
       {
         "Id": "sr08_uumuu",
+        "Icon": "Uumuu.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "killedMegaJellyfish",
@@ -2198,7 +2220,7 @@
       },
       {
         "Id": "sr08_monomon",
-        "Icon": "Dream_Nail.png",
+        "Icon": "Monomon.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "monomonDefeated",
@@ -2225,7 +2247,7 @@
       },
       {
         "Id": "sr09_herrah",
-        "Icon": "Dream_Nail.png",
+        "Icon": "Herrah.png",
         "Completion": {
           "PlayerBool": "hegemolDefeated",
           "GrubCountInScene": 1
@@ -3718,6 +3740,7 @@
       },
       {
         "Id": "c17_grimm",
+        "Icon": "Grimm.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "killedGrimm",
@@ -3742,6 +3765,7 @@
       },
       {
         "Id": "c17_fluke",
+        "Icon": "Flukemarm.png",
         "ArrowDegrees": 225.0,
         "Completion": {
           "PlayerBool": "killedFlukeMother",
@@ -3758,6 +3782,7 @@
       },
       {
         "Id": "c17_lords",
+        "Icon": "Mantis_Lords.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "defeatedMantisLords",
@@ -3821,6 +3846,7 @@
       },
       {
         "Id": "c18_uumuu",
+        "Icon": "Uumuu.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "killedMegaJellyfish",
@@ -3836,6 +3862,7 @@
       },
       {
         "Id": "c18_monomon",
+        "Icon": "Monomon.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "monomonDefeated",
@@ -3902,6 +3929,7 @@
       },
       {
         "Id": "c19_queen",
+        "Icon": "Kingsoul_Left.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "gotQueenFragment",
@@ -3917,6 +3945,7 @@
       },
       {
         "Id": "c20_herrah",
+        "Icon": "Herrah.png",
         "Completion": {
           "PlayerBool": "hegemolDefeated",
           "GrubCountInScene": 1
@@ -3963,6 +3992,7 @@
       },
       {
         "Id": "c20_nosk",
+        "Icon": "Nosk.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerBool": "killedMimicSpider",
@@ -3995,6 +4025,7 @@
       },
       {
         "Id": "c21_knight",
+        "Icon": "Hive_Knight.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "killedHiveKnight",
@@ -4018,6 +4049,7 @@
       },
       {
         "Id": "c22_markoth",
+        "Icon": "Markoth.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerInt": "markothDefeated",
@@ -4050,6 +4082,7 @@
       },
       {
         "Id": "c23_collector",
+        "Icon": "The_Collector.png",
         "Completion": {
           "PlayerBool": "collectorDefeated",
           "GrubCountInScene": 1
@@ -4069,6 +4102,7 @@
       },
       {
         "Id": "c23_watchers",
+        "Icon": "Watcher_Knight.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PlayerBool": "killedBlackKnight",
@@ -4077,6 +4111,7 @@
       },
       {
         "Id": "c23_lurien",
+        "Icon": "Lurien.png",
         "Completion": {
           "PlayerBool": "lurienDefeated",
           "GrubCountInScene": 1
@@ -4094,6 +4129,7 @@
       },
       {
         "Id": "c24_white_defender",
+        "Icon": "White_Defender.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "killedWhiteDefender",
@@ -4112,6 +4148,7 @@
       },
       {
         "Id": "c24_colosseum",
+        "Icon": "Trial_of_the_Fool.png",
         "Completion": {
           "PlayerBool": "colosseumGoldCompleted",
           "GrubCountInScene": 1
@@ -4867,6 +4904,7 @@
       },
       {
         "Id": "c27_kingsoul",
+        "Icon": "Kingsoul.png",
         "Completion": {
           "PlayerBool": "gotKingFragment",
           "GrubCountInScene": 1
@@ -4889,6 +4927,7 @@
       },
       {
         "Id": "c28_void",
+        "Icon": "Void_Heart.png",
         "ArrowDegrees": 180.0,
         "Completion": {
           "PlayerBool": "gotShadeCharm",
@@ -4912,6 +4951,7 @@
       },
       {
         "Id": "c29_pure_nail",
+        "Icon": "Pure_Nail.png",
         "ArrowDegrees": 270.0,
         "Completion": {
           "PlayerInt": "nailSmithUpgrades",
@@ -4955,6 +4995,7 @@
       },
       {
         "Id": "c30_pantheons",
+        "Icon": "Pure_Vessel.png",
         "ArrowDegrees": 90.0,
         "Completion": {
           "PantheonCount": 4,
