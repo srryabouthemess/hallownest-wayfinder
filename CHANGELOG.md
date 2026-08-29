@@ -4,6 +4,8 @@ All notable changes to Hallownest Wayfinder will be documented here.
 
 ## Unreleased
 
+## 0.12.0 - 2026-08-29
+
 - Added save-aware free navigation to nine Hallownest landmarks, with a
   configurable destination, F10 toggle, HUD arrival and blocked-route states.
 - Condensed the free-navigation menu into one shorter destination selector and
