@@ -51,6 +51,36 @@ namespace HallownestWayfinder
             return errors;
         }
 
+        public static IReadOnlyList<string> ValidatePlayerDataFields(
+            string source, IEnumerable<string> boolFields, IEnumerable<string> intFields)
+        {
+            List<string> errors = new List<string>();
+            HashSet<string> checkedFields = new HashSet<string>(StringComparer.Ordinal);
+            CheckFields(errors, checkedFields, source, boolFields, typeof(bool));
+            CheckFields(errors, checkedFields, source, intFields, typeof(int));
+            return errors;
+        }
+
+        private static void CheckFields(List<string> errors, HashSet<string> checkedFields,
+            string source, IEnumerable<string> fields, Type expectedType)
+        {
+            if (fields == null) return;
+            foreach (string field in fields)
+            {
+                string key = expectedType.FullName + "\n" + field;
+                if (string.IsNullOrEmpty(field) || !checkedFields.Add(key)) continue;
+
+                FieldInfo playerField = typeof(PlayerData).GetField(field, PlayerDataMembers);
+                PropertyInfo playerProperty = typeof(PlayerData).GetProperty(field, PlayerDataMembers);
+                Type? actualType = playerField?.FieldType ?? playerProperty?.PropertyType;
+                if (actualType == expectedType) continue;
+
+                string actual = actualType == null ? "missing" : actualType.Name;
+                errors.Add(source + ": PlayerData." + field + " should be " +
+                    expectedType.Name + ", but is " + actual + ".");
+            }
+        }
+
         private static void CheckAll(List<string> errors, HashSet<string> checkedFields,
             RoutePlan route, RouteStep step, string[]? fields, Type expectedType)
         {

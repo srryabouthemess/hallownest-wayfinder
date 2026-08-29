@@ -29,6 +29,16 @@ The Hallownest Wayfinder graph loader and breadth-first search implementation we
 written independently for this project. No RCPathfinder or RandoMapCore code is
 included in the Hallownest Wayfinder binary.
 
+## 112% completion route
+
+The route order is adapted from Almech Alfarion's Steam guide, "112% Completion
+Walkthrough with Maps":
+
+https://steamcommunity.com/sharedfiles/filedetails/?id=3005043947
+
+Hallownest Wayfinder uses original, concise Portuguese and English instructions
+written for the in-game HUD and does not redistribute the guide's map images.
+
 ## Five-hour speedrun route
 
 The route order is adapted from fireb0rn's Steam guide, "Hollow Knight - 5 Hour

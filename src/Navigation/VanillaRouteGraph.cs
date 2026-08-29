@@ -87,6 +87,28 @@ namespace HallownestWayfinder
             return false;
         }
 
+        public static IReadOnlyList<string> GetDoorNames(string? scene)
+        {
+            if (string.IsNullOrEmpty(scene) ||
+                !Edges.TryGetValue(scene!, out List<Edge>? outgoing))
+                return Array.Empty<string>();
+
+            List<string> doors = new List<string>();
+            foreach (Edge edge in outgoing)
+                if (!doors.Contains(edge.Door)) doors.Add(edge.Door);
+            return doors;
+        }
+
+        public static bool ContainsScene(string? scene)
+        {
+            if (string.IsNullOrEmpty(scene)) return false;
+            if (Edges.ContainsKey(scene!)) return true;
+            foreach (List<Edge> edges in Edges.Values)
+                foreach (Edge edge in edges)
+                    if (edge.TargetScene == scene) return true;
+            return false;
+        }
+
         private static Dictionary<string, List<Edge>> Load()
         {
             Dictionary<string, List<Edge>> result = new Dictionary<string, List<Edge>>(StringComparer.Ordinal);

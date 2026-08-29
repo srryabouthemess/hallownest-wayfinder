@@ -17,6 +17,8 @@ namespace HallownestWayfinder
         private float _transitionStarted;
         private NavigationResult? _navigation;
         private HudLayout? _layout;
+        private string? _waypointMessage;
+        private float _waypointMessageUntil;
 
         private sealed class HudLayout
         {
@@ -31,11 +33,18 @@ namespace HallownestWayfinder
             public bool Available;
             public bool Completed;
             public int NavigationMode;
+            public int ChecklistMode;
             public NavigationKind NavigationKind;
             public string NavigationLabel = string.Empty;
             public KeyCode ToggleKey;
             public KeyCode PreviousKey;
             public KeyCode NextKey;
+            public bool WaypointRecorderEnabled;
+            public KeyCode RecordWaypointKey;
+            public bool FreeNavigationEnabled;
+            public int FreeNavigationDestination;
+            public string FreeNavigationDestinationName = string.Empty;
+            public KeyCode ToggleFreeNavigationKey;
             public IGameState? State;
             public float Scale;
             public float Width;
@@ -71,6 +80,19 @@ namespace HallownestWayfinder
             if (Input.GetKeyDown(mod.GlobalSettings.ToggleHudKey)) mod.ToggleVisibility();
             if (Input.GetKeyDown(mod.GlobalSettings.PreviousStepKey)) mod.PreviousStep();
             if (Input.GetKeyDown(mod.GlobalSettings.NextStepKey)) mod.NextStep();
+            if (Input.GetKeyDown(mod.GlobalSettings.ToggleFreeNavigationKey))
+                mod.ToggleFreeNavigation();
+            if (mod.GlobalSettings.WaypointRecorderEnabled &&
+                Input.GetKeyDown(mod.GlobalSettings.RecordWaypointKey))
+            {
+                WaypointCapture capture = mod.RecordCurrentWaypoint();
+                _waypointMessage = capture.Success
+                    ? string.Format(CultureInfo.InvariantCulture,
+                        LocalizationService.Text("waypoint_copied"),
+                        capture.Scene, capture.PointCount)
+                    : LocalizationService.Text("waypoint_unavailable");
+                _waypointMessageUntil = Time.unscaledTime + 3f;
+            }
 
             if (IsInsideSave()) mod.TryAdvanceAutomatically();
 
@@ -81,12 +103,26 @@ namespace HallownestWayfinder
                 _lastRouteId = mod.CurrentRoute.Id;
             }
 
-            bool canResolveNavigation = mod.Progress.Visible && mod.HasActiveStep &&
-                IsInsideSave() && mod.GlobalSettings.NavigationMode != 2;
-            _navigation = canResolveNavigation
-                ? RouteNavigation.Resolve(mod.CurrentStep,
-                    mod.GlobalSettings.NavigationMode == 0, mod.CurrentGameState)
-                : null;
+            bool freeNavigation = mod.GlobalSettings.FreeNavigationEnabled;
+            bool canResolveNavigation = mod.Progress.Visible && IsInsideSave() &&
+                mod.GlobalSettings.NavigationMode != 2 &&
+                (freeNavigation || mod.HasActiveStep);
+            if (!canResolveNavigation)
+            {
+                _navigation = null;
+            }
+            else if (freeNavigation)
+            {
+                FreeNavigationDestination destination = FreeNavigationCatalog.Get(
+                    mod.GlobalSettings.FreeNavigationDestination);
+                _navigation = RouteNavigation.ResolveDestination(
+                    destination.Scene, mod.CurrentGameState);
+            }
+            else
+            {
+                _navigation = RouteNavigation.Resolve(mod.CurrentStep,
+                    mod.GlobalSettings.NavigationMode == 0, mod.CurrentGameState);
+            }
         }
 
         private void OnGUI()
@@ -164,15 +200,24 @@ namespace HallownestWayfinder
                 GUI.color = new Color(0.65f, 0.88f, 1f, glow);
                 GUI.DrawTexture(new Rect(panel.x + 10f, panel.y + 9f, panel.width - 20f, panel.height - 18f), Texture2D.whiteTexture);
             }
+            DrawWaypointMessage(panel, layout);
             GUI.color = previousColor;
         }
 
         private void DrawCompleted(HudLayout layout)
         {
+            NavigationResult navigation = _navigation.GetValueOrDefault();
             Rect panel = new Rect(Screen.width - layout.Width - 16f, 18f,
                 layout.Width, layout.PanelHeight);
 
             GUI.DrawTexture(panel, _background);
+            if (layout.NavigationHeight > 0f && navigation.ShowArrow)
+            {
+                float arrowSize = 48f * layout.Scale;
+                Rect arrowRect = new Rect(panel.x - arrowSize - 12f * layout.Scale,
+                    panel.y + (panel.height - arrowSize) * 0.5f, arrowSize, arrowSize);
+                DrawRotatedTexture(arrowRect, _arrow, navigation.Degrees);
+            }
             float y = panel.y + 25f * layout.Scale;
             GUI.Label(new Rect(panel.x + layout.Padding, y, layout.ContentWidth,
                 layout.HeadingHeight), layout.Heading, _titleStyle);
@@ -180,6 +225,12 @@ namespace HallownestWayfinder
             GUI.Label(new Rect(panel.x + layout.Padding, y, layout.ContentWidth,
                 layout.ObjectiveHeight), layout.Objective, _bodyStyle);
             y += layout.ObjectiveHeight + 12f * layout.Scale;
+            if (layout.NavigationHeight > 0f)
+            {
+                GUI.Label(new Rect(panel.x + layout.Padding, y, layout.ContentWidth,
+                    layout.NavigationHeight), layout.NavigationText, _footerStyle);
+                y += layout.NavigationHeight + 12f * layout.Scale;
+            }
             if (layout.Checklist != null)
             {
                 GUI.Label(new Rect(panel.x + layout.Padding, y, layout.ContentWidth,
@@ -188,6 +239,7 @@ namespace HallownestWayfinder
             }
             GUI.Label(new Rect(panel.x + layout.Padding, y, layout.ContentWidth,
                 layout.FooterHeight), layout.Footer, _footerStyle);
+            DrawWaypointMessage(panel, layout);
         }
 
         private HudLayout GetLayout(HallownestWayfinderMod mod, RouteStep? step)
@@ -206,10 +258,17 @@ namespace HallownestWayfinder
                 cached.UiSize == mod.GlobalSettings.UiSize && cached.English == LocalizationService.IsEnglish &&
                 cached.Available == available && cached.Completed == completed &&
                 cached.NavigationMode == mod.GlobalSettings.NavigationMode &&
+                cached.ChecklistMode == mod.GlobalSettings.ChecklistMode &&
                 cached.NavigationKind == navigation.Kind && cached.NavigationLabel == navigation.Label &&
                 cached.ToggleKey == mod.GlobalSettings.ToggleHudKey &&
                 cached.PreviousKey == mod.GlobalSettings.PreviousStepKey &&
-                cached.NextKey == mod.GlobalSettings.NextStepKey && ReferenceEquals(cached.State, layoutState))
+                cached.NextKey == mod.GlobalSettings.NextStepKey &&
+                cached.WaypointRecorderEnabled == mod.GlobalSettings.WaypointRecorderEnabled &&
+                cached.RecordWaypointKey == mod.GlobalSettings.RecordWaypointKey &&
+                cached.FreeNavigationEnabled == mod.GlobalSettings.FreeNavigationEnabled &&
+                cached.FreeNavigationDestination == mod.GlobalSettings.FreeNavigationDestination &&
+                cached.ToggleFreeNavigationKey == mod.GlobalSettings.ToggleFreeNavigationKey &&
+                ReferenceEquals(cached.State, layoutState))
                 return cached;
 
             HudLayout layout = new HudLayout
@@ -225,13 +284,21 @@ namespace HallownestWayfinder
                 Available = available,
                 Completed = completed,
                 NavigationMode = mod.GlobalSettings.NavigationMode,
+                ChecklistMode = mod.GlobalSettings.ChecklistMode,
                 NavigationKind = navigation.Kind,
                 NavigationLabel = navigation.Label,
                 ToggleKey = mod.GlobalSettings.ToggleHudKey,
                 PreviousKey = mod.GlobalSettings.PreviousStepKey,
                 NextKey = mod.GlobalSettings.NextStepKey,
+                WaypointRecorderEnabled = mod.GlobalSettings.WaypointRecorderEnabled,
+                RecordWaypointKey = mod.GlobalSettings.RecordWaypointKey,
+                FreeNavigationEnabled = mod.GlobalSettings.FreeNavigationEnabled,
+                FreeNavigationDestination = mod.GlobalSettings.FreeNavigationDestination,
+                ToggleFreeNavigationKey = mod.GlobalSettings.ToggleFreeNavigationKey,
                 State = layoutState
             };
+            layout.FreeNavigationDestinationName = FreeNavigationCatalog.Name(
+                FreeNavigationCatalog.Get(layout.FreeNavigationDestination));
 
             layout.Scale = layout.UiSize == 0 ? 0.78f : layout.UiSize == 2 ? 1.22f : 1f;
             _titleStyle.fontSize = Mathf.RoundToInt(14f * layout.Scale);
@@ -245,9 +312,30 @@ namespace HallownestWayfinder
                 "  •  " + (mod.IsSaveCompletion ? completedSteps : completed ? layout.TotalSteps : currentStep + 1) +
                 "/" + layout.TotalSteps;
             layout.Checklist = ShouldShowChecklist(mod) && state != null
-                ? CompletionChecklist.Format(state)
+                ? CompletionChecklist.Format(state, mod.GlobalSettings.ChecklistMode == 0)
                 : null;
             layout.Footer = Action("hide", layout.ToggleKey);
+            if (layout.WaypointRecorderEnabled)
+                layout.Footer += "  •  " + Action("record_waypoint", layout.RecordWaypointKey);
+            if (layout.FreeNavigationEnabled)
+                layout.Footer += "  •  " + Action("stop_free_navigation",
+                    layout.ToggleFreeNavigationKey);
+
+            bool navigationVisible = layout.NavigationMode != 2 && _navigation.HasValue;
+            if (navigationVisible)
+            {
+                layout.NavigationText = layout.FreeNavigationEnabled
+                    ? "◇ " + string.Format(CultureInfo.InvariantCulture,
+                        LocalizationService.Text("free_navigation_active"),
+                        layout.FreeNavigationDestinationName) + "  •  " + navigation.Label
+                    : navigation.Kind == NavigationKind.Precise
+                        ? "◇ " + LocalizationService.Text("navigation") + " " + navigation.Label
+                        : navigation.Kind == NavigationKind.Transport || navigation.Kind == NavigationKind.Arrived
+                            ? "◇ " + navigation.Label
+                            : navigation.Kind == NavigationKind.Unmapped
+                                ? "◇ " + LocalizationService.Text("smart_unmapped")
+                                : "◇ " + LocalizationService.Text("arrow_approximate");
+            }
 
             if (completed)
             {
@@ -256,9 +344,13 @@ namespace HallownestWayfinder
                 layout.ObjectiveHeight = _bodyStyle.CalcHeight(new GUIContent(layout.Objective), layout.ContentWidth);
                 layout.ChecklistHeight = layout.Checklist == null ? 0f :
                     _footerStyle.CalcHeight(new GUIContent(layout.Checklist), layout.ContentWidth);
+                layout.NavigationHeight = navigationVisible
+                    ? _footerStyle.CalcHeight(new GUIContent(layout.NavigationText), layout.ContentWidth)
+                    : 0f;
                 layout.FooterHeight = _footerStyle.CalcHeight(new GUIContent(layout.Footer), layout.ContentWidth);
                 layout.PanelHeight = 25f * layout.Scale + layout.HeadingHeight + 14f * layout.Scale +
                     layout.ObjectiveHeight + 12f * layout.Scale +
+                    (layout.NavigationHeight > 0f ? layout.NavigationHeight + 12f * layout.Scale : 0f) +
                     (layout.ChecklistHeight > 0f ? layout.ChecklistHeight + 12f * layout.Scale : 0f) +
                     layout.FooterHeight + 25f * layout.Scale;
                 _layout = layout;
@@ -291,18 +383,6 @@ namespace HallownestWayfinder
                     "  •  " + back + "  •  " + hide;
             }
 
-            bool navigationVisible = layout.NavigationMode != 2 && _navigation.HasValue;
-            if (navigationVisible)
-            {
-                layout.NavigationText = navigation.Kind == NavigationKind.Precise
-                    ? "◇ " + LocalizationService.Text("navigation") + " " + navigation.Label
-                    : navigation.Kind == NavigationKind.Transport || navigation.Kind == NavigationKind.Arrived
-                        ? "◇ " + navigation.Label
-                        : navigation.Kind == NavigationKind.Unmapped
-                            ? "◇ " + LocalizationService.Text("smart_unmapped")
-                            : "◇ " + LocalizationService.Text("arrow_approximate");
-            }
-
             layout.Icon = IconLoader.Get(step.Icon);
             layout.IconSize = layout.Icon == null ? 0f : 78f * layout.Scale;
             layout.IconGap = layout.Icon == null ? 0f : 12f * layout.Scale;
@@ -328,11 +408,22 @@ namespace HallownestWayfinder
         }
 
         private static bool ShouldShowChecklist(HallownestWayfinderMod mod) =>
-            mod.CurrentRoute.Id == "completion_112" || mod.IsSaveCompletion;
+            mod.GlobalSettings.ChecklistMode != 2 &&
+            (mod.CurrentRoute.Id == "completion_112" || mod.IsSaveCompletion);
 
         private static string Action(string key, KeyCode binding) =>
             string.Format(CultureInfo.InvariantCulture, LocalizationService.Text(key),
                 HallownestWayfinderMod.KeyName(binding));
+
+        private void DrawWaypointMessage(Rect panel, HudLayout layout)
+        {
+            if (string.IsNullOrEmpty(_waypointMessage) ||
+                Time.unscaledTime > _waypointMessageUntil) return;
+
+            GUI.Label(new Rect(panel.x + layout.Padding,
+                panel.yMax + 4f * layout.Scale, layout.ContentWidth, 28f * layout.Scale),
+                "◇ " + _waypointMessage, _footerStyle);
+        }
 
         private static void DrawRotatedTexture(Rect destination, Texture2D texture, float degrees)
         {

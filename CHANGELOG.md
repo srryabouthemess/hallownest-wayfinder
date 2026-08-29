@@ -4,6 +4,16 @@ All notable changes to Hallownest Wayfinder will be documented here.
 
 ## Unreleased
 
+- Added save-aware free navigation to nine Hallownest landmarks, with a
+  configurable destination, F10 toggle, HUD arrival and blocked-route states.
+- Condensed the free-navigation menu into one shorter destination selector and
+  shortened the five-hour route name to avoid menu text overlap.
+- Added an optional in-game waypoint recorder with configurable controls,
+  clipboard-ready JSON, accumulated paths and nearby-door detection.
+- Expanded the 112% checklist into an exact category breakdown with detected
+  percentage, compact/detailed/off display modes and PlayerData validation.
+- Fixed the Seer's final objective completing at 1800 Essence instead of after
+  claiming the 2400-Essence reward.
 - Added 57 objective icons for bosses, Dreamers, abilities, charms and late-game
   progression across the 112%, speedrun and save-completion routes.
 - Added Sprintmaster as its own automatically tracked objective in the 112% and

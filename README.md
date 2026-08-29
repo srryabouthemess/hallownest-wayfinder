@@ -17,10 +17,13 @@ Hallownest Wayfinder displays the next objective of a guided route inside the ga
 - `Save Completion` mode that scans an existing save and recommends the next persistent, unfinished objective whose prerequisites are available.
 - Intelligent room-to-room navigation with an approximate-direction fallback.
 - Save-aware navigation that avoids transitions blocked by progression abilities.
-- A compact 112% checklist for charms, masks, vessels, Nail upgrades and Essence.
+- A configurable 112% checklist with exact category progress for bosses, charms,
+  equipment, upgrades, dreams, content packs and the detected 112% total.
 - Embedded icons and a UI designed to fit Hollow Knight's visual style.
 - Independent progress for every save file.
 - Configurable interface size and navigation mode.
+- Optional in-game waypoint recorder for building precise navigation data.
+- Free navigation to nine useful Hallownest landmarks, with save-aware paths.
 - Portuguese (Brazil) and English localization, with automatic game-language detection and a manual override.
 
 In `Save Completion`, route-only travel instructions and consumable counters are excluded because they cannot reliably describe an existing save. The mode checks permanent progression records, includes all 46 grubs individually and lets you postpone or restore recommendations with the configured controls.
@@ -32,8 +35,28 @@ In `Save Completion`, route-only travel instructions and consumable counters are
 | `F6` | Show or hide the HUD |
 | `F7` | Return to the previous objective |
 | `F8` | Advance or manually complete an objective |
+| `F9` | Record a waypoint when the recorder is enabled |
+| `F10` | Start or stop free navigation |
 
-All three bindings can be changed in the mod menu. The menu also includes an action to reset the manual progress of the currently selected route.
+All five bindings can be changed in the mod menu. The menu also includes an action to reset the manual progress of the currently selected route.
+
+### Free navigation
+
+Choose a destination and enable free navigation in the mod menu, or press `F10`
+to start and stop it with the current selection. The free-navigation arrow
+temporarily takes priority over the guided objective without changing route
+progress. Its paths use the abilities detected in the current save and avoid
+known locked transitions. The initial catalog covers Dirtmouth and eight major
+Stag destinations across Hallownest.
+
+### Waypoint recorder
+
+Enable the developer-oriented waypoint recorder in the mod menu, stand at a
+useful point inside a room and press `F9`. Captures accumulate for the current
+route objective and scene; after every capture, the complete `Navigation` JSON
+snippet is copied to the clipboard and logged. Points close to a known door use
+its stable object name, while other points store rounded coordinates. Toggling
+the recorder clears the current recording session.
 
 ## Installation
 
@@ -71,7 +94,9 @@ copy are editable in `Assets/localization_pt.txt` and
 
 ## Route source and attribution
 
-The current 112% route is adapted and summarized from the Steam guide *112% Completion Walkthrough with Maps* by Almech Alfarion. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and third-party licensing details.
+The current 112% route is adapted and summarized from Almech Alfarion's Steam
+guide [*112% Completion Walkthrough with Maps*](https://steamcommunity.com/sharedfiles/filedetails/?id=3005043947).
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution details.
 
 The five-hour speedrun route is adapted and summarized from fireb0rn's Steam guide [*Hollow Knight - 5 Hour Speedrun Achievement Guide by a Speedrunner*](https://steamcommunity.com/sharedfiles/filedetails/?id=1861523602). The in-game instructions are original summaries, available in Portuguese and English, rather than reproductions of the guide text.
 

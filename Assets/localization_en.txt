@@ -3,7 +3,7 @@
 @route|Active route
 @route_description|Choose the route displayed by Hallownest Wayfinder.
 @route.completion_112|112% Route
-@route.speedrun_5h|5h Speedrun • Glitchless
+@route.speedrun_5h|5h NMG Route
 @route.grubs_46|Grubs 46/46
 @route.save_completion|Save Completion
 @language|Language
@@ -21,6 +21,15 @@
 @smart|Smart
 @general|General
 @off|Off
+@checklist_mode|112% checklist
+@checklist_mode_description|Choose the full summary, compact line or hide the checklist.
+@detailed|Detailed
+@compact|Compact
+@on|On
+@waypoint_recorder|Waypoint recorder
+@waypoint_recorder_description|Enable JSON navigation-point capture for route development.
+@free_navigation_destination|Free destination
+@free_navigation_destination_description|Turn it off or choose a known Hallownest landmark to follow.
 @optional|[OPTIONAL]
 @automatic_progress|Automatic progress
 @complete|{0} complete
@@ -46,12 +55,38 @@
 @previous_key_description|Choose the key that returns to the previous step.
 @next_key|Key: next step
 @next_key_description|Choose the key that advances or postpones the step.
+@waypoint_key|Key: record waypoint
+@waypoint_key_description|Choose the key that copies the current waypoint to the clipboard.
+@toggle_free_navigation_key|Key: toggle free navigation
+@toggle_free_navigation_key_description|Choose the key that starts or stops navigation to the selected destination.
 @reset_route|Reset route progress
 @reset_route_description|Reset only the manual progress of the currently selected route.
 @keep_progress|Keep
 @reset_now|Reset now
 @route_completed|ROUTE COMPLETE
+@record_waypoint|{0} record waypoint
+@waypoint_copied|Waypoint copied: {0} • point {1}
+@waypoint_unavailable|A waypoint cannot be recorded on this screen
+@stop_free_navigation|{0} stop free navigation
+@free_navigation_active|Free destination: {0}
+@free_navigation_arrived|Destination reached
+@free_navigation_unreachable|No route is available with the current abilities
+@destination.dirtmouth|Dirtmouth
+@destination.crossroads_station|Crossroads Station
+@destination.greenpath_station|Greenpath Station
+@destination.queens_station|Queen's Station
+@destination.city_storerooms|City Storerooms
+@destination.resting_grounds|Resting Grounds Station
+@destination.kings_station|King's Station
+@destination.distant_village|Distant Village Station
+@destination.hidden_station|Hidden Station
 @completion_checklist|Charms {0}/40  •  Masks {1}/9  •  Vessels {2}/3  •  Nail {3}/4  •  Essence {4}/2400
+@completion_checklist_total|DETECTED 112% PROGRESS  •  {0}/112
+@completion_checklist_collection|Charms {0}/40  •  Equipment {1}/7  •  Spells {2}/6
+@completion_checklist_combat|Bosses {0}/14  •  Warrior Dreams {1}/7  •  Dreamers {2}/3
+@completion_checklist_upgrades|Masks {0}/9  •  Vessels {1}/3  •  Nail {2}/4  •  Nail Arts {3}/3
+@completion_checklist_world|Dream Nail {0}/3  •  Essence {1}/2400  •  Colosseum {2}/3
+@completion_checklist_content|Grimm Troupe {0}/2  •  Hive {1}/1  •  Godhome {2}/5
 fury|Get Fury of the Fallen|In King's Pass, before entering Dirtmouth, drop into the spike passage. Pogo across the spikes and reach the chest on the right.
 dirtmouth|Go to Dirtmouth|Return to the main path through King's Pass, continue right and pass through the large gate.
 crossroads|Enter the Forgotten Crossroads|Walk right from the Dirtmouth bench and jump into the open well.

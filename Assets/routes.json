@@ -1708,7 +1708,7 @@
         "Icon": "Awoken_Dream_Nail.png",
         "ArrowDegrees": 90.0,
         "Completion": {
-          "PlayerBool": "dreamNailUpgraded",
+          "PlayerBool": "dreamReward9",
           "GrubCountInScene": 1
         }
       },
@@ -4977,7 +4977,7 @@
         "Icon": "Awoken_Dream_Nail.png",
         "ArrowDegrees": 90.0,
         "Completion": {
-          "PlayerBool": "dreamNailUpgraded",
+          "PlayerBool": "dreamReward9",
           "GrubCountInScene": 1
         }
       },

@@ -184,6 +184,60 @@ namespace HallownestWayfinder
             return General(step.ArrowDegrees);
         }
 
+        public static NavigationResult ResolveDestination(string? destinationScene,
+            IGameState? gameState = null)
+        {
+            string? scene = GameManager.instance == null ? null : GameManager.instance.sceneName;
+            if (string.IsNullOrEmpty(scene) || string.IsNullOrEmpty(destinationScene) ||
+                HeroController.instance == null)
+            {
+                return new NavigationResult
+                {
+                    Kind = NavigationKind.Unmapped,
+                    Label = LocalizationService.Text("free_navigation_unreachable")
+                };
+            }
+
+            if (gameState != null) VanillaRouteGraph.SetGameState(gameState);
+            if (scene == destinationScene)
+            {
+                return new NavigationResult
+                {
+                    Kind = NavigationKind.Arrived,
+                    Label = LocalizationService.Text("free_navigation_arrived")
+                };
+            }
+
+            if (!VanillaRouteGraph.TryGetNextDoor(scene, destinationScene, out string? door) ||
+                string.IsNullOrEmpty(door))
+            {
+                return new NavigationResult
+                {
+                    Kind = NavigationKind.Unmapped,
+                    Label = LocalizationService.Text("free_navigation_unreachable")
+                };
+            }
+
+            Transform? exit = FindTransition(door!);
+            if (exit == null)
+            {
+                return new NavigationResult
+                {
+                    Kind = NavigationKind.Unmapped,
+                    Label = LocalizationService.Text("exit_pending")
+                };
+            }
+
+            Vector2 delta = (Vector2)exit.position -
+                (Vector2)HeroController.instance.transform.position;
+            return new NavigationResult
+            {
+                Kind = NavigationKind.Precise,
+                Degrees = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg,
+                Label = LocalizationService.Text("next_exit")
+            };
+        }
+
         private static NavigationWaypoint? FindObjectiveWaypoint(RouteStep step, string scene, Vector3 hero)
         {
             string cacheKey = scene + "\n" + step.Id;
@@ -330,6 +384,27 @@ namespace HallownestWayfinder
             EnsureTransformCache(activeScene);
             return TransformsByName.TryGetValue(doorName, out Transform? transform) &&
                 transform != null ? transform : null;
+        }
+
+        public static string? FindNearestDoorName(string scene, Vector3 position,
+            float maximumDistance)
+        {
+            Scene activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            EnsureTransformCache(activeScene);
+            List<WaypointDoorCandidate> candidates = new List<WaypointDoorCandidate>();
+            foreach (string door in VanillaRouteGraph.GetDoorNames(scene))
+            {
+                if (!TransformsByName.TryGetValue(door, out Transform? transform) ||
+                    transform == null) continue;
+                candidates.Add(new WaypointDoorCandidate
+                {
+                    Name = door,
+                    X = transform.position.x,
+                    Y = transform.position.y
+                });
+            }
+            return WaypointRecorder.SelectNearestDoor(candidates,
+                position.x, position.y, maximumDistance);
         }
 
         private static void EnsureTransformCache(Scene activeScene)

@@ -168,10 +168,79 @@ namespace HallownestWayfinder.Tests
             {
                 typeof(RouteGlobalSettings).GetProperty("ToggleHudKey")?.GetValue(settings),
                 typeof(RouteGlobalSettings).GetProperty("PreviousStepKey")?.GetValue(settings),
-                typeof(RouteGlobalSettings).GetProperty("NextStepKey")?.GetValue(settings)
+                typeof(RouteGlobalSettings).GetProperty("NextStepKey")?.GetValue(settings),
+                typeof(RouteGlobalSettings).GetProperty("RecordWaypointKey")?.GetValue(settings),
+                typeof(RouteGlobalSettings).GetProperty("ToggleFreeNavigationKey")?.GetValue(settings)
             };
             Assert.DoesNotContain(null, bindings);
             Assert.Equal(bindings.Length, bindings.Distinct().Count());
+        }
+
+        [Fact]
+        public void WaypointRecorderSerializesCoordinatesForOpenRoomPoints()
+        {
+            NavigationWaypoint point = WaypointRecorder.CreateWaypoint(
+                "Town", 12.345f, -4.566f, 0, null, 2.5f);
+
+            string json = WaypointRecorder.SerializeSnippet(new[] { point });
+
+            Assert.Contains("\"Navigation\"", json);
+            Assert.Contains("\"X\": 12.35", json);
+            Assert.Contains("\"Y\": -4.57", json);
+            Assert.DoesNotContain("TargetObjectName", json);
+        }
+
+        [Fact]
+        public void WaypointRecorderPrefersStableObjectNameForDoorPoints()
+        {
+            NavigationWaypoint point = WaypointRecorder.CreateWaypoint(
+                "Town", 12f, -4f, 1, "bot1", 2.5f);
+
+            string json = WaypointRecorder.SerializeSnippet(new[] { point });
+
+            Assert.Contains("\"TargetObjectName\": \"bot1\"", json);
+            Assert.DoesNotContain("\"X\"", json);
+            Assert.DoesNotContain("\"Y\"", json);
+        }
+
+        [Fact]
+        public void WaypointRecorderSelectsOnlyDoorsInsideCaptureRadius()
+        {
+            WaypointDoorCandidate[] doors =
+            {
+                new WaypointDoorCandidate { Name = "left1", X = 0f, Y = 0f },
+                new WaypointDoorCandidate { Name = "right1", X = 5f, Y = 0f }
+            };
+
+            Assert.Equal("right1", WaypointRecorder.SelectNearestDoor(doors, 4f, 0f, 3f));
+            Assert.Null(WaypointRecorder.SelectNearestDoor(doors, 4f, 0f, 0.5f));
+        }
+
+        [Fact]
+        public void FreeNavigationDestinationsAreUniqueMappedScenes()
+        {
+            IReadOnlyList<FreeNavigationDestination> destinations =
+                FreeNavigationCatalog.Destinations;
+
+            Assert.Equal(destinations.Count + 1,
+                FreeNavigationCatalog.MenuNames().Length);
+            Assert.Equal(destinations.Count,
+                destinations.Select(destination => destination.Id).Distinct().Count());
+            Assert.Equal(destinations.Count,
+                destinations.Select(destination => destination.Scene).Distinct().Count());
+            Assert.All(destinations,
+                destination => Assert.True(VanillaRouteGraph.ContainsScene(destination.Scene),
+                    $"Free-navigation scene '{destination.Scene}' is not in the graph."));
+        }
+
+        [Fact]
+        public void FreeNavigationCanRouteFromDirtmouthToCrossroadsStation()
+        {
+            VanillaRouteGraph.SetGameState(new FakeGameState());
+
+            Assert.True(VanillaRouteGraph.TryGetNextDoor(
+                "Town", "Crossroads_47", out string? door));
+            Assert.Equal("bot1", door);
         }
 
         [Fact]
@@ -186,6 +255,61 @@ namespace HallownestWayfinder.Tests
             Assert.Equal(2, snapshot.Vessels);
             Assert.Equal(3, snapshot.NailUpgrades);
             Assert.Equal(1500, snapshot.Essence);
+        }
+
+        [Fact]
+        public void DetailedCompletionChecklistAccountsForAll112PercentagePoints()
+        {
+            FakeGameState state = new FakeGameState
+            {
+                CharmsOwned = CompletionChecklist.TotalCharms,
+                MaxHealthBase = CompletionChecklist.TotalMasks,
+                SoulReserveMaximum = CompletionChecklist.TotalVessels * 33,
+                NailUpgrades = CompletionChecklist.TotalNailUpgrades,
+                CurrentEssence = CompletionChecklist.TotalEssence,
+                CompletedPantheons = 4
+            };
+            foreach (string field in CompletionChecklist.ReferencedPlayerBools)
+                state.Bools[field] = true;
+            foreach (string field in CompletionChecklist.ReferencedPlayerInts)
+                state.Ints[field] = 1;
+            state.Ints["fireballLevel"] = 2;
+            state.Ints["quakeLevel"] = 2;
+            state.Ints["screamLevel"] = 2;
+
+            CompletionChecklistSnapshot snapshot = CompletionChecklist.Read(state);
+
+            Assert.Equal(CompletionChecklist.TotalPercentage, snapshot.Percentage);
+            Assert.Equal(CompletionChecklist.TotalBosses, snapshot.Bosses);
+            Assert.Equal(CompletionChecklist.TotalWarriorDreams, snapshot.WarriorDreams);
+            Assert.Equal(CompletionChecklist.TotalEquipment, snapshot.Equipment);
+            Assert.Equal(CompletionChecklist.TotalSpells, snapshot.Spells);
+            Assert.Equal(CompletionChecklist.TotalNailArts, snapshot.NailArts);
+            Assert.Equal(CompletionChecklist.TotalDreamers, snapshot.Dreamers);
+            Assert.Equal(CompletionChecklist.TotalColosseum, snapshot.Colosseum);
+            Assert.Equal(CompletionChecklist.TotalGrimmTroupe, snapshot.GrimmTroupe);
+            Assert.Equal(CompletionChecklist.TotalHive, snapshot.Hive);
+            Assert.Equal(CompletionChecklist.TotalGodhome, snapshot.Godhome);
+            Assert.Equal(6, CompletionChecklist.Format(snapshot, true)
+                .Split(new[] { Environment.NewLine }, StringSplitOptions.None).Length);
+        }
+
+        [Fact]
+        public void SeerFinalWordsRequireThe2400EssenceReward()
+        {
+            RouteStep routeStep = Route("completion_112").Steps.Single(
+                step => step.Id == "c25_awoken");
+            RouteStep saveStep = Route("save_completion").Steps.Single(
+                step => step.Id == "c25_awoken");
+
+            Assert.Equal("dreamReward9", routeStep.Completion.PlayerBool);
+            Assert.Equal("dreamReward9", saveStep.Completion.PlayerBool);
+        }
+
+        [Fact]
+        public void ChecklistPlayerDataReferencesExistWithExpectedTypes()
+        {
+            Assert.Empty(CompletionChecklist.ValidatePlayerDataReferences());
         }
 
         [Fact]

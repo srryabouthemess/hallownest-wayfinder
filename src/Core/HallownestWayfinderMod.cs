@@ -14,7 +14,9 @@ namespace HallownestWayfinder
         {
             ToggleHud,
             PreviousStep,
-            NextStep
+            NextStep,
+            RecordWaypoint,
+            ToggleFreeNavigation
         }
 
         private static readonly KeyCode[] SupportedKeys =
@@ -105,6 +107,8 @@ namespace HallownestWayfinder
                 LogError("Invalid route data: " + error);
             foreach (string error in VanillaRouteGraph.ValidateRequirements())
                 LogError("Invalid navigation graph: " + error);
+            foreach (string error in CompletionChecklist.ValidatePlayerDataReferences())
+                LogError("Invalid checklist data: " + error);
 
             _hudObject = new GameObject("HallownestWayfinder HUD");
             UObject.DontDestroyOnLoad(_hudObject);
@@ -117,6 +121,7 @@ namespace HallownestWayfinder
         {
             if (_hudObject != null) UObject.Destroy(_hudObject);
             _hudObject = null;
+            WaypointRecorder.Reset();
             _instance = null;
         }
 
@@ -149,11 +154,19 @@ namespace HallownestWayfinder
             GlobalSettings = s ?? new RouteGlobalSettings();
             GlobalSettings.UiSize = Math.Max(0, Math.Min(GlobalSettings.UiSize, 2));
             GlobalSettings.NavigationMode = Math.Max(0, Math.Min(GlobalSettings.NavigationMode, 2));
+            GlobalSettings.ChecklistMode = Math.Max(0, Math.Min(GlobalSettings.ChecklistMode, 2));
             GlobalSettings.ActiveRoute = Math.Max(0, Math.Min(GlobalSettings.ActiveRoute, RouteCatalog.Routes.Count - 1));
             GlobalSettings.Language = Math.Max(0, Math.Min(GlobalSettings.Language, 2));
+            GlobalSettings.FreeNavigationDestination = FreeNavigationCatalog.ClampIndex(
+                GlobalSettings.FreeNavigationDestination);
             GlobalSettings.ToggleHudKey = NormalizeKey(GlobalSettings.ToggleHudKey, KeyCode.F6);
             GlobalSettings.PreviousStepKey = NormalizeKey(GlobalSettings.PreviousStepKey, KeyCode.F7);
             GlobalSettings.NextStepKey = NormalizeKey(GlobalSettings.NextStepKey, KeyCode.F8);
+            GlobalSettings.RecordWaypointKey = NormalizeKey(
+                GlobalSettings.RecordWaypointKey, KeyCode.F9);
+            GlobalSettings.ToggleFreeNavigationKey = NormalizeKey(
+                GlobalSettings.ToggleFreeNavigationKey, KeyCode.F10);
+            EnsureUniqueKeyBindings();
             LocalizationService.SetLanguage(GlobalSettings.Language);
         }
 
@@ -218,6 +231,51 @@ namespace HallownestWayfinder
                     },
                     Saver = value => GlobalSettings.NavigationMode = value,
                     Loader = () => GlobalSettings.NavigationMode
+                },
+                new IMenuMod.MenuEntry
+                {
+                    Name = LocalizationService.Text("checklist_mode"),
+                    Description = LocalizationService.Text("checklist_mode_description"),
+                    Values = new[]
+                    {
+                        LocalizationService.Text("detailed"),
+                        LocalizationService.Text("compact"),
+                        LocalizationService.Text("off")
+                    },
+                    Saver = value => GlobalSettings.ChecklistMode = value,
+                    Loader = () => GlobalSettings.ChecklistMode
+                },
+                new IMenuMod.MenuEntry
+                {
+                    Name = LocalizationService.Text("waypoint_recorder"),
+                    Description = LocalizationService.Text("waypoint_recorder_description"),
+                    Values = new[]
+                    {
+                        LocalizationService.Text("off"),
+                        LocalizationService.Text("on")
+                    },
+                    Saver = value =>
+                    {
+                        GlobalSettings.WaypointRecorderEnabled = value == 1;
+                        WaypointRecorder.Reset();
+                    },
+                    Loader = () => GlobalSettings.WaypointRecorderEnabled ? 1 : 0
+                },
+                new IMenuMod.MenuEntry
+                {
+                    Name = LocalizationService.Text("free_navigation_destination"),
+                    Description = LocalizationService.Text("free_navigation_destination_description"),
+                    Values = FreeNavigationCatalog.MenuNames(),
+                    Saver = value =>
+                    {
+                        GlobalSettings.FreeNavigationEnabled = value > 0;
+                        if (value > 0)
+                            GlobalSettings.FreeNavigationDestination =
+                                FreeNavigationCatalog.ClampIndex(value - 1);
+                    },
+                    Loader = () => GlobalSettings.FreeNavigationEnabled
+                        ? GlobalSettings.FreeNavigationDestination + 1
+                        : 0
                 }
             };
 
@@ -233,6 +291,14 @@ namespace HallownestWayfinder
                 LocalizationService.Text("next_key"),
                 LocalizationService.Text("next_key_description"),
                 KeyBindingAction.NextStep));
+            entries.Add(CreateKeyEntry(
+                LocalizationService.Text("waypoint_key"),
+                LocalizationService.Text("waypoint_key_description"),
+                KeyBindingAction.RecordWaypoint));
+            entries.Add(CreateKeyEntry(
+                LocalizationService.Text("toggle_free_navigation_key"),
+                LocalizationService.Text("toggle_free_navigation_key_description"),
+                KeyBindingAction.ToggleFreeNavigation));
             entries.Add(new IMenuMod.MenuEntry
             {
                 Name = LocalizationService.Text("reset_route"),
@@ -254,6 +320,20 @@ namespace HallownestWayfinder
         }
 
         public void ToggleVisibility() => Progress.Visible = !Progress.Visible;
+
+        public void ToggleFreeNavigation() =>
+            GlobalSettings.FreeNavigationEnabled = !GlobalSettings.FreeNavigationEnabled;
+
+        public WaypointCapture RecordCurrentWaypoint()
+        {
+            WaypointCapture capture = WaypointRecorder.Capture(CurrentRoute, CurrentStep);
+            if (capture.Success)
+            {
+                Log("Waypoint recorder: route '" + CurrentRoute.Id + "', step '" +
+                    capture.StepId + "', scene '" + capture.Scene + "'.\n" + capture.Json);
+            }
+            return capture;
+        }
 
         public void ResetCurrentRoute()
         {
@@ -419,13 +499,36 @@ namespace HallownestWayfinder
                 ? GlobalSettings.ToggleHudKey
                 : action == KeyBindingAction.PreviousStep
                     ? GlobalSettings.PreviousStepKey
-                    : GlobalSettings.NextStepKey;
+                    : action == KeyBindingAction.NextStep
+                        ? GlobalSettings.NextStepKey
+                        : action == KeyBindingAction.RecordWaypoint
+                            ? GlobalSettings.RecordWaypointKey
+                            : GlobalSettings.ToggleFreeNavigationKey;
 
         private void AssignKeyBinding(KeyBindingAction action, KeyCode key)
         {
             if (action == KeyBindingAction.ToggleHud) GlobalSettings.ToggleHudKey = key;
             else if (action == KeyBindingAction.PreviousStep) GlobalSettings.PreviousStepKey = key;
-            else GlobalSettings.NextStepKey = key;
+            else if (action == KeyBindingAction.NextStep) GlobalSettings.NextStepKey = key;
+            else if (action == KeyBindingAction.RecordWaypoint) GlobalSettings.RecordWaypointKey = key;
+            else GlobalSettings.ToggleFreeNavigationKey = key;
+        }
+
+        private void EnsureUniqueKeyBindings()
+        {
+            HashSet<KeyCode> used = new HashSet<KeyCode>();
+            foreach (KeyBindingAction action in Enum.GetValues(typeof(KeyBindingAction)))
+            {
+                KeyCode key = GetKeyBinding(action);
+                if (used.Add(key)) continue;
+
+                foreach (KeyCode candidate in SupportedKeys)
+                {
+                    if (!used.Add(candidate)) continue;
+                    AssignKeyBinding(action, candidate);
+                    break;
+                }
+            }
         }
 
         private static KeyCode NormalizeKey(KeyCode key, KeyCode fallback) =>

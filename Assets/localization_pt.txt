@@ -3,7 +3,7 @@
 @route|Rota ativa
 @route_description|Escolha a rota exibida pelo Hallownest Wayfinder.
 @route.completion_112|Rota 112%
-@route.speedrun_5h|Speedrun 5h • Sem glitches
+@route.speedrun_5h|Rota 5h NMG
 @route.grubs_46|Larvas 46/46
 @route.save_completion|Completar save
 @language|Idioma
@@ -21,6 +21,15 @@
 @smart|Inteligente
 @general|Geral
 @off|Desligada
+@checklist_mode|Checklist 112%
+@checklist_mode_description|Escolha entre o resumo completo, a linha compacta ou ocultar o checklist.
+@detailed|Detalhado
+@compact|Compacto
+@on|Ligado
+@waypoint_recorder|Gravador de waypoints
+@waypoint_recorder_description|Ativa a captura de pontos de navegação em JSON para desenvolvimento da rota.
+@free_navigation_destination|Destino livre
+@free_navigation_destination_description|Desligue ou escolha um ponto conhecido de Hallownest para seguir.
 @optional|[OPCIONAL]
 @automatic_progress|Avanço automático
 @complete|{0} concluir
@@ -46,12 +55,38 @@
 @previous_key_description|Escolha a tecla que retorna à etapa anterior.
 @next_key|Tecla: avançar etapa
 @next_key_description|Escolha a tecla que avança ou adia a etapa.
+@waypoint_key|Tecla: gravar waypoint
+@waypoint_key_description|Escolha a tecla que copia o waypoint atual para a área de transferência.
+@toggle_free_navigation_key|Tecla: ligar/desligar navegação livre
+@toggle_free_navigation_key_description|Escolha a tecla que inicia ou encerra a navegação até o destino selecionado.
 @reset_route|Resetar progresso da rota
 @reset_route_description|Reinicia somente o progresso manual da rota atualmente selecionada.
 @keep_progress|Manter
 @reset_now|Resetar agora
 @route_completed|ROTA CONCLUÍDA
+@record_waypoint|{0} gravar waypoint
+@waypoint_copied|Waypoint copiado: {0} • ponto {1}
+@waypoint_unavailable|Não foi possível gravar nesta tela
+@stop_free_navigation|{0} encerrar navegação livre
+@free_navigation_active|Destino livre: {0}
+@free_navigation_arrived|Destino alcançado
+@free_navigation_unreachable|Nenhuma rota disponível com as habilidades atuais
+@destination.dirtmouth|Dirtmouth
+@destination.crossroads_station|Estação da Encruzilhada
+@destination.greenpath_station|Estação do Caminho Verde
+@destination.queens_station|Estação da Rainha
+@destination.city_storerooms|Armazéns da Cidade
+@destination.resting_grounds|Estação dos Campos de Descanso
+@destination.kings_station|Estação do Rei
+@destination.distant_village|Estação da Vila Distante
+@destination.hidden_station|Estação Oculta
 @completion_checklist|Amuletos {0}/40  •  Máscaras {1}/9  •  Vasos {2}/3  •  Ferrão {3}/4  •  Essência {4}/2400
+@completion_checklist_total|PROGRESSO 112% DETECTADO  •  {0}/112
+@completion_checklist_collection|Amuletos {0}/40  •  Equipamentos {1}/7  •  Feitiços {2}/6
+@completion_checklist_combat|Chefes {0}/14  •  Guerreiros dos Sonhos {1}/7  •  Sonhadores {2}/3
+@completion_checklist_upgrades|Máscaras {0}/9  •  Vasos {1}/3  •  Ferrão {2}/4  •  Artes {3}/3
+@completion_checklist_world|Ferrão dos Sonhos {0}/3  •  Essência {1}/2400  •  Coliseu {2}/3
+@completion_checklist_content|Trupe Grimm {0}/2  •  Colmeia {1}/1  •  Godhome {2}/5
 fury|Pegar o amuleto Fúria dos Caídos|Na Passagem do Rei, antes de entrar em Dirtmouth, desça pela abertura com espinhos. Atravesse usando ataques para baixo nos espinhos e alcance o baú à direita.
 dirtmouth|Ir para Dirtmouth|Volte ao caminho principal da Passagem do Rei, siga sempre à direita e atravesse o grande portão para chegar a Dirtmouth.
 crossroads|Descer para a Encruzilhada Esquecida|Em Dirtmouth, caminhe à direita do banco e pule no poço aberto.
